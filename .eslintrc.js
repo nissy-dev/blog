@@ -10,16 +10,11 @@ module.exports = {
     "prettier",
   ],
   rules: {
-    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/explicit-module-boundary-types": "off",
   },
   env: {
     es6: true,
     browser: true,
     node: true,
-  },
-  settings: {
-    react: {
-      version: "detect",
-    },
   },
 };
