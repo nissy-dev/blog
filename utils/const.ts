@@ -14,7 +14,3 @@ export const siteMetaData = {
   github: "https://github.com/nissy-dev",
   twitter: "https://twitter.com/nissy_dev",
 };
-
-export const colorPallete = {
-  base: "",
-};

@@ -7,16 +7,17 @@ import { MobileNav } from "./MobileNav";
 import { siteMetaData } from "../utils/const";
 
 const headerNavLinks = [
-  { href: "/blog", title: "Blog", ariaLabel: "nav-blog" },
-  { href: "/tags", title: "Tags", ariaLabel: "nav-tags" },
-  { href: "/about", title: "About", ariaLabel: "nav-about" },
+  { href: "/blog", title: "Blog", ariaLabelKey: "nav-blog" },
+  { href: "/tags", title: "Tags", ariaLabelKey: "nav-tags" },
+  { href: "/about", title: "About", ariaLabelKey: "nav-about" },
 ];
 
 export const Header = () => {
   const { t: taria } = useTranslation("aria-label");
+
   return (
     <header css={headerStyle}>
-      <Link css={titleContainerStyle} href="/">
+      <Link css={titleContainerStyle} href="/" aria-label={taria("nav-title")}>
         <span>{siteMetaData.headerTitle}</span>
       </Link>
       <nav css={navContainerStyle}>
@@ -25,7 +26,7 @@ export const Header = () => {
             key={link.title}
             href={link.href}
             css={linkStyle}
-            aria-label={taria(link.ariaLabel)}
+            aria-label={taria(link.ariaLabelKey)}
           >
             {link.title}
           </Link>
@@ -53,7 +54,7 @@ const titleContainerStyle = css`
   display: flex;
   margin-right: auto;
   font-size: 1.5rem;
-  font-weight: var(--fontWeight-semibold);
+  font-weight: var(--fontWeight-bold);
 `;
 
 const navContainerStyle = css`
@@ -61,7 +62,7 @@ const navContainerStyle = css`
   justify-content: space-between;
   width: 12rem;
   margin-right: 1rem;
-  font-weight: var(--fontWeight-semibold);
+  font-weight: var(--fontWeight-bold);
 
   @media screen and (max-width: 640px) {
     display: none;

@@ -5,11 +5,7 @@ type Props = {
   locale: string;
 };
 
-const ArticleListItem = () => {
-  return <article></article>;
-};
-
-export default function Home({ posts }) {
+export default function Home() {
   return <div css={style}>My page</div>;
 }
 

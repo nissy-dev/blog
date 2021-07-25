@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "./Link";
 
 type Props = {
-  headerNavLinks: Array<{ href: string; title: string; ariaLabel: string }>;
+  headerNavLinks: Array<{ href: string; title: string; ariaLabelKey: string }>;
 };
 
 export const MobileNav = ({ headerNavLinks }: Props) => {
@@ -35,7 +35,7 @@ export const MobileNav = ({ headerNavLinks }: Props) => {
             href={link.href}
             css={navLinkStyle}
             onClick={onToggleNav}
-            aria-label={taria(link.ariaLabel)}
+            aria-label={taria(link.ariaLabelKey)}
           >
             {link.title}
           </Link>
@@ -72,7 +72,7 @@ const mobileNavContainerStyle = (navShow: boolean) => css`
   background-color: var(--white);
   opacity: 0.95;
   font-size: 1.25rem;
-  font-weight: var(--fontWeight-semibold);
+  font-weight: var(--fontWeight-bold);
 `;
 
 const navLinkStyle = css`

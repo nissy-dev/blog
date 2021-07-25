@@ -39,16 +39,7 @@ export const GlobalStyle = () => (
         /* font */
         --font-body: "Helvetica Neue", "Noto Sans", Arial, sans-serif;
         /* font-weight */
-        --fontWeight-medium: 500;
-        --fontWeight-semibold: 600;
-        --fontWeight-bold: 700;
-        /* font-size */
-        /* --fontSize-root: 16px; */
-        /* --fontSize-1: 1rem;
-        --fontSize-2: 1.2rem;
-        --fontSize-3: 1.44rem;
-        --fontSize-4: 1.728rem;
-        --fontSize-5: 2.074rem; */
+        --fontWeight-bold: 600;
         /* color */
         --black: #000000;
         --white: #ffffff;
@@ -72,7 +63,6 @@ export const GlobalStyle = () => (
       }
 
       body {
-        font-family: var(----font-body);
         margin-left: auto;
         margin-right: auto;
         max-width: 48rem;

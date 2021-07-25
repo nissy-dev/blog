@@ -4,8 +4,28 @@ import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "next-i18next";
 
-import { SNSIcon } from "./SNSIcon";
 import { siteMetaData } from "../utils/const";
+
+const snsLinks = [
+  {
+    snsName: "email",
+    href: `mailto:${siteMetaData.email}`,
+    icon: faEnvelope,
+    ariaLabel: "email-link",
+  },
+  {
+    snsName: "github",
+    href: siteMetaData.github,
+    icon: faGithub,
+    ariaLabel: "github-link",
+  },
+  {
+    snsName: "twitter",
+    href: siteMetaData.twitter,
+    icon: faTwitter,
+    ariaLabel: "twitter-link",
+  },
+];
 
 export const Footer = () => {
   const { t: taria } = useTranslation("aria-label");
@@ -13,24 +33,17 @@ export const Footer = () => {
   return (
     <footer css={footerStyle}>
       <div css={iconListStyle}>
-        <SNSIcon
-          snsName="Email"
-          href={`mailto:${siteMetaData.email}`}
-          icon={<FontAwesomeIcon icon={faEnvelope} css={IconStyle} />}
-          ariaLabel={taria("email-link")}
-        />
-        <SNSIcon
-          snsName="GitHub"
-          href={siteMetaData.github}
-          icon={<FontAwesomeIcon icon={faGithub} css={IconStyle} />}
-          ariaLabel={taria("github-link")}
-        />
-        <SNSIcon
-          snsName="Twitter"
-          href={siteMetaData.twitter}
-          icon={<FontAwesomeIcon icon={faTwitter} css={IconStyle} />}
-          ariaLabel={taria("twitter-link")}
-        />
+        {snsLinks.map((link) => (
+          <a
+            key={link.snsName}
+            target="_blank"
+            rel="noopener noreferrer"
+            href={link.href}
+            aria-label={taria(link.ariaLabel)}
+          >
+            <FontAwesomeIcon icon={link.icon} css={IconStyle} />
+          </a>
+        ))}
       </div>
       <div>{`© ${new Date().getFullYear()} ${siteMetaData.author}`}</div>
     </footer>
