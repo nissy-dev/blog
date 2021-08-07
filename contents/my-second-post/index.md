@@ -91,9 +91,9 @@ const result = await unified()
   .use(remarkParse)
   .use(slug)
   .use(remarkRehype)
-  .use(shiki, { theme: 'monokai' })
+  .use(shiki, { theme: "monokai" })
   .use(rehypeStringify)
-  .process(markdown)
+  .process(markdown);
 ```
 
 **qop (quality of protection)**

@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "module": "esnext",
     "strict": true,
     "esModuleInterop": true,
@@ -20,17 +17,9 @@
     // TODO: こうしないと d.ts がなぜか検知されない...
     "baseUrl": ".",
     "paths": {
-      "remark-prism": [
-        "types/remark-prism.d.ts"
-      ],
-    },
+      "remark-prism": ["types/remark-prism.d.ts"]
+    }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
