@@ -71,12 +71,14 @@ const mobileNavContainerStyle = (navShow: boolean) => css`
   width: 100%;
   background-color: var(--white);
   opacity: 0.95;
-  font-size: 1.25rem;
-  font-weight: var(--fontWeight-bold);
+  font-size: 1.5rem;
+  font-weight: var(--font-bold);
+  color: var(--base);
+  padding-bottom: 2rem;
 `;
 
 const navLinkStyle = css`
   padding: 0.75rem 0.75rem 0.25rem;
   margin-bottom: 0.25rem;
-  border-bottom: 1px solid var(--black);
+  border-bottom: 1px solid var(--base);
 `;

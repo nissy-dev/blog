@@ -4,11 +4,11 @@ import { useTranslation } from "react-i18next";
 import { ThemeSwitch } from "./ThemeSwitch";
 import { Link } from "./Link";
 import { MobileNav } from "./MobileNav";
-import { siteMetaData } from "../utils/const";
+import { siteMetadata } from "../utils/const";
 
 const headerNavLinks = [
-  { href: "/blog", title: "Blog", ariaLabelKey: "nav-blog" },
-  { href: "/tags", title: "Tags", ariaLabelKey: "nav-tags" },
+  { href: "/", title: "Posts", ariaLabelKey: "nav-posts" },
+  { href: "/note", title: "Notes", ariaLabelKey: "nav-posts" },
   { href: "/about", title: "About", ariaLabelKey: "nav-about" },
 ];
 
@@ -18,7 +18,7 @@ export const Header = () => {
   return (
     <header css={headerStyle}>
       <Link css={titleContainerStyle} href="/" aria-label={taria("nav-title")}>
-        <span>{siteMetaData.headerTitle}</span>
+        <h1>{siteMetadata.headerTitle}</h1>
       </Link>
       <nav css={navContainerStyle}>
         {headerNavLinks.map((link) => (
@@ -45,7 +45,8 @@ const headerStyle = css`
   height: 4.5rem;
 
   @media screen and (max-width: 640px) {
-    padding-bottom: 0.25rem;
+    /* padding: 0.25rem 0rem;
+    height: 3rem; */
     border-bottom: 2px solid var(--light-gray);
   }
 `;
@@ -53,8 +54,9 @@ const headerStyle = css`
 const titleContainerStyle = css`
   display: flex;
   margin-right: auto;
-  font-size: 1.5rem;
-  font-weight: var(--fontWeight-bold);
+  font-size: 1.75rem;
+  font-weight: var(--font-bold);
+  color: var(--base);
 `;
 
 const navContainerStyle = css`
@@ -62,7 +64,8 @@ const navContainerStyle = css`
   justify-content: space-between;
   width: 12rem;
   margin-right: 1rem;
-  font-weight: var(--fontWeight-bold);
+  font-weight: var(--font-bold);
+  color: var(--base);
 
   @media screen and (max-width: 640px) {
     display: none;
@@ -71,6 +74,6 @@ const navContainerStyle = css`
 
 const linkStyle = css`
   :hover {
-    border-bottom: 1px solid #2e353f;
+    border-bottom: 1px solid var(--base);
   }
 `;

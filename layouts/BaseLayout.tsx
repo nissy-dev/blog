@@ -17,5 +17,5 @@ export const BaseLayout = ({ children }: Props) => {
 };
 
 const mainStyle = css`
-  padding: 2rem 0 2rem;
+  padding-bottom: 3rem;
 `;

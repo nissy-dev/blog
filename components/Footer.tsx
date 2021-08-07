@@ -4,24 +4,24 @@ import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "next-i18next";
 
-import { siteMetaData } from "../utils/const";
+import { siteMetadata } from "../utils/const";
 
 const snsLinks = [
   {
     snsName: "email",
-    href: `mailto:${siteMetaData.email}`,
+    href: `mailto:${siteMetadata.email}`,
     icon: faEnvelope,
     ariaLabel: "email-link",
   },
   {
     snsName: "github",
-    href: siteMetaData.github,
+    href: `https://github.com/${siteMetadata.github}`,
     icon: faGithub,
     ariaLabel: "github-link",
   },
   {
     snsName: "twitter",
-    href: siteMetaData.twitter,
+    href: `https://twitter.com/${siteMetadata.twitter}`,
     icon: faTwitter,
     ariaLabel: "twitter-link",
   },
@@ -45,7 +45,7 @@ export const Footer = () => {
           </a>
         ))}
       </div>
-      <div>{`© ${new Date().getFullYear()} ${siteMetaData.author}`}</div>
+      <div>{`© ${new Date().getFullYear()} ${siteMetadata.author}`}</div>
     </footer>
   );
 };
@@ -68,6 +68,6 @@ const IconStyle = css`
   height: 1.5rem;
 
   :hover {
-    color: var(--light-blue);
+    color: var(--base);
   }
 `;

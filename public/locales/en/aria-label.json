@@ -7,7 +7,6 @@
     "open-mobile-nav": "Open navigation",
     "close-mobile-nav": "Close navigation",
     "nav-title": "Top page",
-    "nav-blog": "All posts",
-    "nav-tags": "Tag lists",
+    "nav-posts": "All posts",
     "nav-about": "Profile"
 }

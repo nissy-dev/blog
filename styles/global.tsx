@@ -1,4 +1,7 @@
 import { css, Global } from "@emotion/react";
+// eslint-disable-next-line
+// @ts-ignore
+import okaidia from "prismjs/themes/prism-okaidia.css";
 
 export const GlobalStyle = () => (
   <Global
@@ -34,15 +37,24 @@ export const GlobalStyle = () => (
         color: inherit;
       }
 
+      /* load okaidia theme for prismjs */
+      ${okaidia}
+
       /* my global styles */
       :root {
         /* font */
-        --font-body: "Helvetica Neue", "Noto Sans", Arial, sans-serif;
+        --font-body: -apple-system, "BlinkMacSystemFont", "Hiragino Kaku Gothic ProN",
+          "Hiragino Sans", Meiryo, sans-serif, "Segoe UI Emoji";
+        --font-code: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace, Apple Color Emoji,
+          Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
         /* font-weight */
-        --fontWeight-bold: 600;
+        --font-bold: 600;
         /* color */
+        --base: #ef6c35;
+        /* --base: #000000; */
         --black: #000000;
         --white: #ffffff;
+        --gray: #616161;
         --light-gray: #eeeeee;
         --light-blue: #3b82f6;
         --background: var(--white);
@@ -60,6 +72,10 @@ export const GlobalStyle = () => (
         font-family: var(----font-body);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+
+        @media screen and (max-width: 640px) {
+          font-size: 12px;
+        }
       }
 
       body {
