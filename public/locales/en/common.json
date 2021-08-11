@@ -2,5 +2,7 @@
     "toggle-theme": "Toggle Dark/Light Mode",
     "toggle-menu": "Toggle Menu",
     "read-more": "Read more",
-    "post-list-header": "Latest Posts"
+    "post-list-header": "Latest Posts",
+    "table-of-contents": "Table of Contents",
+    "private-study-note": "Private Study Note"
 }

@@ -54,6 +54,7 @@ const footerStyle = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 3rem;
 `;
 
 const iconListStyle = css`

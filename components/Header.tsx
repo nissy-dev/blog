@@ -8,7 +8,7 @@ import { siteMetadata } from "../utils/const";
 
 const headerNavLinks = [
   { href: "/", title: "Posts", ariaLabelKey: "nav-posts" },
-  { href: "/note", title: "Notes", ariaLabelKey: "nav-posts" },
+  { href: "/notes", title: "Notes", ariaLabelKey: "nav-posts" },
   { href: "/about", title: "About", ariaLabelKey: "nav-about" },
 ];
 
@@ -42,13 +42,6 @@ const headerStyle = css`
   display: flex;
   align-items: center;
   padding: 1rem 0rem;
-  height: 4.5rem;
-
-  @media screen and (max-width: 640px) {
-    /* padding: 0.25rem 0rem;
-    height: 3rem; */
-    border-bottom: 2px solid var(--light-gray);
-  }
 `;
 
 const titleContainerStyle = css`

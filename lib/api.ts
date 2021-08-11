@@ -5,7 +5,6 @@ import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkSlug from "remark-slug";
 import remarkAutolink from "remark-autolink-headings";
-import remarkToc from "remark-toc";
 import remarkPrism from "remark-prism";
 import remark2Rehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
@@ -13,6 +12,9 @@ import matter from "gray-matter";
 import readingTime from "reading-time";
 import striptags from "striptags";
 import truncate from "lodash.truncate";
+// eslint-disable-next-line
+// @ts-ignore
+import toc from "markdown-toc";
 
 // rootディレクトリから見た時のパスを指定する
 const CONTENTS_DIR = "contents";
@@ -40,31 +42,35 @@ export type FrontMatter = {
 
 const parseMarkdown = async (
   mdFileContents: string
-): Promise<{ frontMatter: FrontMatter; html: string }> => {
+): Promise<{ frontMatter: FrontMatter; html: string; tocHtml: string }> => {
   const { data, content } = matter(mdFileContents);
+
   const processor = unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkSlug)
     .use(remarkAutolink)
-    .use(remarkToc)
     .use(remarkPrism)
     .use(remark2Rehype, { allowDangerousHtml: true })
     .use(rehypeStringify);
   const parsedContent = await processor.process(content);
   const html = parsedContent.toString();
 
+  const tocProcessor = unified().use(remarkParse).use(remark2Rehype).use(rehypeStringify);
+  const parsedToc = await tocProcessor.process(toc(content, { maxdepth: 3 }).content);
+  const tocHtml = parsedToc.toString();
+
   const timeToRead = calcTimeToRead(content);
   const excerpt = extractExcerpt(html);
   const frontMatter = { ...data, timeToRead, excerpt } as FrontMatter;
-  return { frontMatter, html };
+  return { frontMatter, html, tocHtml };
 };
 
 export async function getPostById(id: string) {
   const postDir = id;
   const mdFilePath = path.join(process.cwd(), CONTENTS_DIR, postDir, "index.md");
-  const { frontMatter, html } = await parseMarkdown(fs.readFileSync(mdFilePath, "utf-8"));
-  return { frontMatter, html };
+  const { frontMatter, html, tocHtml } = await parseMarkdown(fs.readFileSync(mdFilePath, "utf-8"));
+  return { frontMatter, html, tocHtml };
 }
 
 export function getPostIDs() {
@@ -73,13 +79,17 @@ export function getPostIDs() {
   return fs.readdirSync(contentsDir);
 }
 
-export async function getFrontMatters() {
+export async function getFrontMatters(tag?: string) {
   const allPostIds = getPostIDs();
   const getFrontMatterPromises = allPostIds.map(async (postId) => {
     const { frontMatter } = await getPostById(postId);
     return { id: postId, ...frontMatter };
   });
-  const frontMatters = await Promise.all(getFrontMatterPromises);
+
+  let frontMatters = await Promise.all(getFrontMatterPromises);
+  if (tag !== undefined) {
+    frontMatters = frontMatters.filter((frontMatter) => frontMatter.tags?.includes(tag));
+  }
   // 投稿日が新しい順に並び替える
   return frontMatters.sort((a, b) => (a.date > b.date ? -1 : 1));
 }

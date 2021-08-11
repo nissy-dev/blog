@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 
@@ -10,12 +9,8 @@ export const BaseLayout = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <main css={mainStyle}>{children}</main>
+      {children}
       <Footer />
     </>
   );
 };
-
-const mainStyle = css`
-  padding-bottom: 3rem;
-`;

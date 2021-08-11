@@ -4,7 +4,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { SEO } from "../../components/SEO";
 import { FrontMatter, getPostById, getPostIDs } from "../../lib/api";
-import { dateFormat } from "../../utils/dateFormat";
+import { Toc } from "../../components/Toc";
+import { PostHeader } from "../../components/PostHeader";
 
 type Context = {
   locale: string;
@@ -17,17 +18,19 @@ type Props = {
   locale: string;
   frontMatter: FrontMatter;
   html: string;
+  tocHtml: string;
 } & SSRConfig;
 
 export const getStaticProps = async ({ locale, params }: Context): Promise<{ props: Props }> => {
   const i18nProps = await serverSideTranslations(locale, ["common", "aria-label"]);
-  const { frontMatter, html } = await getPostById(params.id);
+  const { frontMatter, html, tocHtml } = await getPostById(params.id);
 
   return {
     props: {
       locale,
       frontMatter,
       html,
+      tocHtml,
       ...i18nProps,
     },
   };
@@ -48,42 +51,33 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Post({ locale, frontMatter, html }: Props) {
+export default function Post({ locale, frontMatter, html, tocHtml }: Props) {
   const { description, title, date, timeToRead, excerpt } = frontMatter;
   return (
     <>
       <SEO title={title} metaDescription={description || excerpt} />
-      <div css={headerStyle}>
-        <h1>{title}</h1>
-        <span>
-          {dateFormat(new Date(date), locale)} ・ {`${timeToRead} min read`}
-        </span>
-      </div>
-      <div css={postStyle} dangerouslySetInnerHTML={{ __html: html }} />
+      <aside css={asideStyle}>
+        <Toc tocHtml={tocHtml} />
+      </aside>
+      <main css={mainStyle}>
+        <PostHeader locale={locale} title={title} date={date} timeToRead={timeToRead} />
+        <div css={postContentStyle} dangerouslySetInnerHTML={{ __html: html }} />
+      </main>
     </>
   );
 }
 
-const headerStyle = css`
-  margin-top: 1.5rem;
-  text-align: center;
-  color: var(--base);
-  border-bottom: 1px solid var(--base);
-  margin-bottom: 2rem;
-
-  > h1 {
-    font-size: 1.75rem;
-    font-weight: var(--font-bold);
-    word-break: break-word;
-    word-wrap: break-word;
-  }
-
-  > span {
-    font-size: 0.75rem;
-  }
+const asideStyle = css`
+  position: fixed;
+  left: calc((100% - 50rem) / 2 + 55rem);
+  top: 6rem;
 `;
 
-const postStyle = css`
+const mainStyle = css`
+  padding: 2rem 0;
+`;
+
+const postContentStyle = css`
   h2,
   h3,
   h4 {

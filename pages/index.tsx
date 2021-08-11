@@ -33,7 +33,7 @@ export const getStaticProps = async ({ locale }: Context): Promise<{ props: Prop
 export default function Home({ locale, frontMatters }: Props) {
   const { t: tcom } = useTranslation("common");
   return (
-    <>
+    <main css={mainStyle}>
       <SEO title={siteMetadata.title} metaDescription={siteMetadata.description} />
       <div css={headerStyle}>
         <h1>{tcom("post-list-header")}</h1>
@@ -50,12 +50,15 @@ export default function Home({ locale, frontMatters }: Props) {
           />
         );
       })}
-    </>
+    </main>
   );
 }
 
+const mainStyle = css`
+  padding: 2rem 0;
+`;
+
 const headerStyle = css`
-  padding-top: 1rem;
   font-size: 1.5rem;
   font-weight: var(--font-bold);
   color: var(--base);

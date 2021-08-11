@@ -68,7 +68,7 @@ export const GlobalStyle = () => (
 
       html {
         line-height: 1.5;
-        font-size: 16px;
+        font-size: 15px;
         font-family: var(----font-body);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -81,8 +81,9 @@ export const GlobalStyle = () => (
       body {
         margin-left: auto;
         margin-right: auto;
-        max-width: 48rem;
-        padding: 0 1rem;
+        max-width: 50rem;
+        min-height: 100vh;
+        padding: 0 2rem;
       }
 
       a,

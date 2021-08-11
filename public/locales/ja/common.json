@@ -2,5 +2,7 @@
     "toggle-theme": "Toggle Dark/Light Mode",
     "toggle-menu": "Toggle Menu",
     "read-more": "詳細を読む",
-    "post-list-header": "最近の投稿"
+    "post-list-header": "最近の投稿",
+    "table-of-contents": "目次",
+    "private-study-note": "個人用の勉強メモ"
 }
