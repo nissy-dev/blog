@@ -21,7 +21,7 @@ export const Toc = ({ tocHtml }: Props) => {
 };
 
 const tocStyle = css`
-  div:nth-child(1) {
+  div:nth-of-type(1) {
     font-weight: var(--font-bold);
     display: flex;
     font-size: 1.25rem;
@@ -32,8 +32,8 @@ const tocStyle = css`
     }
   }
 
-  div:nth-child(2) {
-    margin-top: 1rem;
+  div:nth-of-type(2) {
+    padding-top: 1rem;
 
     a {
       color: var(--light-blue);

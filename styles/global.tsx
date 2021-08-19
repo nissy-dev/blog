@@ -1,44 +1,21 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { css, Global } from "@emotion/react";
-// eslint-disable-next-line
-// @ts-ignore
-import okaidia from "prismjs/themes/prism-okaidia.css";
+import resetCss from "the-new-css-reset/css/reset.css";
+import codeBlockStyle from "highlight.js/styles/nord.css";
+import githubMarkdownCss from "github-markdown-css/github-markdown.css";
 
 export const GlobalStyle = () => (
   <Global
     styles={css`
-      /* reset css: https://github.com/elad2412/the-new-css-reset */
-      *:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
-        all: unset;
-        display: revert;
-      }
+      /* load reset css for user-agent stylesheet */
+      ${resetCss}
 
-      /* stylelint-disable-next-line no-descending-specificity */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
+      /* load github markdown css */
+      ${githubMarkdownCss}
 
-      ol,
-      ul {
-        list-style: none;
-      }
-
-      img {
-        max-width: 100%;
-      }
-
-      table {
-        border-collapse: collapse;
-      }
-
-      /* https://stackoverflow.com/questions/24309651/cant-override-user-agent-stylesheet-coloring-my-links */
-      a {
-        color: inherit;
-      }
-
-      /* load okaidia theme for prismjs */
-      ${okaidia}
+      /* load theme for code block */
+      ${codeBlockStyle}
 
       /* my global styles */
       :root {
@@ -82,7 +59,6 @@ export const GlobalStyle = () => (
         margin-left: auto;
         margin-right: auto;
         max-width: 50rem;
-        min-height: 100vh;
         padding: 0 2rem;
       }
 

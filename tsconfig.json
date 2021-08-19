@@ -14,10 +14,10 @@
     "allowJs": true,
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
-    // TODO: こうしないと d.ts がなぜか検知されない...
     "baseUrl": ".",
     "paths": {
-      "remark-prism": ["types/remark-prism.d.ts"]
+      "remark-prism": ["types/remark-prism.d.ts"],
+      "markdown-toc": ["types/markdown-toc.d.ts"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

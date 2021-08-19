@@ -14,7 +14,7 @@ type Props = {
 export const ArticleListItem = ({ title, link, publishedAt, timeToRead, excerpt }: Props) => {
   const { t: tcom } = useTranslation("common");
   return (
-    <article css={articleStyle} itemScope itemType="http://schema.org/Article">
+    <article css={articleListStyle} itemScope itemType="http://schema.org/Article">
       <header>
         <h2>
           <Link href={link} itemProp="url">
@@ -42,7 +42,7 @@ export const ArticleListItem = ({ title, link, publishedAt, timeToRead, excerpt 
   );
 };
 
-const articleStyle = css`
+const articleListStyle = css`
   margin: 1rem 0rem;
   padding: 1rem;
   border-radius: 0.5rem;

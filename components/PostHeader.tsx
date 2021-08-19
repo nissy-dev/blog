@@ -44,7 +44,7 @@ const postHeaderStyle = css`
   > div {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    padding-top: 1rem;
     padding-bottom: 0.5rem;
 
     > span {

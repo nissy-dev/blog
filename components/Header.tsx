@@ -55,8 +55,8 @@ const titleContainerStyle = css`
 const navContainerStyle = css`
   display: flex;
   justify-content: space-between;
-  width: 12rem;
-  margin-right: 1rem;
+  width: 13rem;
+  padding-right: 1rem;
   font-weight: var(--font-bold);
   color: var(--base);
 

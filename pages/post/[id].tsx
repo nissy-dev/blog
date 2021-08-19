@@ -61,7 +61,11 @@ export default function Post({ locale, frontMatter, html, tocHtml }: Props) {
       </aside>
       <main css={mainStyle}>
         <PostHeader locale={locale} title={title} date={date} timeToRead={timeToRead} />
-        <div css={postContentStyle} dangerouslySetInnerHTML={{ __html: html }} />
+        <div
+          className="markdown-body"
+          css={mdContentStyle}
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
       </main>
     </>
   );
@@ -69,92 +73,32 @@ export default function Post({ locale, frontMatter, html, tocHtml }: Props) {
 
 const asideStyle = css`
   position: fixed;
-  left: calc((100% - 50rem) / 2 + 55rem);
-  top: 6rem;
+  left: calc((100% - 50rem) / 2 + 53rem);
+  top: 99px;
 `;
 
 const mainStyle = css`
   padding: 2rem 0;
 `;
 
-const postContentStyle = css`
-  h2,
-  h3,
-  h4 {
-    font-weight: var(--font-bold);
-    word-break: break-word;
-    word-wrap: break-word;
+const mdContentStyle = css`
+  padding: 2rem 0;
+
+  pre {
+    border-radius: 0.25rem;
+    /* TODO: backgraoundのカラーがおかしい... */
+    background: #2e3440;
   }
 
-  > h2 {
-    font-size: 1.5rem;
-    margin-top: 3rem;
-    border-bottom: 2px solid var(--light-gray);
-  }
-
-  > h3 {
-    font-size: 1.25rem;
-    margin-top: 1rem;
-  }
-
-  > h4 {
-    font-size: 1rem;
-    margin-top: 1rem;
-  }
-
-  blockquote {
-    margin: 1rem 0;
-    padding: 0 1rem;
-    border-left: 0.25rem solid var(--light-gray);
-    color: var(--gray);
-  }
-
-  p {
-    margin-top: 1.25rem;
-  }
-
-  ol,
   ul {
-    padding-left: 1.75rem;
-    line-height: 1.25;
     list-style-type: disc;
-    margin-top: 1.25rem;
-  }
-
-  li {
-    margin: 0.5rem 0;
-    word-wrap: break-all;
   }
 
   ul ul {
     list-style-type: circle;
-    margin-top: 0rem;
   }
 
   ul ul ul {
     list-style-type: square;
-    margin-top: 0rem;
-  }
-
-  a {
-    color: var(--light-blue);
-  }
-
-  strong {
-    font-weight: var(--font-bold);
-  }
-
-  .remark-highlight {
-    margin-top: 1rem;
-  }
-
-  > :not(.remark-highlight) {
-    code {
-      padding: 0.2em 0.4em;
-      background: var(--light-gray);
-      font-size: 0.85em;
-      border-radius: 4px;
-      font-family: var(--font-code);
-    }
   }
 `;

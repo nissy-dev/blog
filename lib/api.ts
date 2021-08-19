@@ -5,30 +5,35 @@ import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkSlug from "remark-slug";
 import remarkAutolink from "remark-autolink-headings";
-import remarkPrism from "remark-prism";
+import rehypeHighlight from "rehype-highlight";
 import remark2Rehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import matter from "gray-matter";
 import readingTime from "reading-time";
 import striptags from "striptags";
 import truncate from "lodash.truncate";
-// eslint-disable-next-line
-// @ts-ignore
 import toc from "markdown-toc";
 
 // rootディレクトリから見た時のパスを指定する
 const CONTENTS_DIR = "contents";
 
-const extractExcerpt = (html: string, truncateLength = 125) => {
-  // 改行コードとタグの削除
-  const stripTagsHtml = striptags(html).replace(/\r?\n/g, " ");
-  return truncate(stripTagsHtml, { length: truncateLength });
+const extractTocHtml = async (mdContent: string) => {
+  const mdToc = toc(mdContent, { maxdepth: 3 }).content;
+  const tocProcessor = unified().use(remarkParse).use(remark2Rehype).use(rehypeStringify);
+  const parsedToc = await tocProcessor.process(mdToc);
+  return parsedToc.toString();
 };
 
 const calcTimeToRead = (mdContent: string) => {
   const stats = readingTime(mdContent);
   const timeToRead = Math.round(stats.minutes);
   return timeToRead === 0 ? 1 : timeToRead;
+};
+
+const extractExcerpt = (html: string, truncateLength = 125) => {
+  // 改行コードとタグの削除
+  const stripTagsHtml = striptags(html).replace(/\r?\n/g, " ");
+  return truncate(stripTagsHtml, { length: truncateLength });
 };
 
 export type FrontMatter = {
@@ -50,8 +55,8 @@ const parseMarkdown = async (
     .use(remarkGfm)
     .use(remarkSlug)
     .use(remarkAutolink)
-    .use(remarkPrism)
     .use(remark2Rehype, { allowDangerousHtml: true })
+    .use(rehypeHighlight)
     .use(rehypeStringify);
   const parsedContent = await processor.process(content);
   const html = parsedContent.toString();
