@@ -4,5 +4,7 @@
     "read-more": "詳細を読む",
     "post-list-header": "最近の投稿",
     "table-of-contents": "目次",
-    "private-study-note": "個人用の勉強メモ"
+    "private-study-note": "個人用の勉強メモ",
+    "reading-book-note": "本を読んだときのメモ",
+    "basic-cs-note": "技術に関するメモ"
 }

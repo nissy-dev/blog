@@ -22,12 +22,7 @@ export const Header = () => {
       </Link>
       <nav css={navContainerStyle}>
         {headerNavLinks.map((link) => (
-          <Link
-            key={link.title}
-            href={link.href}
-            css={linkStyle}
-            aria-label={taria(link.ariaLabelKey)}
-          >
+          <Link key={link.title} href={link.href} aria-label={taria(link.ariaLabelKey)}>
             {link.title}
           </Link>
         ))}
@@ -50,6 +45,10 @@ const titleContainerStyle = css`
   font-size: 1.75rem;
   font-weight: var(--font-bold);
   color: var(--base);
+
+  :hover {
+    text-decoration: none;
+  }
 `;
 
 const navContainerStyle = css`
@@ -62,11 +61,5 @@ const navContainerStyle = css`
 
   @media screen and (max-width: 640px) {
     display: none;
-  }
-`;
-
-const linkStyle = css`
-  :hover {
-    border-bottom: 1px solid var(--base);
   }
 `;

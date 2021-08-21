@@ -28,7 +28,6 @@ export const GlobalStyle = () => (
         --font-bold: 600;
         /* color */
         --base: #ef6c35;
-        /* --base: #000000; */
         --black: #000000;
         --white: #ffffff;
         --gray: #616161;
@@ -65,6 +64,10 @@ export const GlobalStyle = () => (
       a,
       button {
         cursor: pointer;
+      }
+
+      a:hover {
+        text-decoration: underline;
       }
     `}
   />

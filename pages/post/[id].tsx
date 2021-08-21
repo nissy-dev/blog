@@ -101,4 +101,8 @@ const mdContentStyle = css`
   ul ul ul {
     list-style-type: square;
   }
+
+  @media screen and (max-width: 640px) {
+    font-size: 12px;
+  }
 `;
