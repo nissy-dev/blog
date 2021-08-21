@@ -16,7 +16,7 @@
     "jsxImportSource": "@emotion/react",
     "baseUrl": ".",
     "paths": {
-      "markdown-toc": ["types/markdown-toc.d.ts"],
+      "markdown-toc": ["types/markdown-toc.d.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -15,7 +15,8 @@
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix:prettier": "npm run lint:prettier -- --write",
     "fix:css": "npm run lint:css -- --fix",
-    "prepare": "git config --local core.hooksPath .githooks"
+    "prepare": "git config --local core.hooksPath .githooks",
+    "post": "scaffdog generate new-post"
   },
   "dependencies": {
     "@emotion/react": "^11.4.0",
@@ -66,9 +67,9 @@
     "unified": "^10.1.0"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,css}": [
-      "npm run fix",
-      "npm run lint"
+    "*.{js,jsx,ts,tsx}": [
+      "npx eslint --fix",
+      "npx prettier --write"
     ]
   }
 }
