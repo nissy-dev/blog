@@ -16,7 +16,6 @@
     "jsxImportSource": "@emotion/react",
     "baseUrl": ".",
     "paths": {
-      "remark-prism": ["types/remark-prism.d.ts"],
       "markdown-toc": ["types/markdown-toc.d.ts"],
     }
   },

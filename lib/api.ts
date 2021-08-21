@@ -17,13 +17,6 @@ import toc from "markdown-toc";
 // rootディレクトリから見た時のパスを指定する
 const CONTENTS_DIR = "contents";
 
-const extractTocHtml = async (mdContent: string) => {
-  const mdToc = toc(mdContent, { maxdepth: 3 }).content;
-  const tocProcessor = unified().use(remarkParse).use(remark2Rehype).use(rehypeStringify);
-  const parsedToc = await tocProcessor.process(mdToc);
-  return parsedToc.toString();
-};
-
 const calcTimeToRead = (mdContent: string) => {
   const stats = readingTime(mdContent);
   const timeToRead = Math.round(stats.minutes);
