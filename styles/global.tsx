@@ -48,10 +48,6 @@ export const GlobalStyle = () => (
         font-family: var(----font-body);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-
-        @media screen and (max-width: 640px) {
-          font-size: 12px;
-        }
       }
 
       body {
