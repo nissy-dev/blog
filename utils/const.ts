@@ -5,7 +5,7 @@ export const siteMetadata = {
   headerTitle: "nissy.dev",
   description: "A blog for Nissy",
   language: "en-us",
-  siteUrl: "",
+  siteUrl: "https://blog.nissy.dev",
   siteRepo: "https://github.com/nissy-dev/blog",
   email: "nd.12021218@gmail.com",
   github: "nissy-dev",
