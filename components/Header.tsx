@@ -18,7 +18,7 @@ export const Header = () => {
   return (
     <header css={headerStyle}>
       <Link css={titleContainerStyle} href="/" aria-label={taria("nav-title")}>
-        <h1>{siteMetadata.headerTitle}</h1>
+        <h1>{siteMetadata.title}</h1>
       </Link>
       <nav css={navContainerStyle}>
         {headerNavLinks.map((link) => (
@@ -27,7 +27,7 @@ export const Header = () => {
           </Link>
         ))}
       </nav>
-      <ThemeSwitch />
+      {/* <ThemeSwitch /> */}
       <MobileNav headerNavLinks={headerNavLinks} />
     </header>
   );

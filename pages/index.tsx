@@ -32,11 +32,13 @@ export const getStaticProps = async ({ locale }: Context): Promise<{ props: Prop
 
 export default function Home({ locale, frontMatters }: Props) {
   const { t: tcom } = useTranslation("common");
+  const title = tcom("post-list-header");
+  const description = tcom("blog-top-description");
   return (
     <main css={mainStyle}>
-      <SEO title={siteMetadata.title} metaDescription={siteMetadata.description} />
+      <SEO title={title} metaDescription={description} />
       <div css={headerStyle}>
-        <h1>{tcom("post-list-header")}</h1>
+        <h1>{title}</h1>
       </div>
       {frontMatters.map((frontMatter) => {
         return (
