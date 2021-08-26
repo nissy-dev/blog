@@ -5,7 +5,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { SEO } from "../components/SEO";
 import { ArticleListItem } from "components/ArticleListItem";
 import { FrontMatter, getFrontMatters } from "../lib/api";
-import { siteMetadata } from "../utils/const";
+// import { siteMetadata } from "../utils/const";
 import { dateFormat } from "../utils/dateFormat";
 
 type Context = {

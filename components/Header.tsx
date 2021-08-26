@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { useTranslation } from "react-i18next";
 
-import { ThemeSwitch } from "./ThemeSwitch";
+// import { ThemeSwitch } from "./ThemeSwitch";
 import { Link } from "./Link";
 import { MobileNav } from "./MobileNav";
 import { siteMetadata } from "../utils/const";
