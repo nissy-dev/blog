@@ -6,13 +6,11 @@ import { siteMetadata } from "../utils/const";
 type Props = {
   title: string;
   metaDescription: string;
-  ogpName?: string;
 };
 
-export const SEO = ({ title, metaDescription, ogpName }: Props) => {
+export const SEO = ({ title, metaDescription }: Props) => {
   const titleWithSiteName = `${title} - ${siteMetadata.title}`;
   const url = `${siteMetadata.siteUrl}${useRouter().asPath}`;
-  const logoUrl = `${siteMetadata.siteUrl}/images/ogps/blog-ogp.png`;
 
   return (
     <Head>
@@ -24,10 +22,7 @@ export const SEO = ({ title, metaDescription, ogpName }: Props) => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:site_name" content={siteMetadata.title} />
-      <meta
-        property="og:image"
-        content={ogpName ? `${siteMetadata.siteUrl}/images/ogps/${ogpName}` : logoUrl}
-      />
+      <meta property="og:image" content={`${siteMetadata.siteUrl}/images/ogps/icon-320x320.png`} />
       {/* TwitterのOGPの設定 */}
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content={`@${siteMetadata.twitter}`} />
