@@ -4,8 +4,11 @@ import { ThemeProvider } from "next-themes";
 import { appWithTranslation } from "next-i18next";
 import { GlobalStyle } from "../styles/global";
 import { BaseLayout } from "../layouts/BaseLayout";
+import { usePageView } from "../lib/ga";
 
 function App({ Component, pageProps }: AppProps) {
+  // PVカウント用コード
+  usePageView();
   return (
     <ThemeProvider>
       <Head>
