@@ -19,11 +19,9 @@ export const GlobalStyle = () => (
 
       /* my global styles */
       :root {
-        /* font */
-        --font-body: -apple-system, "BlinkMacSystemFont", "Hiragino Kaku Gothic ProN",
-          "Hiragino Sans", Meiryo, sans-serif, "Segoe UI Emoji";
-        --font-code: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace, Apple Color Emoji,
-          Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+        /* font: https://zenn.dev */
+        --font-body: -apple-system, system-ui, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo,
+          sans-serif, "Segoe UI Emoji";
         /* font-weight */
         --font-bold: 600;
         /* color */

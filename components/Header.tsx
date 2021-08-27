@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { useTranslation } from "react-i18next";
 
-import { ThemeSwitch } from "./ThemeSwitch";
+// import { ThemeSwitch } from "./ThemeSwitch";
 import { Link } from "./Link";
 import { MobileNav } from "./MobileNav";
 import { siteMetadata } from "../utils/const";
@@ -18,7 +18,7 @@ export const Header = () => {
   return (
     <header css={headerStyle}>
       <Link css={titleContainerStyle} href="/" aria-label={taria("nav-title")}>
-        <h1>{siteMetadata.headerTitle}</h1>
+        <h1>{siteMetadata.title}</h1>
       </Link>
       <nav css={navContainerStyle}>
         {headerNavLinks.map((link) => (
@@ -27,7 +27,7 @@ export const Header = () => {
           </Link>
         ))}
       </nav>
-      <ThemeSwitch />
+      {/* <ThemeSwitch /> */}
       <MobileNav headerNavLinks={headerNavLinks} />
     </header>
   );
