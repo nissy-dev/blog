@@ -55,6 +55,7 @@ const footerStyle = css`
   flex-direction: column;
   align-items: center;
   padding-bottom: 3rem;
+  color: var(--foreground);
 `;
 
 const iconListStyle = css`
@@ -63,7 +64,6 @@ const iconListStyle = css`
   width: 8rem;
 `;
 
-// TODO: スマホ版のホバー時の対応
 const IconStyle = css`
   width: 1.5rem;
   height: 1.5rem;

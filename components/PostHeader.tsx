@@ -50,7 +50,7 @@ const postHeaderStyle = css`
     > span {
       display: flex;
       padding: 0 0.25rem;
-      font-size: 0.75rem;
+      font-size: 1rem;
 
       > svg {
         width: 0.75rem;

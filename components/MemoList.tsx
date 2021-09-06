@@ -28,13 +28,14 @@ export const MemoList = ({ title, frontMatters }: Props) => {
 const memoListStyle = css`
   width: 50%;
   padding-bottom: 3rem;
+  color: var(--foreground);
 
   > h2 {
     text-align: center;
     padding: 0.5rem 0;
     font-size: 1.25rem;
     margin: 0 2rem 1rem 2rem;
-    border-bottom: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray-300);
   }
 
   > ul {
@@ -45,7 +46,7 @@ const memoListStyle = css`
       padding: 0.25rem 0;
 
       > a {
-        color: var(--light-blue);
+        color: var(--link-color);
       }
     }
   }

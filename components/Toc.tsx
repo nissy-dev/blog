@@ -21,10 +21,13 @@ export const Toc = ({ tocHtml }: Props) => {
 };
 
 const tocStyle = css`
+  padding-right: 2rem;
+
   div:nth-of-type(1) {
     font-weight: var(--font-bold);
     display: flex;
     font-size: 1.25rem;
+    color: var(--foreground);
 
     > svg {
       width: 1.25rem;
@@ -34,13 +37,14 @@ const tocStyle = css`
 
   div:nth-of-type(2) {
     padding-top: 1rem;
+    word-wrap: break-word;
 
     a {
-      color: var(--light-blue);
+      color: var(--link-color);
     }
 
     > ul > li {
-      border-left: 3px solid var(--light-gray);
+      border-left: 3px solid var(--gray-300);
       padding: 0.25rem 0 0.25rem 1rem;
     }
 

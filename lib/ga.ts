@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 
-// IDが取得できない場合を想定する
 export const existsGaId = GA_ID !== "";
 
 // PVを測定する
@@ -17,14 +16,12 @@ export function usePageView() {
   const router = useRouter();
 
   useEffect(() => {
-    if (existsGaId) {
+    if (!existsGaId) {
       return;
     }
 
-    const handleRouteChange = (path: string, { shallow }: { shallow: boolean }) => {
-      if (!shallow) {
-        pageview(path);
-      }
+    const handleRouteChange = (path: string) => {
+      pageview(path);
     };
 
     router.events.on("routeChangeComplete", handleRouteChange);

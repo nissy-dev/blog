@@ -69,7 +69,7 @@ const mobileNavContainerStyle = (navShow: boolean) => css`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background-color: var(--white);
+  background-color: var(--foreground);
   opacity: 0.95;
   font-size: 1.5rem;
   font-weight: var(--font-bold);

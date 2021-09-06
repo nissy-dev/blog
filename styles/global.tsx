@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { css, Global } from "@emotion/react";
 import resetCss from "the-new-css-reset/css/reset.css";
@@ -26,18 +25,27 @@ export const GlobalStyle = () => (
         --font-bold: 600;
         /* color */
         --base: #ef6c35;
-        --black: #000000;
-        --white: #ffffff;
-        --gray: #616161;
-        --light-gray: #eeeeee;
-        --light-blue: #3b82f6;
-        --background: var(--white);
+        --black: #23282f;
+        --gray-50: #fafafa;
+        --gray-500: #9e9e9e;
+        --gray-300: #e0e0e0;
+        --gray-200: #eeeeee;
+        --light-blue-a700: #0091ea;
+        --blue-800: #1565c0;
+        --blue-gray-800: #37474f;
+        --background: var(--gray-50);
         --foreground: var(--black);
+        --link-color: var(--blue-800);
+        --code-background-color: var(--gray-200);
+        --blockquote-color: var(--gray-500);
+        --blockquote-border-color: var(--gray-300);
       }
 
       [data-theme="dark"] {
         --background: var(--black);
-        --foreground: var(--white);
+        --foreground: var(--gray-50);
+        --link-color: var(--light-blue-a700);
+        --code-background-color: var(--blue-gray-800);
       }
 
       html {
@@ -53,6 +61,7 @@ export const GlobalStyle = () => (
         margin-right: auto;
         max-width: 50rem;
         padding: 0 2rem;
+        background-color: var(--background);
       }
 
       a,

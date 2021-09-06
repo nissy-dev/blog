@@ -82,6 +82,7 @@ const mainStyle = css`
 `;
 
 const mdContentStyle = css`
+  color: var(--foreground);
   padding: 2rem 0;
 
   pre {
@@ -90,7 +91,8 @@ const mdContentStyle = css`
     background: #2e3440;
   }
 
-  ul {
+  ul,
+  ol {
     list-style-type: disc;
   }
 
@@ -100,5 +102,18 @@ const mdContentStyle = css`
 
   ul ul ul {
     list-style-type: square;
+  }
+
+  a {
+    color: var(--link-color);
+  }
+
+  code:not(.hljs) {
+    background-color: var(--code-background-color);
+  }
+
+  blockquote {
+    color: var(--blockquote-color);
+    border-left: 0.25em solid var(--blockquote-border-color);
   }
 `;

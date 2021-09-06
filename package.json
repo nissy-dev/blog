@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "git config --local core.hooksPath .githooks",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -15,7 +16,6 @@
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix:prettier": "npm run lint:prettier -- --write",
     "fix:css": "npm run lint:css -- --fix",
-    "prepare": "git config --local core.hooksPath .githooks",
     "post": "scaffdog generate new-post"
   },
   "dependencies": {
@@ -24,6 +24,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "algoliasearch": "^4.10.5",
     "github-markdown-css": "^4.0.0",
     "highlight.js": "^11.2.0",
     "next": "^11.1.0",
@@ -32,13 +33,16 @@
     "next-themes": "^0.0.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-instantsearch-dom": "^6.12.1",
     "the-new-css-reset": "^1.2.0"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.3.0",
+    "@types/algoliasearch": "^4.0.0",
     "@types/gtag.js": "^0.0.7",
     "@types/lodash.truncate": "^4.4.6",
     "@types/react": "^17.0.13",
+    "@types/react-instantsearch-dom": "^6.12.0",
     "@typescript-eslint/eslint-plugin": "^4.28.1",
     "@typescript-eslint/parser": "^4.28.1",
     "eslint-config-next": "^11.0.1",

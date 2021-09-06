@@ -23,7 +23,7 @@ const calcTimeToRead = (mdContent: string) => {
   return timeToRead === 0 ? 1 : timeToRead;
 };
 
-const extractExcerpt = (html: string, truncateLength = 125) => {
+export const extractExcerpt = (html: string, truncateLength = 125) => {
   // 改行コードとタグの削除
   const stripTagsHtml = striptags(html).replace(/\r?\n/g, " ");
   return truncate(stripTagsHtml, { length: truncateLength });

@@ -28,8 +28,5 @@ const buttonStyle = css`
   height: 2.5rem;
   padding: 0.5rem;
   border-radius: 1.5rem;
-
-  :hover {
-    background-color: var(--light-gray);
-  }
+  color: var(--foreground);
 `;

@@ -2,13 +2,23 @@ const withPWA = require("next-pwa");
 const runtimeCaching = require("next-pwa/cache");
 const { i18n } = require("./next-i18next.config");
 
-module.exports = withPWA({
+// module.exports = withPWA({
+//   i18n,
+//   pwa: {
+//     dest: "public",
+//     runtimeCaching,
+//   },
+//   experimental: {
+//     esmExternals: true,
+//   },
+// });
+module.exports = {
   i18n,
-  pwa: {
-    dest: "public",
-    runtimeCaching,
-  },
+  // pwa: {
+  //   dest: "public",
+  //   runtimeCaching,
+  // },
   experimental: {
     esmExternals: true,
   },
-});
+};

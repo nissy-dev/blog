@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 import { Link } from "./Link";
 
@@ -46,8 +46,9 @@ const articleListStyle = css`
   margin: 1rem 0rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--light-gray);
-  box-shadow: 0 0.125rem 0.25rem var(--light-gray);
+  border: 1px solid var(--gray-300);
+  box-shadow: 0 0.125rem 0.25rem var(--gray-300);
+  color: var(--foreground);
 
   > header {
     padding-bottom: 0.75rem;
@@ -59,6 +60,7 @@ const articleListStyle = css`
     }
 
     > small {
+      color: var(--foreground);
       font-size: 0.75rem;
     }
   }
@@ -71,7 +73,7 @@ const articleListStyle = css`
     padding-top: 0.5rem;
     font-size: 0.9rem;
     text-align: left;
-    color: var(--gray);
+    color: var(--foreground);
     text-decoration: underline;
   }
 

@@ -5,7 +5,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { SEO } from "../components/SEO";
 import { ArticleListItem } from "components/ArticleListItem";
 import { FrontMatter, getFrontMatters } from "../lib/api";
-// import { siteMetadata } from "../utils/const";
+import { generateIndex } from "../lib/algoria";
 import { dateFormat } from "../utils/dateFormat";
 
 type Context = {
@@ -18,6 +18,10 @@ type Props = {
 } & SSRConfig;
 
 export const getStaticProps = async ({ locale }: Context): Promise<{ props: Props }> => {
+  if (process.env.NODE_ENV === "production") {
+    await generateIndex();
+  }
+
   const i18nProps = await serverSideTranslations(locale, ["common", "aria-label"]);
   const frontMatters = await getFrontMatters();
 

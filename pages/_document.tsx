@@ -1,7 +1,6 @@
 import Document, { Head, Main, NextScript } from "next/document";
-import { existsGaId, GA_ID } from "../lib/ga";
 
-console.log(existsGaId);
+import { existsGaId, GA_ID } from "../lib/ga";
 
 export default class MyDocument extends Document {
   render() {

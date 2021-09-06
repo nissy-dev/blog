@@ -7,5 +7,6 @@
     "private-study-note": "個人用の勉強メモ",
     "reading-book-note": "本を読んだときのメモ",
     "basic-cs-note": "技術に関するメモ",
-    "blog-top-description": "Nissyのブログです。Web周りのことについて書くことが多いです。"
+    "blog-top-description": "Nissyのブログです。Web周りのことについて書くことが多いです。",
+    "search-box-placeholder": "キーワードを入力"
 }
