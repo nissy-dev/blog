@@ -1,7 +1,8 @@
 import { css } from "@emotion/react";
 import { useTranslation } from "next-i18next";
 
-import { ThemeSwitch } from "./ThemeSwitch";
+import { ThemeSwitchButton } from "./ThemeSwitchButton";
+import { SearchButton } from "./SearchButton";
 import { Link } from "./Link";
 import { MobileNav } from "./MobileNav";
 import { siteMetadata } from "../utils/const";
@@ -12,7 +13,13 @@ const headerNavLinks = [
   { href: "/about", title: "About", ariaLabelKey: "nav-about" },
 ];
 
-export const Header = () => {
+type Props = {
+  showSearchBox: boolean;
+  handleSearchBox: () => void;
+};
+
+export const Header = (props: Props) => {
+  const { showSearchBox } = props;
   const { t: taria } = useTranslation("aria-label");
 
   return (
@@ -27,7 +34,8 @@ export const Header = () => {
           </Link>
         ))}
       </nav>
-      <ThemeSwitch />
+      <SearchButton showSearchBox={showSearchBox} onClick={props.handleSearchBox} />
+      <ThemeSwitchButton />
       <MobileNav headerNavLinks={headerNavLinks} />
     </header>
   );
@@ -36,7 +44,8 @@ export const Header = () => {
 const headerStyle = css`
   display: flex;
   align-items: center;
-  padding: 1rem 0rem;
+  padding-top: 1rem;
+  padding-bottom: 0.25rem;
 `;
 
 const titleContainerStyle = css`
@@ -54,8 +63,9 @@ const titleContainerStyle = css`
 const navContainerStyle = css`
   display: flex;
   justify-content: space-between;
-  width: 13rem;
-  padding-right: 1rem;
+  width: 14rem;
+  padding-right: 0.5rem;
+  font-size: 1.25rem;
   font-weight: var(--font-bold);
   color: var(--base);
 

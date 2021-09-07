@@ -1,9 +1,11 @@
 import { css } from "@emotion/react";
+import { useRouter } from "next/router";
 import { SSRConfig, useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { SEO } from "../components/SEO";
-import { ArticleListItem } from "components/ArticleListItem";
+import { ArticleListItem } from "../components/ArticleListItem";
+import { Pagination } from "../components/Pagination";
 import { FrontMatter, getFrontMatters } from "../lib/api";
 import { generateIndex } from "../lib/algoria";
 import { dateFormat } from "../utils/dateFormat";
@@ -34,17 +36,29 @@ export const getStaticProps = async ({ locale }: Context): Promise<{ props: Prop
   };
 };
 
+const PER_PAGES = 10;
+
 export default function Home({ locale, frontMatters }: Props) {
   const { t: tcom } = useTranslation("common");
   const title = tcom("post-list-header");
   const description = tcom("blog-top-description");
+
+  // pagination
+  const router = useRouter();
+  const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
+  const queryParams = searchParams.get("page");
+  const currentPage = queryParams === null ? 1 : parseInt(queryParams, 10);
+  const totalPages = Math.ceil(frontMatters.length / PER_PAGES);
+  const start = (currentPage - 1) * PER_PAGES;
+  const currentFrontMatters = frontMatters.slice(start, start + PER_PAGES);
+
   return (
     <main css={mainStyle}>
       <SEO title={title} metaDescription={description} />
       <div css={headerStyle}>
         <h1>{title}</h1>
       </div>
-      {frontMatters.map((frontMatter) => {
+      {currentFrontMatters.map((frontMatter) => {
         return (
           <ArticleListItem
             key={frontMatter.id}
@@ -56,6 +70,7 @@ export default function Home({ locale, frontMatters }: Props) {
           />
         );
       })}
+      <Pagination currentPage={currentPage} totalPages={totalPages} />
     </main>
   );
 }

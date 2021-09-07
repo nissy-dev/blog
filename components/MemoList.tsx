@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-import { Link } from "components/Link";
+import { Link } from "./Link";
 import { FrontMatter } from "../lib/api";
 
 type Props = {

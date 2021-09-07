@@ -2,8 +2,6 @@ import { css } from "@emotion/react";
 import algoliasearch from "algoliasearch/lite";
 import { Configure, InstantSearch, SearchBox, Hits } from "react-instantsearch-dom";
 import { Hit } from "react-instantsearch-core";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "next-i18next";
 
 import { FrontMatter } from "../lib/api";
@@ -24,9 +22,6 @@ const CustomSearchBox = () => {
   const { t: tcom } = useTranslation("common");
   return (
     <div css={customSearchBoxStyle}>
-      <span>
-        <FontAwesomeIcon icon={faSearch} />
-      </span>
       {/* @ts-ignore */}
       <SearchBox
         translations={{
@@ -43,22 +38,15 @@ const customSearchBoxStyle = css`
   display: flex;
   flex-direction: row;
   background-color: var(--gray-300);
-  width: 15.5rem;
-  height: 2.25rem;
+  width: 18.5rem;
+  height: 2rem;
   border-radius: 0.25rem;
   margin-left: auto;
-
-  > span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 2rem;
-    padding: 0.5rem 0.5rem;
-  }
+  margin-right: 0.5rem;
 
   > div {
     flex: 1;
-    padding: 0.3rem 0.25rem 0.25rem 0.25rem;
+    padding: 0.25rem 0.5rem 0.25rem;
     line-height: 0;
 
     input[type="search"] {

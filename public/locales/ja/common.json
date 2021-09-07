@@ -8,5 +8,6 @@
     "reading-book-note": "本を読んだときのメモ",
     "basic-cs-note": "技術に関するメモ",
     "blog-top-description": "Nissyのブログです。Web周りのことについて書くことが多いです。",
-    "search-box-placeholder": "キーワードを入力"
+    "search-box-placeholder": "キーワードを入力",
+    "search-box": "検索ボックス"
 }

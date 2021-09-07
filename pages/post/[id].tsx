@@ -74,7 +74,7 @@ export default function Post({ locale, frontMatter, html, tocHtml }: Props) {
 const asideStyle = css`
   position: fixed;
   left: calc((100% - 50rem) / 2 + 53rem);
-  top: 99px;
+  top: 84px;
 `;
 
 const mainStyle = css`

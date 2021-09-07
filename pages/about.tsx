@@ -4,7 +4,7 @@ import { SEO } from "../components/SEO";
 export default function About() {
   return (
     <main>
-      <SEO title={"404: Not Found"} metaDescription={"404: Not Found"} />
+      <SEO title={"Cooming Soon..."} metaDescription={"Cooming Soon..."} />
       <div css={style}>
         <h1>Coming Soon...</h1>
       </div>

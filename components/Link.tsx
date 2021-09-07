@@ -1,21 +1,15 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
-import NextLink from "next/link";
+import NextLink, { LinkProps } from "next/link";
 
 type Props = {
-  href: string;
-};
+  children: React.ReactNode;
+  href: LinkProps["href"];
+} & Omit<JSX.IntrinsicElements["a"], "href">;
 
-export const Link = ({ href, ...rest }: Props & JSX.IntrinsicElements["a"]) => {
-  const isInternalLink = href && href.startsWith("/");
-
-  // `/pages` を使ったルートナビゲーションを必要する場合だけ next/link を使う必要がある
-  if (!isInternalLink) {
-    throw Error(`The url (${href}) is not need to be wrapped by next/link.`);
-  }
-
+// `/pages` を使ったルートナビゲーションを必要する場合だけ next/link を使う必要がある
+export const Link = ({ children, href, ...rest }: Props) => {
   return (
     <NextLink href={href}>
-      <a {...rest} />
+      <a {...rest}>{children}</a>
     </NextLink>
   );
 };

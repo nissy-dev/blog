@@ -8,5 +8,7 @@
     "close-mobile-nav": "Close navigation",
     "nav-title": "Top page",
     "nav-posts": "All posts",
-    "nav-about": "Profile"
+    "nav-about": "Profile",
+    "open-search-box": "Open search box",
+    "close-search-box": "Close search box"
 }

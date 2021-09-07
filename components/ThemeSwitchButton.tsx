@@ -4,7 +4,7 @@ import { useTranslation } from "next-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
-export const ThemeSwitch = () => {
+export const ThemeSwitchButton = () => {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const { t: taria } = useTranslation("aria-label");
   const { t: tcom } = useTranslation("common");
@@ -27,6 +27,5 @@ const buttonStyle = css`
   width: 2.5rem;
   height: 2.5rem;
   padding: 0.5rem;
-  border-radius: 1.5rem;
   color: var(--foreground);
 `;
