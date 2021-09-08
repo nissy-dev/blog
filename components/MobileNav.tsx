@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { css } from "@emotion/react";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "react-i18next";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -11,8 +11,7 @@ type Props = {
 };
 
 export const MobileNav = ({ headerNavLinks }: Props) => {
-  const { t: taria } = useTranslation("aria-label");
-  const { t: tcom } = useTranslation("common");
+  const { t } = useTranslation();
 
   const [navShow, setNavShow] = useState(false);
   const onToggleNav = () => setNavShow((status) => !status);
@@ -23,8 +22,8 @@ export const MobileNav = ({ headerNavLinks }: Props) => {
         type="button"
         onClick={onToggleNav}
         css={buttonStyle}
-        title={tcom("toggle-menu")}
-        aria-label={navShow ? taria("close-mobile-nav") : taria("open-mobile-nav")}
+        title={t("toggle-menu")}
+        aria-label={navShow ? t("close-mobile-nav") : t("open-mobile-nav")}
       >
         {navShow ? <FontAwesomeIcon icon={faTimes} /> : <FontAwesomeIcon icon={faBars} />}
       </button>
@@ -35,7 +34,7 @@ export const MobileNav = ({ headerNavLinks }: Props) => {
             href={link.href}
             css={navLinkStyle}
             onClick={onToggleNav}
-            aria-label={taria(link.ariaLabelKey)}
+            aria-label={t(link.ariaLabelKey)}
           >
             {link.title}
           </Link>

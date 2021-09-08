@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "react-i18next";
 
 import { Link } from "./Link";
 
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const ArticleListItem = ({ title, link, publishedAt, timeToRead, excerpt }: Props) => {
-  const { t: tcom } = useTranslation("common");
+  const { t } = useTranslation();
   return (
     <article css={articleListStyle} itemScope itemType="http://schema.org/Article">
       <header>
@@ -35,7 +35,7 @@ export const ArticleListItem = ({ title, link, publishedAt, timeToRead, excerpt 
       </section>
       <nav>
         <Link href={link}>
-          <span>{`${tcom("read-more")} →`}</span>
+          <span>{`${t("read-more")} →`}</span>
         </Link>
       </nav>
     </article>

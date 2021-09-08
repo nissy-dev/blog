@@ -1,15 +1,15 @@
 import { css } from "@emotion/react";
 import { SearchBox } from "react-instantsearch-dom";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "react-i18next";
 
 export const CustomSearchBox = () => {
-  const { t: tcom } = useTranslation("common");
+  const { t } = useTranslation();
   return (
     <div css={customSearchBoxStyle}>
       {/* @ts-ignore */}
       <SearchBox
         translations={{
-          placeholder: tcom("search-box-placeholder"),
+          placeholder: t("search-box-placeholder"),
         }}
         reset={null}
         submit={null}

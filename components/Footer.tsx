@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "react-i18next";
 
 import { siteMetadata } from "../utils/const";
 
@@ -28,7 +28,7 @@ const snsLinks = [
 ];
 
 export const Footer = () => {
-  const { t: taria } = useTranslation("aria-label");
+  const { t } = useTranslation();
 
   return (
     <footer css={footerStyle}>
@@ -39,7 +39,7 @@ export const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             href={link.href}
-            aria-label={taria(link.ariaLabel)}
+            aria-label={t(link.ariaLabel)}
           >
             <FontAwesomeIcon icon={link.icon} css={IconStyle} />
           </a>

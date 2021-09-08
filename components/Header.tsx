@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "react-i18next";
 
 import { ThemeSwitchButton } from "./ThemeSwitchButton";
 import { SearchButton } from "./SearchButton";
@@ -20,16 +20,16 @@ type Props = {
 
 export const Header = (props: Props) => {
   const { showSearchBox } = props;
-  const { t: taria } = useTranslation("aria-label");
+  const { t } = useTranslation();
 
   return (
     <header css={headerStyle}>
-      <Link css={titleContainerStyle} href="/" aria-label={taria("nav-title")}>
+      <Link css={titleContainerStyle} href="/" aria-label={t("nav-title")}>
         <h1>{siteMetadata.title}</h1>
       </Link>
       <nav css={navContainerStyle}>
         {headerNavLinks.map((link) => (
-          <Link key={link.title} href={link.href} aria-label={taria(link.ariaLabelKey)}>
+          <Link key={link.title} href={link.href} aria-label={t(link.ariaLabelKey)}>
             {link.title}
           </Link>
         ))}

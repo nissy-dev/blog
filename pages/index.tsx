@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
 import { useRouter } from "next/router";
-import { SSRConfig, useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "react-i18next";
 
 import { SEO } from "../components/SEO";
 import { ArticleListItem } from "../components/ArticleListItem";
@@ -10,38 +9,30 @@ import { FrontMatter, getFrontMatters } from "../lib/api";
 import { generateIndex } from "../lib/algoria";
 import { dateFormat } from "../utils/dateFormat";
 
-type Context = {
-  locale: string;
+type Props = {
+  frontMatters: Array<{ id: string } & FrontMatter>;
 };
 
-type Props = {
-  locale: string;
-  frontMatters: Array<{ id: string } & FrontMatter>;
-} & SSRConfig;
-
-export const getStaticProps = async ({ locale }: Context): Promise<{ props: Props }> => {
+export const getStaticProps = async (): Promise<{ props: Props }> => {
   if (process.env.NODE_ENV === "production") {
     await generateIndex();
   }
 
-  const i18nProps = await serverSideTranslations(locale, ["common", "aria-label"]);
   const frontMatters = await getFrontMatters();
 
   return {
     props: {
-      locale,
       frontMatters,
-      ...i18nProps,
     },
   };
 };
 
 const PER_PAGES = 10;
 
-export default function Home({ locale, frontMatters }: Props) {
-  const { t: tcom } = useTranslation("common");
-  const title = tcom("post-list-header");
-  const description = tcom("blog-top-description");
+export default function Home({ frontMatters }: Props) {
+  const { t, i18n } = useTranslation();
+  const title = t("post-list-header");
+  const description = t("blog-top-description");
 
   // pagination
   const router = useRouter();
@@ -64,7 +55,7 @@ export default function Home({ locale, frontMatters }: Props) {
             key={frontMatter.id}
             title={frontMatter.title}
             link={`/post/${encodeURIComponent(frontMatter.id)}`}
-            publishedAt={dateFormat(new Date(frontMatter.date), locale)}
+            publishedAt={dateFormat(new Date(frontMatter.date), i18n.language)}
             timeToRead={frontMatter.timeToRead}
             excerpt={frontMatter.excerpt}
           />

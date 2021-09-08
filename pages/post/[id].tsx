@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
-import { SSRConfig } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "react-i18next";
 
 import { SEO } from "../../components/SEO";
 import { FrontMatter, getPostById, getPostIDs } from "../../lib/api";
@@ -8,30 +7,25 @@ import { Toc } from "../../components/Toc";
 import { PostHeader } from "../../components/PostHeader";
 
 type Context = {
-  locale: string;
   params: {
     id: string;
   };
 };
 
 type Props = {
-  locale: string;
   frontMatter: FrontMatter;
   html: string;
   tocHtml: string;
-} & SSRConfig;
+};
 
-export const getStaticProps = async ({ locale, params }: Context): Promise<{ props: Props }> => {
-  const i18nProps = await serverSideTranslations(locale, ["common", "aria-label"]);
+export const getStaticProps = async ({ params }: Context): Promise<{ props: Props }> => {
   const { frontMatter, html, tocHtml } = await getPostById(params.id);
 
   return {
     props: {
-      locale,
       frontMatter,
       html,
       tocHtml,
-      ...i18nProps,
     },
   };
 };
@@ -51,7 +45,8 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Post({ locale, frontMatter, html, tocHtml }: Props) {
+export default function Post({ frontMatter, html, tocHtml }: Props) {
+  const { i18n } = useTranslation();
   const { description, title, date, timeToRead, excerpt } = frontMatter;
   return (
     <>
@@ -60,7 +55,7 @@ export default function Post({ locale, frontMatter, html, tocHtml }: Props) {
         <Toc tocHtml={tocHtml} />
       </aside>
       <main css={mainStyle}>
-        <PostHeader locale={locale} title={title} date={date} timeToRead={timeToRead} />
+        <PostHeader locale={i18n.language} title={title} date={date} timeToRead={timeToRead} />
         <div
           className="markdown-body"
           css={mdContentStyle}

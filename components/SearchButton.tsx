@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   showSearchBox: boolean;
@@ -10,15 +10,14 @@ type Props = {
 
 export const SearchButton = (props: Props) => {
   const { onClick, showSearchBox } = props;
-  const { t: tcom } = useTranslation("common");
-  const { t: taria } = useTranslation("aria-label");
+  const { t } = useTranslation();
   return (
     <button
       type="button"
       onClick={onClick}
       css={buttonStyle}
-      title={tcom("search-box")}
-      aria-label={showSearchBox ? taria("close-search-box") : taria("open-search-box")}
+      title={t("search-box")}
+      aria-label={showSearchBox ? t("close-search-box") : t("open-search-box")}
     >
       <FontAwesomeIcon icon={faSearch} />
     </button>

@@ -1,45 +1,36 @@
 import { css } from "@emotion/react";
-import { SSRConfig, useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "react-i18next";
 
 import { MemoList } from "../components/MemoList";
 import { FrontMatter, getFrontMatters } from "../lib/api";
 
-type Context = {
-  locale: string;
-};
-
 type Props = {
-  locale: string;
   bookFrontMatters: Array<{ id: string } & FrontMatter>;
   noteFrontMatters: Array<{ id: string } & FrontMatter>;
-} & SSRConfig;
+};
 
-export const getStaticProps = async ({ locale }: Context): Promise<{ props: Props }> => {
-  const i18nProps = await serverSideTranslations(locale, ["common", "aria-label"]);
+export const getStaticProps = async (): Promise<{ props: Props }> => {
   const bookFrontMatters = await getFrontMatters("book");
   const noteFrontMatters = await getFrontMatters("note");
 
   return {
     props: {
-      locale,
       bookFrontMatters,
       noteFrontMatters,
-      ...i18nProps,
     },
   };
 };
 
 export default function Notes({ bookFrontMatters, noteFrontMatters }: Props) {
-  const { t: tcom } = useTranslation("common");
+  const { t } = useTranslation();
   return (
     <main css={mainStyle}>
       <div css={headerStyle}>
-        <h1>{tcom("private-study-note")}</h1>
+        <h1>{t("private-study-note")}</h1>
       </div>
       <div css={memoListContainerStyle}>
-        <MemoList title={tcom("reading-book-note")} frontMatters={bookFrontMatters} />
-        <MemoList title={tcom("basic-cs-note")} frontMatters={noteFrontMatters} />
+        <MemoList title={t("reading-book-note")} frontMatters={bookFrontMatters} />
+        <MemoList title={t("basic-cs-note")} frontMatters={noteFrontMatters} />
       </div>
     </main>
   );

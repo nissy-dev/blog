@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { Hits, Panel, PoweredBy, Highlight } from "react-instantsearch-dom";
 import { connectStateResults, Hit, StateResultsProvided } from "react-instantsearch-core";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "react-i18next";
 
 import { Link } from "./Link";
 import { FrontMatter } from "../lib/api";
@@ -11,8 +11,8 @@ type ErrorComponentProps = {
 };
 
 const ErrorComponent = ({ searchQuery }: ErrorComponentProps) => {
-  const { t: tcom } = useTranslation("common");
-  return <div css={errorStyle}>{`${tcom("search-no-results")} "${searchQuery}"`}</div>;
+  const { t } = useTranslation();
+  return <div css={errorStyle}>{`${t("search-no-results")} "${searchQuery}"`}</div>;
 };
 
 const errorStyle = css`
@@ -75,7 +75,6 @@ const hitStyle = css`
 
 const SearchList = (props: StateResultsProvided) => {
   const { searchState, searchResults } = props;
-  console.log(searchState);
   if (searchState && !searchState.query) {
     return null;
   }

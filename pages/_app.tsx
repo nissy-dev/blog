@@ -1,13 +1,13 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { ThemeProvider } from "next-themes";
-import { appWithTranslation } from "next-i18next";
 
 import { GlobalStyle } from "../styles/global";
 import { BaseLayout } from "../components/BaseLayout";
 import { usePageView } from "../lib/ga";
+import "../utils/i18n";
 
-function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   // PVカウント用コード
   usePageView();
 
@@ -43,5 +43,3 @@ function App({ Component, pageProps }: AppProps) {
     </ThemeProvider>
   );
 }
-
-export default appWithTranslation(App);

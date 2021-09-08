@@ -1,13 +1,12 @@
 import { css } from "@emotion/react";
 import { useTheme } from "next-themes";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 export const ThemeSwitchButton = () => {
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const { t: taria } = useTranslation("aria-label");
-  const { t: tcom } = useTranslation("common");
+  const { t } = useTranslation();
   const isDark = theme === "dark" || resolvedTheme === "dark";
 
   return (
@@ -15,8 +14,8 @@ export const ThemeSwitchButton = () => {
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       css={buttonStyle}
-      title={tcom("toggle-theme")}
-      aria-label={isDark ? taria("switch-light-mode") : taria("switch-dark-mode")}
+      title={t("toggle-theme")}
+      aria-label={isDark ? t("switch-light-mode") : t("switch-dark-mode")}
     >
       {isDark ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}
     </button>

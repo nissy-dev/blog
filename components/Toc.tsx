@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,12 +8,12 @@ type Props = {
 };
 
 export const Toc = ({ tocHtml }: Props) => {
-  const { t: tcom } = useTranslation("common");
+  const { t } = useTranslation();
   return (
     <div css={tocStyle}>
       <div>
         <FontAwesomeIcon icon={faList} />
-        {tcom("table-of-contents")}
+        {t("table-of-contents")}
       </div>
       <div dangerouslySetInnerHTML={{ __html: tocHtml }} />
     </div>
