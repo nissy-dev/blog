@@ -9,5 +9,6 @@
     "basic-cs-note": "CS knowledge Note",
     "blog-top-description": "A blog for Nissy",
     "search-box-placeholder": "Search here...",
-    "search-box": "Search Box"
+    "search-box": "Search Box",
+    "search-no-results": "No results found for query"
 }

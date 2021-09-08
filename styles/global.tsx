@@ -26,10 +26,10 @@ export const GlobalStyle = () => (
         /* color */
         --base: #ef6c35;
         --black: #23282f;
-        --gray-50: #fafafa;
         --gray-500: #9e9e9e;
         --gray-300: #e0e0e0;
         --gray-200: #eeeeee;
+        --gray-50: #fafafa;
         --light-blue-a700: #0091ea;
         --blue-800: #1565c0;
         --blue-gray-800: #37474f;

@@ -9,5 +9,3 @@ export const siteMetadata = {
   github: "nissy-dev",
   twitter: "nissy_dev",
 };
-
-export const ALGOLIA_INDEX_NAME = "blog.nissy.dev";

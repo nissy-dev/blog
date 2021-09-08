@@ -4,12 +4,12 @@ import { getPostById, getPostIDs, extractExcerpt } from "./api";
 
 export const generateIndex = async () => {
   const client = algoliasearch(
-    process.env.ALGOLIA_APP_ID || "",
+    process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "",
     process.env.ALGOLIA_ADMIN_KEY || ""
   );
 
   // デプロイ前に登録されていたインデックスを削除する
-  const prevIndex = client.initIndex(process.env.ALGOLIA_INDEX_NAME || "");
+  const prevIndex = client.initIndex(process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || "");
   await prevIndex.delete();
 
   // インデックスに登録するデータ
@@ -23,9 +23,12 @@ export const generateIndex = async () => {
   const indexInfos = await Promise.all(indexInfosPromises);
 
   // 新しいインデックスを登録する
-  const newIndex = client.initIndex(process.env.ALGOLIA_INDEX_NAME || "");
+  const newIndex = client.initIndex(process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || "");
   await newIndex.saveObjects(indexInfos, { autoGenerateObjectIDIfNotExist: true });
 
   // 検索条件の登録
-  await newIndex.setSettings({ searchableAttributes: ["title", "description", "content"] });
+  await newIndex.setSettings({
+    searchableAttributes: ["title", "excerpt", "description", "content"],
+    customRanking: ["desc(date)"],
+  });
 };
