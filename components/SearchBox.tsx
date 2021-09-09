@@ -41,6 +41,6 @@ const customSearchBoxStyle = css`
   }
 
   @media screen and (max-width: 640px) {
-    display: none;
+    width: 100%;
   }
 `;

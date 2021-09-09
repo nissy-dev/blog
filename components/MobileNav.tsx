@@ -46,7 +46,6 @@ export const MobileNav = ({ headerNavLinks }: Props) => {
 
 const mobileNavStyle = css`
   display: none;
-  padding-left: 1rem;
 
   @media screen and (max-width: 640px) {
     display: block;
@@ -54,9 +53,10 @@ const mobileNavStyle = css`
 `;
 
 const buttonStyle = css`
-  width: 2rem;
-  height: 2rem;
-  padding: 0.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  color: var(--foreground);
 `;
 
 // TODO: 上から下に表示されるようなアニメーションを入れたい
@@ -68,7 +68,7 @@ const mobileNavContainerStyle = (navShow: boolean) => css`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background-color: var(--foreground);
+  background-color: var(--background);
   opacity: 0.95;
   font-size: 1.5rem;
   font-weight: var(--font-bold);

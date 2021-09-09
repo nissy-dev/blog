@@ -97,7 +97,6 @@ const panelStyle = css`
   right: 0.5rem;
   z-index: 1;
   width: 40rem;
-  max-width: 80%;
   background-color: var(--gray-300);
   box-shadow: 0 2px 2px var(--gray-500);
 
@@ -105,6 +104,15 @@ const panelStyle = css`
   > div {
     max-height: 25rem;
     overflow: scroll;
+  }
+
+  @media screen and (max-width: 640px) {
+    /* TODO: 100% でなぜうまくいかないのかちゃんと調べる */
+    width: 98%;
+
+    > div {
+      max-height: 20rem;
+    }
   }
 `;
 
