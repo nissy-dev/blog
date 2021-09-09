@@ -6,7 +6,7 @@ import { SEO } from "../components/SEO";
 import { ArticleListItem } from "../components/ArticleListItem";
 import { Pagination } from "../components/Pagination";
 import { FrontMatter, getFrontMatters } from "../lib/api";
-import { generateIndex } from "../lib/algoria";
+import { generateIndex } from "../lib/algolia";
 import { dateFormat } from "../utils/dateFormat";
 
 type Props = {
