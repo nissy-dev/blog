@@ -57,17 +57,17 @@ const hitStyle = css`
     cursor: pointer;
     border-bottom: 1px solid var(--gray-500);
 
-    > span:nth-of-type(1) {
+    span:nth-of-type(1) {
       padding-bottom: 0.5rem;
       font-size: 1.1rem;
       font-weight: var(--font-bold);
     }
 
-    > span:nth-of-type(2) {
+    span:nth-of-type(2) {
       font-size: 0.9rem;
     }
 
-    > div {
+    div {
       margin-left: auto;
       font-size: 0.8rem;
     }
