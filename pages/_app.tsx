@@ -1,15 +1,31 @@
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 
-import { GlobalStyle } from "../styles/global";
-import { BaseLayout } from "../components/BaseLayout";
-import { usePageView } from "../lib/ga";
-import "../utils/i18n";
+import { GlobalStyle } from "styles/global";
+import { BaseLayout } from "components/BaseLayout";
+import { GA_ID } from "utils/const";
+import "utils/i18n";
 
 export default function App({ Component, pageProps }: AppProps) {
   // PVカウント用コード
-  usePageView();
+  const router = useRouter();
+  useEffect(() => {
+    if (GA_ID === "") {
+      return;
+    }
+
+    const handleRouteChange = (path: string) => {
+      window.gtag("config", GA_ID, { page_path: path });
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <ThemeProvider>

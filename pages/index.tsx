@@ -1,13 +1,13 @@
 import { css } from "@emotion/react";
-import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 
-import { SEO } from "../components/SEO";
-import { ArticleListItem } from "../components/ArticleListItem";
-import { Pagination } from "../components/Pagination";
-import { FrontMatter, getFrontMatters } from "../lib/api";
-import { generateIndex } from "../lib/algolia";
-import { dateFormat } from "../utils/dateFormat";
+import { SEO } from "components/SEO";
+import { ArticleListItem } from "components/ArticleListItem";
+import { Pagination } from "components/Pagination";
+import { FrontMatter, getFrontMatters } from "lib/api";
+import { generateIndex } from "lib/algolia";
+import { dateFormat } from "utils/dateFormat";
+import { usePagination } from "utils/usePagination";
 
 type Props = {
   frontMatters: Array<{ id: string } & FrontMatter>;
@@ -27,21 +27,13 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
   };
 };
 
-const PER_PAGES = 10;
+// const PER_PAGES = 10;
 
 export default function Home({ frontMatters }: Props) {
   const { t, i18n } = useTranslation();
+  const { pathname, currentPage, totalPages, currentFrontMatters } = usePagination(frontMatters);
   const title = t("post-list-header");
-  const description = t("blog-top-description");
-
-  // pagination
-  const router = useRouter();
-  const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
-  const queryParams = searchParams.get("page");
-  const currentPage = queryParams === null ? 1 : parseInt(queryParams, 10);
-  const totalPages = Math.ceil(frontMatters.length / PER_PAGES);
-  const start = (currentPage - 1) * PER_PAGES;
-  const currentFrontMatters = frontMatters.slice(start, start + PER_PAGES);
+  const description = t("top-page-description");
 
   return (
     <main css={mainStyle}>
@@ -53,6 +45,7 @@ export default function Home({ frontMatters }: Props) {
         return (
           <ArticleListItem
             key={frontMatter.id}
+            tags={frontMatter.tags}
             title={frontMatter.title}
             link={`/post/${encodeURIComponent(frontMatter.id)}`}
             publishedAt={dateFormat(new Date(frontMatter.date), i18n.language)}
@@ -61,7 +54,7 @@ export default function Home({ frontMatters }: Props) {
           />
         );
       })}
-      <Pagination currentPage={currentPage} totalPages={totalPages} />
+      <Pagination pathName={pathname} currentPage={currentPage} totalPages={totalPages} />
     </main>
   );
 }

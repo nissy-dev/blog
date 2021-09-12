@@ -1,7 +1,8 @@
 ---
-title: テストテスト
-date: "2015-05-06"
-tags: ["book"]
+title: "認証と認可の基礎"
+date: "2021-06-07"
+description: "Web で支える技術で出てきたので、少し掘り下げてみたときのメモ"
+tags: ["note"]
 ---
 
 Web で支える技術で出てきたものを主に取リ扱う。
@@ -86,16 +87,6 @@ credentials = MD5(
 )
 ```
 
-```js
-const result = await unified()
-  .use(remarkParse)
-  .use(slug)
-  .use(remarkRehype)
-  .use(shiki, { theme: "monokai" })
-  .use(rehypeStringify)
-  .process(markdown);
-```
-
 **qop (quality of protection)**
 
 - `auth` または `auth-init`が指定される
@@ -130,7 +121,7 @@ OAuth のフローは以下の通り
 - ⑤ クライアントは、アクセストークンと共に保護されたリソースを要求する
 - ⑥ リソースサーバーは、アクセストークンが正しい場合はリソースをクライアントに返す
 
-![](./uml/oauth.svg)
+![OAuthのシーケンス図](/images/posts/oauth.svg)
 
 アクセストークンの発行手順
 
@@ -154,15 +145,15 @@ OAuth のフローは以下の通り
 - クライアントアプリに与える権限を事前に確認できる
 - OAuth を間違って認証に使うとセキュリティ的に危険なので注意
   - アクセストークンを持っている人が本当にリソースのユーザーかどうかは気にしない
-  - 認証もちゃんとやりましょう → OpenID Connect
+  - 認証もちゃんとやりましょう → Open ID Connect
 
 ## 認可 + 認証
 
-### OpenID Connect
+### Open ID Connect
 
-OpenID Connect = ID トークン発行とユーザーのプロフィール情報 (End-User Claim) の取得手順を標準化したもの
+Open ID Connect = ID トークン発行とユーザーのプロフィール情報 (End-User Claim) の取得手順を標準化したもの
 
-OpenID Connect のフローは以下の通り (OAuth と似ているので、シーケンスは書かない)
+Open ID Connect のフローは以下の通り (OAuth と似ているので、シーケンスは書かない)
 
 - ① クライアントは、OpenID Provider にリクエストを送る
 - ② OpenID Provider は、エンドユーザーを認証・認可する (**ここで本人情報を確認する**)

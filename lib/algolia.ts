@@ -1,29 +1,30 @@
 import algoliasearch from "algoliasearch";
 
-import { getPostById, getPostIDs, extractExcerpt } from "./api";
+import { getPostById, getPostIDs } from "./api";
+import { extractExcerpt } from "utils/extractExcerpt";
+import { ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY, ALGOLIA_INDEX_NAME } from "utils/const";
+
+// Algoliaの無料のプランでは、1つのオブジェクトが10KBまでという制限がある
+const LIMIT_WORDS = 4500;
 
 export const generateIndex = async () => {
-  const client = algoliasearch(
-    process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "",
-    process.env.ALGOLIA_ADMIN_KEY || ""
-  );
+  const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY);
 
   // デプロイ前に登録されていたインデックスを削除する
-  const prevIndex = client.initIndex(process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || "");
+  const prevIndex = client.initIndex(ALGOLIA_INDEX_NAME);
   await prevIndex.delete();
 
   // インデックスに登録するデータ
   const allPostIds = getPostIDs();
-  const limitLength = 4500;
   const indexInfosPromises = allPostIds.map(async (postId) => {
-    const { frontMatter, html } = await getPostById(postId);
-    const planTextContent = extractExcerpt(html, limitLength);
+    const { frontMatter, content } = await getPostById(postId);
+    const planTextContent = await extractExcerpt(content, LIMIT_WORDS);
     return { postId, ...frontMatter, content: planTextContent };
   });
   const indexInfos = await Promise.all(indexInfosPromises);
 
   // 新しいインデックスを登録する
-  const newIndex = client.initIndex(process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || "");
+  const newIndex = client.initIndex(ALGOLIA_INDEX_NAME);
   await newIndex.saveObjects(indexInfos, { autoGenerateObjectIDIfNotExist: true });
 
   // 検索条件の登録

@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
-import { SEO } from "../components/SEO";
+
+import { SEO } from "components/SEO";
 
 export default function NotFoundPage() {
   return (
@@ -16,9 +17,10 @@ export default function NotFoundPage() {
 const style = css`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 12rem 0;
+  color: var(--foreground);
 
   > h1 {
     font-size: 1.5rem;

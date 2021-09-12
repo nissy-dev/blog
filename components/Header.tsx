@@ -1,55 +1,52 @@
+import { useState } from "react";
 import { css } from "@emotion/react";
 import { useTranslation } from "react-i18next";
 
-import { ThemeSwitchButton } from "./ThemeSwitchButton";
-import { SearchButton } from "./SearchButton";
 import { Link } from "./Link";
-import { MobileNav } from "./MobileNav";
+import { ProfileButton } from "./ProfileButton";
+import { SearchButton } from "./SearchButton";
+import { ThemeSwitchButton } from "./ThemeSwitchButton";
+import { Search } from "./Search";
 import { siteMetadata } from "../utils/const";
 
-const headerNavLinks = [
-  { href: "/", title: "Posts", ariaLabelKey: "nav-posts" },
-  { href: "/notes", title: "Notes", ariaLabelKey: "nav-posts" },
-  { href: "/about", title: "About", ariaLabelKey: "nav-about" },
-];
-
-type Props = {
-  showSearchBox: boolean;
-  handleSearchBox: () => void;
-};
-
-export const Header = (props: Props) => {
-  const { showSearchBox } = props;
+export const Header = () => {
   const { t } = useTranslation();
+  const [showSearchBox, setShowSearchBox] = useState(false);
+  const handleSearchBox = () => setShowSearchBox(!showSearchBox);
 
   return (
     <header css={headerStyle}>
-      <Link css={titleContainerStyle} href="/" aria-label={t("nav-title")}>
-        <h1>{siteMetadata.title}</h1>
-      </Link>
-      <nav css={navContainerStyle}>
-        {headerNavLinks.map((link) => (
-          <Link key={link.title} href={link.href} aria-label={t(link.ariaLabelKey)}>
-            {link.title}
-          </Link>
-        ))}
-      </nav>
-      <SearchButton showSearchBox={showSearchBox} onClick={props.handleSearchBox} />
-      <ThemeSwitchButton />
-      <MobileNav headerNavLinks={headerNavLinks} />
+      <div>
+        <Link css={titleContainerStyle} href="/" aria-label={t("nav-title")}>
+          <h1>{siteMetadata.title}</h1>
+        </Link>
+        <ProfileButton />
+        <SearchButton showSearchBox={showSearchBox} onClick={handleSearchBox} />
+        <ThemeSwitchButton />
+      </div>
+      <div>{showSearchBox && <Search handleSearchBox={handleSearchBox} />}</div>
     </header>
   );
 };
 
 const headerStyle = css`
+  position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   padding-top: 1rem;
   padding-bottom: 0.25rem;
+
+  > div:nth-of-type(1) {
+    display: flex;
+    flex-direction: row;
+  }
+
+  > div:nth-of-type(2) {
+    position: relative;
+  }
 `;
 
 const titleContainerStyle = css`
-  display: flex;
   margin-right: auto;
   font-size: 1.75rem;
   font-weight: var(--font-bold);
@@ -57,19 +54,5 @@ const titleContainerStyle = css`
 
   :hover {
     text-decoration: none;
-  }
-`;
-
-const navContainerStyle = css`
-  display: flex;
-  justify-content: space-between;
-  width: 14rem;
-  padding-right: 0.5rem;
-  font-size: 1.25rem;
-  font-weight: var(--font-bold);
-  color: var(--base);
-
-  @media screen and (max-width: 640px) {
-    display: none;
   }
 `;

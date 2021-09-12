@@ -4,7 +4,7 @@ import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 
-import { siteMetadata } from "../utils/const";
+import { siteMetadata } from "utils/const";
 
 const snsLinks = [
   {

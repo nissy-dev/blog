@@ -1,5 +1,4 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
   "[markdown]": {
     "editor.formatOnSave": true,
     "files.trimTrailingWhitespace": false,
