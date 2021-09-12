@@ -1,9 +1,12 @@
 import { css } from "@emotion/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTag, faClock, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 
 import { Link } from "./Link";
 
 type Props = {
+  tags: Array<string>;
   title: string;
   link: string;
   publishedAt: string;
@@ -11,7 +14,7 @@ type Props = {
   excerpt: string;
 };
 
-export const ArticleListItem = ({ title, link, publishedAt, timeToRead, excerpt }: Props) => {
+export const ArticleListItem = ({ tags, title, link, publishedAt, timeToRead, excerpt }: Props) => {
   const { t } = useTranslation();
   return (
     <article css={articleListStyle} itemScope itemType="http://schema.org/Article">
@@ -21,9 +24,26 @@ export const ArticleListItem = ({ title, link, publishedAt, timeToRead, excerpt 
             <span itemProp="headline">{title}</span>
           </Link>
         </h2>
-        <small>
-          {publishedAt} ・ {`${timeToRead} min read`}
-        </small>
+        <div>
+          <div>
+            <FontAwesomeIcon icon={faCalendarAlt} />
+            <span>{publishedAt}</span>
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faClock} />
+            <span>{`${timeToRead} min read`}</span>
+          </div>
+          <nav>
+            <FontAwesomeIcon icon={faTag} />
+            {tags.map((tag) => {
+              return (
+                <Link key={tag} href={`/tag/${encodeURIComponent(tag)}`}>
+                  <span>{`#${tag}`}</span>
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
       </header>
       <section>
         <p
@@ -43,12 +63,12 @@ export const ArticleListItem = ({ title, link, publishedAt, timeToRead, excerpt 
 };
 
 const articleListStyle = css`
-  margin: 1rem 0rem;
   padding: 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--gray-300);
-  box-shadow: 0 0.125rem 0.25rem var(--gray-300);
+  margin: 1rem 0rem;
   color: var(--foreground);
+  border: 1px solid var(--gray-300);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem var(--gray-300);
 
   > header {
     padding-bottom: 0.75rem;
@@ -59,9 +79,32 @@ const articleListStyle = css`
       color: var(--base);
     }
 
-    > small {
-      color: var(--foreground);
-      font-size: 0.75rem;
+    > div {
+      display: flex;
+      flex-wrap: wrap;
+      padding-bottom: 0.5rem;
+
+      nav,
+      div {
+        display: flex;
+        padding-top: 0.5rem;
+        padding-right: 0.5rem;
+        font-size: 0.9rem;
+
+        > svg {
+          width: 1rem;
+          margin-right: 0.5rem;
+        }
+      }
+
+      div > span {
+        padding-top: 0.1rem;
+      }
+
+      nav > a {
+        padding-top: 0.1rem;
+        padding-right: 0.5rem;
+      }
     }
   }
 
@@ -70,16 +113,15 @@ const articleListStyle = css`
   }
 
   > nav {
+    display: flex;
+    flex-direction: row;
     padding-top: 0.5rem;
     font-size: 0.9rem;
-    text-align: left;
     color: var(--foreground);
-    text-decoration: underline;
-  }
 
-  @media screen and (max-width: 640px) {
-    > nav {
-      text-align: right;
+    > a {
+      margin-left: auto;
+      text-decoration: underline;
     }
   }
 `;

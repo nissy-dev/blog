@@ -1,29 +1,39 @@
 import { css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarAlt, faClock } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarAlt, faClock, faTag } from "@fortawesome/free-solid-svg-icons";
 
-import { dateFormat } from "../utils/dateFormat";
+import { Link } from "./Link";
 
 type Props = {
-  locale: string;
+  tags: Array<string>;
+  publishedAt: string;
   title: string;
-  date: string;
   timeToRead: number;
 };
 
-export const PostHeader = ({ locale, title, date, timeToRead }: Props) => {
+export const PostHeader = ({ tags, publishedAt, title, timeToRead }: Props) => {
   return (
     <div css={postHeaderStyle}>
       <h1>{title}</h1>
       <div>
-        <span>
+        <div>
           <FontAwesomeIcon icon={faCalendarAlt} />
-          <time>{dateFormat(new Date(date), locale)}</time>
-        </span>
-        <span>
+          <span>{publishedAt}</span>
+        </div>
+        <div>
           <FontAwesomeIcon icon={faClock} />
-          {`${timeToRead} min read`}
-        </span>
+          <span>{`${timeToRead} min read`}</span>
+        </div>
+        <nav>
+          <FontAwesomeIcon icon={faTag} />
+          {tags.map((tag) => {
+            return (
+              <Link key={tag} href={`/tag/${encodeURIComponent(tag)}`}>
+                <span>{`#${tag}`}</span>
+              </Link>
+            );
+          })}
+        </nav>
       </div>
     </div>
   );
@@ -37,25 +47,34 @@ const postHeaderStyle = css`
     font-size: 1.75rem;
     font-weight: var(--font-bold);
     text-align: center;
-    word-break: break-word;
-    word-wrap: break-word;
   }
 
   > div {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    padding-top: 1rem;
     padding-bottom: 0.5rem;
 
-    > span {
+    nav,
+    div {
       display: flex;
-      padding: 0 0.25rem;
+      padding-top: 0.5rem;
+      padding-right: 0.5rem;
       font-size: 1rem;
 
       > svg {
-        width: 0.75rem;
-        margin: 0 0.5rem;
+        width: 1rem;
+        margin-right: 0.5rem;
       }
+    }
+
+    div > span {
+      padding-top: 0.1rem;
+    }
+
+    nav > a {
+      padding-top: 0.1rem;
+      padding-right: 0.5rem;
     }
   }
 `;

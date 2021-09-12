@@ -4,17 +4,18 @@ import { Configure, InstantSearch } from "react-instantsearch-dom";
 
 import { CustomSearchBox } from "./SearchBox";
 import { ConnectedSearchList } from "./SearchList";
+import { ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY, ALGOLIA_INDEX_NAME } from "utils/const";
 
-export function Search() {
-  const searchClient = algoliasearch(
-    process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "",
-    process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY || ""
-  );
-  const indexName = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || "";
+type Props = {
+  handleSearchBox: () => void;
+};
+
+export function Search({ handleSearchBox }: Props) {
+  const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY);
 
   return (
     <div css={searchStyle}>
-      <InstantSearch indexName={indexName} searchClient={searchClient}>
+      <InstantSearch indexName={ALGOLIA_INDEX_NAME} searchClient={searchClient}>
         <Configure
           // https://www.algolia.com/doc/api-reference/search-api-parameters/
           hitsPerPage={10}
@@ -22,15 +23,19 @@ export function Search() {
           analytics
         />
         <CustomSearchBox />
-        <ConnectedSearchList />
+        <ConnectedSearchList handleSearchBox={handleSearchBox} />
       </InstantSearch>
     </div>
   );
 }
 
 const searchStyle = css`
+  position: absolute;
+  top: 0.25rem;
+  right: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding-right: 0.5rem;
-  position: relative;
 `;

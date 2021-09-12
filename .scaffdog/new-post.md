@@ -7,7 +7,7 @@ questions:
   title: "Please enter a blog title."
   tag:
     message: "Please enter a tag name."
-    choices: ["blog", "note", "book"]
+    choices: ["blog", "note"]
 ---
 
 # {{ inputs.name }}/index.md

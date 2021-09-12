@@ -1,10 +1,16 @@
 import { css } from "@emotion/react";
 import { useTranslation } from "react-i18next";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkSlug from "remark-slug";
+import remarkAutolink from "remark-autolink-headings";
+import rehypeHighlight from "rehype-highlight";
 
-import { SEO } from "../../components/SEO";
-import { FrontMatter, getPostById, getPostIDs } from "../../lib/api";
-import { Toc } from "../../components/Toc";
-import { PostHeader } from "../../components/PostHeader";
+import { SEO } from "components/SEO";
+import { FrontMatter, getPostById, getPostIDs } from "lib/api";
+import { Toc } from "components/Toc";
+import { PostHeader } from "components/PostHeader";
+import { dateFormat } from "utils/dateFormat";
 
 type Context = {
   params: {
@@ -14,18 +20,18 @@ type Context = {
 
 type Props = {
   frontMatter: FrontMatter;
-  html: string;
   tocHtml: string;
+  content: string;
 };
 
 export const getStaticProps = async ({ params }: Context): Promise<{ props: Props }> => {
-  const { frontMatter, html, tocHtml } = await getPostById(params.id);
+  const { frontMatter, tocHtml, content } = await getPostById(params.id);
 
   return {
     props: {
       frontMatter,
-      html,
       tocHtml,
+      content,
     },
   };
 };
@@ -45,9 +51,10 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Post({ frontMatter, html, tocHtml }: Props) {
+export default function Post({ frontMatter, tocHtml, content }: Props) {
   const { i18n } = useTranslation();
-  const { description, title, date, timeToRead, excerpt } = frontMatter;
+  const { tags, description, title, date, timeToRead, excerpt } = frontMatter;
+
   return (
     <>
       <SEO title={title} metaDescription={description || excerpt} />
@@ -55,12 +62,33 @@ export default function Post({ frontMatter, html, tocHtml }: Props) {
         <Toc tocHtml={tocHtml} />
       </aside>
       <main css={mainStyle}>
-        <PostHeader locale={i18n.language} title={title} date={date} timeToRead={timeToRead} />
-        <div
-          className="markdown-body"
-          css={mdContentStyle}
-          dangerouslySetInnerHTML={{ __html: html }}
+        <PostHeader
+          tags={tags}
+          publishedAt={dateFormat(new Date(date), i18n.language)}
+          title={title}
+          timeToRead={timeToRead}
         />
+        <ReactMarkdown
+          css={mdContentStyle}
+          className="markdown-body"
+          remarkPlugins={[remarkGfm, remarkSlug, remarkAutolink]}
+          rehypePlugins={[rehypeHighlight]}
+          components={{
+            a: (props) => {
+              return (
+                <a href={props.href} target="_blank" rel="noopener noreferrer">
+                  {props.children}
+                </a>
+              );
+            },
+            img: (props) => {
+              // eslint-disable-next-line @next/next/no-img-element
+              return <img src={props.src} alt={props.alt} loading="lazy" />;
+            },
+          }}
+        >
+          {content}
+        </ReactMarkdown>
       </main>
     </>
   );
@@ -68,8 +96,8 @@ export default function Post({ frontMatter, html, tocHtml }: Props) {
 
 const asideStyle = css`
   position: fixed;
-  left: calc((100% - 50rem) / 2 + 53rem);
-  top: 84px;
+  top: 90px;
+  left: calc(50% + var(--max-width) / 2 + 1rem);
 `;
 
 const mainStyle = css`
@@ -77,17 +105,24 @@ const mainStyle = css`
 `;
 
 const mdContentStyle = css`
-  color: var(--foreground);
   padding: 2rem 0;
+  color: var(--foreground);
 
-  pre {
-    border-radius: 0.25rem;
-    /* TODO: backgraoundのカラーがおかしい... */
-    background: #2e3440;
+  h2 {
+    border-bottom: 1px solid var(--gray-300);
   }
 
-  ul,
+  pre {
+    /* TODO: backgroundのカラーがおかしい... */
+    background: #2e3440;
+    border-radius: 0.25rem;
+  }
+
   ol {
+    list-style-type: decimal;
+  }
+
+  ul {
     list-style-type: disc;
   }
 
@@ -110,5 +145,12 @@ const mdContentStyle = css`
   blockquote {
     color: var(--blockquote-color);
     border-left: 0.25em solid var(--blockquote-border-color);
+  }
+
+  img {
+    display: block;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
   }
 `;

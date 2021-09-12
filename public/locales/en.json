@@ -4,11 +4,8 @@
     "twitter-link": "Open Nissy's Twitter account",
     "switch-dark-mode": "Toggle Dark Mode",
     "switch-light-mode": "Toggle Light Mode",
-    "open-mobile-nav": "Open navigation",
-    "close-mobile-nav": "Close navigation",
     "nav-title": "Top page",
-    "nav-posts": "All posts",
-    "nav-about": "Profile",
+    "nav-profile": "Profile",
     "open-search-box": "Open search box",
     "close-search-box": "Close search box",
     "toggle-theme": "Toggle Dark/Light Mode",
@@ -16,11 +13,9 @@
     "read-more": "Read more",
     "post-list-header": "Latest Posts",
     "table-of-contents": "Table of Contents",
-    "private-study-note": "Private Study Note",
-    "reading-book-note": "Reading Note",
-    "basic-cs-note": "CS knowledge Note",
-    "blog-top-description": "A blog for Nissy",
+    "top-page-description": "A blog for Nissy",
     "search-box-placeholder": "Search here...",
     "search-box": "Search Box",
-    "search-no-results": "No results found for query"
+    "search-no-results": "No results found for query",
+    "tags": "Tags"
 }

@@ -21,10 +21,10 @@ export const CustomSearchBox = () => {
 const customSearchBoxStyle = css`
   display: flex;
   flex-direction: row;
-  background-color: var(--gray-300);
   width: 18.5rem;
   height: 2rem;
   margin-left: auto;
+  background-color: var(--gray-300);
 
   > div {
     flex: 1;

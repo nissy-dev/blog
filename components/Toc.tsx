@@ -24,9 +24,9 @@ const tocStyle = css`
   padding-right: 2rem;
 
   div:nth-of-type(1) {
-    font-weight: var(--font-bold);
     display: flex;
     font-size: 1.25rem;
+    font-weight: var(--font-bold);
     color: var(--foreground);
 
     > svg {
@@ -36,16 +36,17 @@ const tocStyle = css`
   }
 
   div:nth-of-type(2) {
+    height: 80%;
     padding-top: 1rem;
-    word-wrap: break-word;
+    overflow: scroll;
 
     a {
       color: var(--link-color);
     }
 
     > ul > li {
-      border-left: 3px solid var(--gray-300);
       padding: 0.25rem 0 0.25rem 1rem;
+      border-left: 3px solid var(--gray-300);
     }
 
     > ul > li > ul > li {

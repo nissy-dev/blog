@@ -18,6 +18,7 @@ export const GlobalStyle = () => (
 
       /* my global styles */
       :root {
+        --max-width: 52rem;
         /* font: https://zenn.dev */
         --font-body: -apple-system, system-ui, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo,
           sans-serif, "Segoe UI Emoji";
@@ -49,18 +50,20 @@ export const GlobalStyle = () => (
       }
 
       html {
-        line-height: 1.5;
-        font-size: 15px;
         font-family: var(----font-body);
+        font-size: 15px;
+        line-height: 1.5;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
 
       body {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 50rem;
+        max-width: var(--max-width);
         padding: 0 2rem;
+        margin-right: auto;
+        margin-left: auto;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
         background-color: var(--background);
       }
 
