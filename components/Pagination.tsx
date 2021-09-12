@@ -40,7 +40,7 @@ const paginationStyle = css`
   justify-content: center;
   color: var(--foreground);
 
-  div:nth-of-type(1) {
+  > div:nth-of-type(1) {
     padding: 0 1rem;
   }
 `;

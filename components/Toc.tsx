@@ -23,7 +23,7 @@ export const Toc = ({ tocHtml }: Props) => {
 const tocStyle = css`
   padding-right: 2rem;
 
-  div:nth-of-type(1) {
+  > div:nth-of-type(1) {
     display: flex;
     font-size: 1.25rem;
     font-weight: var(--font-bold);
@@ -35,7 +35,7 @@ const tocStyle = css`
     }
   }
 
-  div:nth-of-type(2) {
+  > div:nth-of-type(2) {
     height: 80%;
     padding-top: 1rem;
     overflow: scroll;

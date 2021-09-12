@@ -36,12 +36,12 @@ const headerStyle = css`
   padding-top: 1rem;
   padding-bottom: 0.25rem;
 
-  div:nth-of-type(1) {
+  > div:nth-of-type(1) {
     display: flex;
     flex-direction: row;
   }
 
-  div:nth-of-type(2) {
+  > div:nth-of-type(2) {
     position: relative;
   }
 `;
