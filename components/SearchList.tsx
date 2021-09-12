@@ -1,6 +1,12 @@
 import { css } from "@emotion/react";
-import { Hits, Panel, PoweredBy, Highlight } from "react-instantsearch-dom";
-import { connectStateResults, Hit, StateResultsProvided } from "react-instantsearch-core";
+import { Panel, PoweredBy, Highlight } from "react-instantsearch-dom";
+import {
+  connectStateResults,
+  connectHits,
+  Hit,
+  HitsProvided,
+  StateResultsProvided,
+} from "react-instantsearch-core";
 import { useTranslation } from "react-i18next";
 
 import { Link } from "./Link";
@@ -27,12 +33,13 @@ type HitDoc = FrontMatter & {
 
 type HitComponentProps = {
   hit: Hit<HitDoc>;
+  onClick: () => void;
 };
 
-const HitComponent = ({ hit }: HitComponentProps) => {
+const HitComponent = ({ hit, onClick }: HitComponentProps) => {
   return (
     <div css={hitStyle}>
-      <Link href={`/post/${encodeURIComponent(hit.postId)}`}>
+      <Link href={`/post/${encodeURIComponent(hit.postId)}`} onClick={onClick}>
         <Highlight hit={hit} attribute="title" />
         <Highlight hit={hit} attribute="excerpt" />
         <div>{hit.date}</div>
@@ -73,12 +80,36 @@ const hitStyle = css`
   }
 `;
 
-type Props = StateResultsProvided & {
+type HitsProps = HitsProvided<Hit<HitDoc>> & {
   handleSearchBox: () => void;
 };
 
-const SearchList = (props: Props) => {
-  const { searchState, searchResults } = props;
+const HitList = (props: HitsProps) => {
+  const { hits, handleSearchBox } = props;
+  return (
+    <div>
+      <ul>
+        {hits.map((hit) => {
+          return (
+            <li key={hit.postId}>
+              <HitComponent hit={hit} onClick={handleSearchBox} />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
+
+/* @ts-ignore */
+const CustomHits = connectHits(HitList);
+
+type SearchListProps = StateResultsProvided & {
+  handleSearchBox: () => void;
+};
+
+const SearchList = (props: SearchListProps) => {
+  const { searchState, searchResults, handleSearchBox } = props;
   if (searchState && !searchState.query) {
     return null;
   }
@@ -86,7 +117,8 @@ const SearchList = (props: Props) => {
   return (
     <Panel css={panelStyle} footer={<PoweredBy css={poweredByStyle} />}>
       {searchResults && searchResults.nbHits > 0 ? (
-        <Hits hitComponent={HitComponent} />
+        /* @ts-ignore */
+        <CustomHits handleSearchBox={handleSearchBox} />
       ) : (
         /* @ts-ignore */
         <ErrorComponent searchQuery={searchState.query} />
