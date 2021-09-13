@@ -5,11 +5,11 @@ import en from "public/locales/en.json";
 
 const resources = { ja, en };
 const defaultLocale = "ja";
-export const supportLocales = Object.keys(resources) as Locale[];
 
 export type Locale = keyof typeof resources;
 type i18nKey = keyof typeof resources["ja"];
 
+export const supportLocales = Object.keys(resources) as Locale[];
 const isSupportLocale = (locale: string | undefined): locale is Locale =>
   locale !== undefined && Object.keys(resources).includes(locale);
 
@@ -18,10 +18,10 @@ export const useTranslation = (): {
   locale: Locale;
 } => {
   const { locale } = useRouter();
-  const currLocale = isSupportLocale(locale) ? locale : defaultLocale;
+  const currentLocale = isSupportLocale(locale) ? locale : defaultLocale;
 
   const translate = (key: i18nKey) => {
-    return resources[currLocale][key];
+    return resources[currentLocale][key];
   };
-  return { t: translate, locale: currLocale };
+  return { t: translate, locale: currentLocale };
 };
