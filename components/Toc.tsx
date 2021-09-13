@@ -1,7 +1,8 @@
 import { css } from "@emotion/react";
-import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList } from "@fortawesome/free-solid-svg-icons";
+
+import { useTranslation } from "utils/useTranslation";
 
 type Props = {
   tocHtml: string;

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { css } from "@emotion/react";
-import { useTranslation } from "react-i18next";
 
-import { Link } from "./Link";
-import { ProfileButton } from "./ProfileButton";
-import { SearchButton } from "./SearchButton";
-import { ThemeSwitchButton } from "./ThemeSwitchButton";
-import { Search } from "./Search";
-import { siteMetadata } from "../utils/const";
+import { Link } from "components/Link";
+import { ProfileButton } from "components/ProfileButton";
+import { SearchButton } from "components/SearchButton";
+import { ThemeSwitchButton } from "components/ThemeSwitchButton";
+import { Search } from "components/Search";
+import { siteMetadata } from "utils/const";
+import { useTranslation } from "utils/useTranslation";
 
 export const Header = () => {
   const { t } = useTranslation();

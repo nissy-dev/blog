@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTranslation } from "react-i18next";
 
+import { useTranslation } from "utils/useTranslation";
 import { siteMetadata } from "utils/const";
 
 export const ProfileButton = () => {

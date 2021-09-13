@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "utils/useTranslation";
 
 import { SEO } from "components/SEO";
 import { ArticleListItem } from "components/ArticleListItem";
@@ -27,10 +27,8 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
   };
 };
 
-// const PER_PAGES = 10;
-
 export default function Home({ frontMatters }: Props) {
-  const { t, i18n } = useTranslation();
+  const { t, locale } = useTranslation();
   const { pathname, currentPage, totalPages, currentFrontMatters } = usePagination(frontMatters);
   const title = t("post-list-header");
   const description = t("top-page-description");
@@ -48,7 +46,7 @@ export default function Home({ frontMatters }: Props) {
             tags={frontMatter.tags}
             title={frontMatter.title}
             link={`/post/${encodeURIComponent(frontMatter.id)}`}
-            publishedAt={dateFormat(new Date(frontMatter.date), i18n.language)}
+            publishedAt={dateFormat(new Date(frontMatter.date), locale)}
             timeToRead={frontMatter.timeToRead}
             excerpt={frontMatter.excerpt}
           />

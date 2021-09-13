@@ -7,7 +7,6 @@ import { ThemeProvider } from "next-themes";
 import { GlobalStyle } from "styles/global";
 import { BaseLayout } from "components/BaseLayout";
 import { GA_ID } from "utils/const";
-import "utils/i18n";
 
 export default function App({ Component, pageProps }: AppProps) {
   // PVカウント用コード

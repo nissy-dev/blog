@@ -7,10 +7,10 @@ import {
   HitsProvided,
   StateResultsProvided,
 } from "react-instantsearch-core";
-import { useTranslation } from "react-i18next";
 
-import { Link } from "./Link";
+import { Link } from "components/Link";
 import { FrontMatter } from "lib/api";
+import { useTranslation } from "utils/useTranslation";
 
 type ErrorComponentProps = {
   searchQuery: string;

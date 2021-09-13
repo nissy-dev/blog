@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import { SearchBox } from "react-instantsearch-dom";
-import { useTranslation } from "react-i18next";
+
+import { useTranslation } from "utils/useTranslation";
 
 export const CustomSearchBox = () => {
   const { t } = useTranslation();

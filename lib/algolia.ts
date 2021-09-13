@@ -1,6 +1,6 @@
 import algoliasearch from "algoliasearch";
 
-import { getPostById, getPostIDs } from "./api";
+import { getPostById, getPostIDs } from "lib/api";
 import { extractExcerpt } from "utils/extractExcerpt";
 import { ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY, ALGOLIA_INDEX_NAME } from "utils/const";
 
