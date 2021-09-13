@@ -37,7 +37,7 @@ DeepChem 自体は、応募当初は開発があまり頻繁でなかったり�
 [deepchem / jaxchem: JAXChem is a JAX-based deep learning library for complex and versatile chemical modeling](https://github.com/deepchem/jaxchem)
 
 DeepChem への PR  
-[https://github.com/deepchem/deepchem/pulls/nd-02110114](https://github.com/deepchem/deepchem/pulls/nd-02110114)
+[https://github.com/deepchem/deepchem/pulls/nissy-dev](https://github.com/deepchem/deepchem/pulls/nissy-dev)
 
 GSoC 応募時の Proposal では、Google が開発している自動微分ライブラリの JAX でのモデリングを DeepChem でも可能にする活動をする予定でした。(GSoC 応募時は、TensorFlow でのモデリングしかサポートしていませんでした。) **しかし、JAX での実装はいくつかの課題があり、結局は PyTorch 周りのサポートをコアメンバーと進めていくことにしました。なので、Proposal の通りに実装していたのは最初の 1 ヶ月間のみで、残りの 2 ヶ月間は自分なりに見つけた課題についてコアメンバー協力しつつ実装していく感じとなりました。** また、PyPI パッケージや Docker イメージの配布などがあまり自動化されていなかったので、それらの修正も行っていました。
 

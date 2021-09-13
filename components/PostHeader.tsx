@@ -58,22 +58,19 @@ const postHeaderStyle = css`
     nav,
     div {
       display: flex;
+      align-items: center;
       padding-top: 0.5rem;
       padding-right: 0.5rem;
       font-size: 1rem;
 
       > svg {
         width: 1rem;
+        height: 1rem;
         margin-right: 0.5rem;
       }
     }
 
-    div > span {
-      padding-top: 0.1rem;
-    }
-
     nav > a {
-      padding-top: 0.1rem;
       padding-right: 0.5rem;
     }
   }
