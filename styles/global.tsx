@@ -50,7 +50,7 @@ export const GlobalStyle = () => (
       }
 
       html {
-        font-family: var(----font-body);
+        font-family: var(--font-body);
         font-size: 15px;
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
