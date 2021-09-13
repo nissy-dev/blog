@@ -6,6 +6,10 @@ module.exports = withPWA({
     dest: "public",
     runtimeCaching,
   },
+  i18n: {
+    locales: ["en", "ja"],
+    defaultLocale: "ja",
+  },
   experimental: {
     esmExternals: true,
   },

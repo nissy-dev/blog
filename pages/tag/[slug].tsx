@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-import { useTranslation } from "react-i18next";
 
 import { SEO } from "components/SEO";
 import { ArticleListItem } from "components/ArticleListItem";
@@ -7,6 +6,7 @@ import { Pagination } from "components/Pagination";
 import { FrontMatter, getFrontMatters, getTags } from "lib/api";
 import { dateFormat } from "utils/dateFormat";
 import { usePagination } from "utils/usePagination";
+import { useTranslation, supportLocales } from "utils/useTranslation";
 
 type Context = {
   params: {
@@ -34,19 +34,22 @@ export async function getStaticPaths() {
   const tags = await getTags();
 
   return {
-    paths: tags.map((tag) => {
-      return {
-        params: {
-          slug: tag,
-        },
-      };
+    paths: tags.flatMap((tag) => {
+      return supportLocales.map((locale) => {
+        return {
+          params: {
+            slug: tag,
+          },
+          locale,
+        };
+      });
     }),
     fallback: false,
   };
 }
 
 export default function Tag({ slug, frontMatters }: Props) {
-  const { t, i18n } = useTranslation();
+  const { t, locale } = useTranslation();
   const { pathname, currentPage, totalPages, currentFrontMatters } = usePagination(frontMatters);
   const title = `${t("tags")} : #${slug}`;
 
@@ -63,7 +66,7 @@ export default function Tag({ slug, frontMatters }: Props) {
             tags={frontMatter.tags}
             title={frontMatter.title}
             link={`/post/${encodeURIComponent(frontMatter.id)}`}
-            publishedAt={dateFormat(new Date(frontMatter.date), i18n.language)}
+            publishedAt={dateFormat(new Date(frontMatter.date), locale)}
             timeToRead={frontMatter.timeToRead}
             excerpt={frontMatter.excerpt}
           />

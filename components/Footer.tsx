@@ -2,8 +2,8 @@ import { css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { useTranslation } from "react-i18next";
 
+import { useTranslation } from "utils/useTranslation";
 import { siteMetadata } from "utils/const";
 
 const snsLinks = [
@@ -11,19 +11,19 @@ const snsLinks = [
     snsName: "email",
     href: `mailto:${siteMetadata.email}`,
     icon: faEnvelope,
-    ariaLabel: "email-link",
+    ariaLabel: "email-link" as const,
   },
   {
     snsName: "github",
     href: `https://github.com/${siteMetadata.github}`,
     icon: faGithub,
-    ariaLabel: "github-link",
+    ariaLabel: "github-link" as const,
   },
   {
     snsName: "twitter",
     href: `https://twitter.com/${siteMetadata.twitter}`,
     icon: faTwitter,
-    ariaLabel: "twitter-link",
+    ariaLabel: "twitter-link" as const,
   },
 ];
 

@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkSlug from "remark-slug";
@@ -11,6 +10,7 @@ import { FrontMatter, getPostById, getPostIDs } from "lib/api";
 import { Toc } from "components/Toc";
 import { PostHeader } from "components/PostHeader";
 import { dateFormat } from "utils/dateFormat";
+import { useTranslation, supportLocales } from "utils/useTranslation";
 
 type Context = {
   params: {
@@ -40,19 +40,22 @@ export async function getStaticPaths() {
   const postIds = getPostIDs();
 
   return {
-    paths: postIds.map((postId) => {
-      return {
-        params: {
-          id: postId,
-        },
-      };
+    paths: postIds.flatMap((postId) => {
+      return supportLocales.map((locale) => {
+        return {
+          params: {
+            id: postId,
+          },
+          locale,
+        };
+      });
     }),
     fallback: false,
   };
 }
 
 export default function Post({ frontMatter, tocHtml, content }: Props) {
-  const { i18n } = useTranslation();
+  const { locale } = useTranslation();
   const { tags, description, title, date, timeToRead, excerpt } = frontMatter;
 
   return (
@@ -64,7 +67,7 @@ export default function Post({ frontMatter, tocHtml, content }: Props) {
       <main css={mainStyle}>
         <PostHeader
           tags={tags}
-          publishedAt={dateFormat(new Date(date), i18n.language)}
+          publishedAt={dateFormat(new Date(date), locale)}
           title={title}
           timeToRead={timeToRead}
         />

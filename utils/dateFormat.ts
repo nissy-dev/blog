@@ -1,4 +1,6 @@
-export const dateFormat = (date: Date, locale: string) => {
+import { Locale } from "utils/useTranslation";
+
+export const dateFormat = (date: Date, locale: Locale) => {
   const intlDateFormat = Intl.DateTimeFormat(locale, {
     year: "numeric",
     month: "2-digit",

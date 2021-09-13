@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt, faClock, faTag } from "@fortawesome/free-solid-svg-icons";
 
-import { Link } from "./Link";
+import { Link } from "components/Link";
 
 type Props = {
   tags: Array<string>;

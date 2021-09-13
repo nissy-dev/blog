@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-import { Link } from "./Link";
+import { Link } from "components/Link";
 
 type Props = {
   pathName: string;

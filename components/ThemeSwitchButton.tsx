@@ -1,8 +1,9 @@
 import { css } from "@emotion/react";
 import { useTheme } from "next-themes";
-import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+
+import { useTranslation } from "utils/useTranslation";
 
 export const ThemeSwitchButton = () => {
   const { theme, setTheme, resolvedTheme } = useTheme();

@@ -2,8 +2,8 @@ import { css } from "@emotion/react";
 import algoliasearch from "algoliasearch/lite";
 import { Configure, InstantSearch } from "react-instantsearch-dom";
 
-import { CustomSearchBox } from "./SearchBox";
-import { ConnectedSearchList } from "./SearchList";
+import { CustomSearchBox } from "components/SearchBox";
+import { ConnectedSearchList } from "components/SearchList";
 import { ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY, ALGOLIA_INDEX_NAME } from "utils/const";
 
 type Props = {
