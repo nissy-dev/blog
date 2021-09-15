@@ -43,7 +43,6 @@ export async function getPostById(id: string) {
 }
 
 export function getPostIDs() {
-  // CONTENTS_DIR 直下のディレクトリを全て取得
   const contentsDir = path.join(process.cwd(), CONTENTS_DIR);
   return fs.readdirSync(contentsDir);
 }
