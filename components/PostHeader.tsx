@@ -1,6 +1,8 @@
 import { css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarAlt, faClock, faTag } from "@fortawesome/free-solid-svg-icons";
+import { faTag } from "@fortawesome/free-solid-svg-icons/faTag";
+import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
+import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
 
 import { Link } from "components/Link";
 

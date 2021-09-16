@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons/faHome";
 
 import { useTranslation } from "utils/useTranslation";
 import { siteMetadata } from "utils/const";

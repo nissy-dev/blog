@@ -1,7 +1,8 @@
 import { css } from "@emotion/react";
 import { useTheme } from "next-themes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faSun } from "@fortawesome/free-solid-svg-icons/faSun";
+import { faMoon } from "@fortawesome/free-solid-svg-icons/faMoon";
 
 import { useTranslation } from "utils/useTranslation";
 

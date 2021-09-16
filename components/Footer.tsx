@@ -1,7 +1,8 @@
 import { css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
 
 import { useTranslation } from "utils/useTranslation";
 import { siteMetadata } from "utils/const";

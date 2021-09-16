@@ -16,7 +16,8 @@
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix:prettier": "npm run lint:prettier -- --write",
     "fix:css": "npm run lint:css -- --fix",
-    "post": "scaffdog generate new-post"
+    "post": "scaffdog generate new-post",
+    "bundle-analyzer": "ANALYZE=true next build"
   },
   "dependencies": {
     "@emotion/react": "^11.4.0",
@@ -43,6 +44,7 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.3.0",
+    "@next/bundle-analyzer": "^11.1.2",
     "@types/algoliasearch": "^4.0.0",
     "@types/gtag.js": "^0.0.7",
     "@types/lodash.truncate": "^4.4.6",
