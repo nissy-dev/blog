@@ -36,7 +36,7 @@ export default function Home({ frontMatters }: Props) {
   return (
     <main css={mainStyle}>
       <SEO title={title} metaDescription={description} />
-      <div css={headerStyle}>
+      <div>
         <h1>{title}</h1>
       </div>
       {currentFrontMatters.map((frontMatter) => {
@@ -59,11 +59,11 @@ export default function Home({ frontMatters }: Props) {
 
 const mainStyle = css`
   padding: 2rem 0;
-`;
 
-const headerStyle = css`
-  font-size: 1.5rem;
-  font-weight: var(--font-bold);
-  color: var(--base);
-  text-align: center;
+  > div:nth-of-type(1) {
+    font-size: 1.5rem;
+    font-weight: var(--font-bold);
+    color: var(--base);
+    text-align: center;
+  }
 `;

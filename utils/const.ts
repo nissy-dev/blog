@@ -4,7 +4,7 @@ export const siteMetadata = {
   nickname: "Nissy",
   description: "A blog for Nissy",
   siteUrl: "https://blog.nissy.dev",
-  profileSiteUrl: "",
+  profileSiteUrl: "https://github.com/nissy-dev/nissy.dev", // TODO
   siteRepo: "https://github.com/nissy-dev/blog",
   email: "nd.12021218@gmail.com",
   github: "nissy-dev",

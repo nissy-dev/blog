@@ -33,7 +33,7 @@ export const Footer = () => {
 
   return (
     <footer css={footerStyle}>
-      <div css={iconListStyle}>
+      <div>
         {snsLinks.map((link) => (
           <a
             key={link.snsName}
@@ -42,7 +42,7 @@ export const Footer = () => {
             href={link.href}
             aria-label={t(link.ariaLabel)}
           >
-            <FontAwesomeIcon icon={link.icon} css={IconStyle} />
+            <FontAwesomeIcon icon={link.icon} />
           </a>
         ))}
       </div>
@@ -57,19 +57,19 @@ const footerStyle = css`
   align-items: center;
   padding-bottom: 3rem;
   color: var(--foreground);
-`;
 
-const iconListStyle = css`
-  display: flex;
-  justify-content: space-between;
-  width: 8rem;
-`;
+  > div:nth-of-type(1) {
+    display: flex;
+    justify-content: space-between;
+    width: 8rem;
 
-const IconStyle = css`
-  width: 1.5rem;
-  height: 1.5rem;
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
 
-  :hover {
-    color: var(--base);
+      :hover {
+        color: var(--base);
+      }
+    }
   }
 `;

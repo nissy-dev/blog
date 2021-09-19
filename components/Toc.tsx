@@ -14,7 +14,7 @@ export const Toc = ({ tocHtml }: Props) => {
     <div css={tocStyle}>
       <div>
         <FontAwesomeIcon icon={faList} />
-        {t("table-of-contents")}
+        <span>{t("table-of-contents")}</span>
       </div>
       <div dangerouslySetInnerHTML={{ __html: tocHtml }} />
     </div>
@@ -26,13 +26,18 @@ const tocStyle = css`
 
   > div:nth-of-type(1) {
     display: flex;
+    align-items: center;
     font-size: 1.25rem;
     font-weight: var(--font-bold);
     color: var(--foreground);
 
     > svg {
       width: 1.25rem;
-      margin-right: 0.5rem;
+      height: 1.25rem;
+    }
+
+    > span {
+      padding-left: 0.5rem;
     }
   }
 
@@ -41,17 +46,16 @@ const tocStyle = css`
     padding-top: 1rem;
     overflow: scroll;
 
-    a {
-      color: var(--link-color);
+    li {
+      padding: 0.25rem 0 0.25rem 1rem;
+
+      > a {
+        color: var(--link-color);
+      }
     }
 
     > ul > li {
-      padding: 0.25rem 0 0.25rem 1rem;
       border-left: 3px solid var(--gray-300);
-    }
-
-    > ul > li > ul > li {
-      padding: 0.25rem 0 0.25rem 1rem;
     }
   }
 `;
