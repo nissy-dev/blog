@@ -1,30 +1,29 @@
+import { useState } from "react";
 import { css } from "@emotion/react";
-import algoliasearch from "algoliasearch/lite";
-import { Configure, InstantSearch } from "react-instantsearch-dom";
 
-import { CustomSearchBox } from "components/SearchBox";
-import { ConnectedSearchList } from "components/SearchList";
-import { ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY, ALGOLIA_INDEX_NAME } from "utils/const";
+import { SearchBox } from "components/SearchBox";
+import { SearchList } from "components/SearchList";
+import { useAlgoliaSearch } from "utils/useAlgoliaSearch";
 
 type Props = {
   handleSearchBox: () => void;
 };
 
 export function Search({ handleSearchBox }: Props) {
-  const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY);
+  const [query, setQuery] = useState("");
+  const { searchHits, error } = useAlgoliaSearch(query);
 
   return (
     <div css={searchStyle}>
-      <InstantSearch indexName={ALGOLIA_INDEX_NAME} searchClient={searchClient}>
-        <Configure
-          // https://www.algolia.com/doc/api-reference/search-api-parameters/
-          hitsPerPage={10}
-          removeStopWords
-          analytics
+      <SearchBox query={query} setQuery={setQuery} />
+      {query !== "" && (
+        <SearchList
+          query={query}
+          searchError={error}
+          searchHits={searchHits}
+          handleSearchBox={handleSearchBox}
         />
-        <CustomSearchBox />
-        <ConnectedSearchList handleSearchBox={handleSearchBox} />
-      </InstantSearch>
+      )}
     </div>
   );
 }
