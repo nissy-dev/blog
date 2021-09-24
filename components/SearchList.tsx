@@ -30,7 +30,6 @@ type HitComponentProps = {
 };
 
 const HitComponent = ({ hit, onClick }: HitComponentProps) => {
-  console.log(hit._highlightResult);
   return (
     <Link css={hitStyle} href={`/post/${encodeURIComponent(hit.postId)}`} onClick={onClick}>
       <div dangerouslySetInnerHTML={{ __html: hit._highlightResult?.title?.value as string }} />

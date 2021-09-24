@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome } from "@fortawesome/free-solid-svg-icons/faHome";
 
+import { FaHome } from "components/icons";
 import { useTranslation } from "utils/useTranslation";
 import { siteMetadata } from "utils/const";
 
@@ -16,7 +15,7 @@ export const ProfileButton = () => {
       rel="noopener noreferrer"
       aria-label={t("nav-profile")}
     >
-      <FontAwesomeIcon icon={faHome} />
+      <FaHome />
     </a>
   );
 };

@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faList } from "@fortawesome/free-solid-svg-icons/faList";
 
+import { FaList } from "components/icons";
 import { useTranslation } from "utils/useTranslation";
 
 type Props = {
@@ -13,7 +12,7 @@ export const Toc = ({ tocHtml }: Props) => {
   return (
     <div css={tocStyle}>
       <div>
-        <FontAwesomeIcon icon={faList} />
+        <FaList />
         <span>{t("table-of-contents")}</span>
       </div>
       <div dangerouslySetInnerHTML={{ __html: tocHtml }} />

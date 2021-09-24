@@ -5,7 +5,7 @@ import { SearchBox } from "components/SearchBox";
 import { SearchList } from "components/SearchList";
 import { useAlgoliaSearch } from "utils/useAlgoliaSearch";
 
-type Props = {
+export type Props = {
   handleSearchBox: () => void;
 };
 

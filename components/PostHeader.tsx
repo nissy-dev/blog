@@ -1,10 +1,7 @@
 import { css } from "@emotion/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTag } from "@fortawesome/free-solid-svg-icons/faTag";
-import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
 
 import { Link } from "components/Link";
+import { FaTag, FaCalendarAlt, FaClock } from "components/icons";
 
 type Props = {
   tags: Array<string>;
@@ -19,15 +16,15 @@ export const PostHeader = ({ tags, publishedAt, title, timeToRead }: Props) => {
       <h1>{title}</h1>
       <div>
         <div>
-          <FontAwesomeIcon icon={faCalendarAlt} />
+          <FaCalendarAlt />
           <span>{publishedAt}</span>
         </div>
         <div>
-          <FontAwesomeIcon icon={faClock} />
+          <FaClock />
           <span>{`${timeToRead} min read`}</span>
         </div>
         <nav>
-          <FontAwesomeIcon icon={faTag} />
+          <FaTag />
           {tags.map((tag) => {
             return (
               <Link key={tag} href={`/tag/${encodeURIComponent(tag)}`}>

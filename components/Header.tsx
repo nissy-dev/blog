@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { css } from "@emotion/react";
+import dynamic from "next/dynamic";
 
 import { Link } from "components/Link";
 import { ProfileButton } from "components/ProfileButton";
 import { SearchButton } from "components/SearchButton";
 import { ThemeSwitchButton } from "components/ThemeSwitchButton";
-import { Search } from "components/Search";
+import type { Props as SearchBoxProps } from "components/Search";
 import { siteMetadata } from "utils/const";
 import { useTranslation } from "utils/useTranslation";
+
+const SearchBoxComponent = dynamic<SearchBoxProps>(() =>
+  import("components/Search").then((modules) => modules.Search)
+);
 
 export const Header = () => {
   const { t } = useTranslation();
@@ -24,7 +29,7 @@ export const Header = () => {
         <SearchButton showSearchBox={showSearchBox} onClick={handleSearchBox} />
         <ThemeSwitchButton />
       </div>
-      <div>{showSearchBox && <Search handleSearchBox={handleSearchBox} />}</div>
+      <div>{showSearchBox && <SearchBoxComponent handleSearchBox={handleSearchBox} />}</div>
     </header>
   );
 };

@@ -45,8 +45,6 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png" />
         {/* web app manifestの指定 */}
         <link rel="manifest" href="/site.webmanifest" />
-        {/* 代替URLの指定 */}
-        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         {/* safariでページがピンされたときに表示されるアイコン */}
         <link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg" />
       </Head>

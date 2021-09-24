@@ -1,9 +1,7 @@
 import { css } from "@emotion/react";
 import { useTheme } from "next-themes";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun } from "@fortawesome/free-solid-svg-icons/faSun";
-import { faMoon } from "@fortawesome/free-solid-svg-icons/faMoon";
 
+import { FaMoon, FaSun } from "components/icons";
 import { useTranslation } from "utils/useTranslation";
 
 export const ThemeSwitchButton = () => {
@@ -19,7 +17,7 @@ export const ThemeSwitchButton = () => {
       title={t("toggle-theme")}
       aria-label={isDark ? t("switch-light-mode") : t("switch-dark-mode")}
     >
-      {isDark ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}
+      {isDark ? <FaSun /> : <FaMoon />}
     </button>
   );
 };

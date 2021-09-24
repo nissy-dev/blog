@@ -1,9 +1,6 @@
 import { css } from "@emotion/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
 
+import { FaEnvelope, FaGithub, FaTwitter } from "components/icons";
 import { useTranslation } from "utils/useTranslation";
 import { siteMetadata } from "utils/const";
 
@@ -11,19 +8,19 @@ const snsLinks = [
   {
     snsName: "email",
     href: `mailto:${siteMetadata.email}`,
-    icon: faEnvelope,
+    icon: <FaEnvelope />,
     ariaLabel: "email-link" as const,
   },
   {
     snsName: "github",
     href: `https://github.com/${siteMetadata.github}`,
-    icon: faGithub,
+    icon: <FaGithub />,
     ariaLabel: "github-link" as const,
   },
   {
     snsName: "twitter",
     href: `https://twitter.com/${siteMetadata.twitter}`,
-    icon: faTwitter,
+    icon: <FaTwitter />,
     ariaLabel: "twitter-link" as const,
   },
 ];
@@ -42,7 +39,7 @@ export const Footer = () => {
             href={link.href}
             aria-label={t(link.ariaLabel)}
           >
-            <FontAwesomeIcon icon={link.icon} />
+            {link.icon}
           </a>
         ))}
       </div>

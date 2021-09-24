@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 
+import { FaSearch } from "components/icons";
 import { useTranslation } from "utils/useTranslation";
 
 type Props = {
@@ -20,7 +19,7 @@ export const SearchButton = (props: Props) => {
       title={t("search-box")}
       aria-label={showSearchBox ? t("close-search-box") : t("open-search-box")}
     >
-      <FontAwesomeIcon icon={faSearch} />
+      <FaSearch />
     </button>
   );
 };

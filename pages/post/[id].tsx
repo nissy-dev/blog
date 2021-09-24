@@ -1,9 +1,4 @@
 import { css } from "@emotion/react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import remarkSlug from "remark-slug";
-import remarkAutolink from "remark-autolink-headings";
-import rehypeHighlight from "rehype-highlight";
 
 import { SEO } from "components/SEO";
 import { FrontMatter, getPostById, getPostIDs } from "lib/api";
@@ -21,17 +16,17 @@ type Context = {
 type Props = {
   frontMatter: FrontMatter;
   tocHtml: string;
-  content: string;
+  contentHtml: string;
 };
 
 export const getStaticProps = async ({ params }: Context): Promise<{ props: Props }> => {
-  const { frontMatter, tocHtml, content } = await getPostById(params.id);
+  const { frontMatter, tocHtml, contentHtml } = await getPostById(params.id);
 
   return {
     props: {
       frontMatter,
       tocHtml,
-      content,
+      contentHtml,
     },
   };
 };
@@ -54,7 +49,7 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Post({ frontMatter, tocHtml, content }: Props) {
+export default function Post({ frontMatter, tocHtml, contentHtml }: Props) {
   const { locale } = useTranslation();
   const { tags, description, title, date, timeToRead, excerpt } = frontMatter;
 
@@ -71,27 +66,11 @@ export default function Post({ frontMatter, tocHtml, content }: Props) {
           title={title}
           timeToRead={timeToRead}
         />
-        <ReactMarkdown
+        <div
           css={mdContentStyle}
           className="markdown-body"
-          remarkPlugins={[remarkGfm, remarkSlug, remarkAutolink]}
-          rehypePlugins={[rehypeHighlight]}
-          components={{
-            a: (props) => {
-              return (
-                <a href={props.href} target="_blank" rel="noopener noreferrer">
-                  {props.children}
-                </a>
-              );
-            },
-            img: (props) => {
-              // eslint-disable-next-line @next/next/no-img-element
-              return <img src={props.src} alt={props.alt} loading="lazy" />;
-            },
-          }}
-        >
-          {content}
-        </ReactMarkdown>
+          dangerouslySetInnerHTML={{ __html: contentHtml }}
+        />
       </main>
     </>
   );

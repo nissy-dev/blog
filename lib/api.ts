@@ -4,6 +4,7 @@ import matter from "gray-matter";
 
 import { calcTimeToRead } from "utils/calcTimeToRead";
 import { extractExcerpt } from "utils/extractExcerpt";
+import { mdToHtml } from "utils/mdToHtml";
 import { tocGenerator } from "utils/tocGenerator";
 
 // rootディレクトリから見た時のパスを指定する
@@ -21,6 +22,7 @@ export type FrontMatter = {
 type ParseResult = {
   frontMatter: FrontMatter;
   tocHtml: string;
+  contentHtml: string;
   content: string;
 };
 
@@ -30,16 +32,17 @@ const parseMarkdown = async (mdFileContents: string): Promise<ParseResult> => {
   const excerpt = await extractExcerpt(content);
   const frontMatter = { ...data, timeToRead, excerpt } as FrontMatter;
   const tocHtml = await tocGenerator(content);
-  return { frontMatter, tocHtml, content };
+  const contentHtml = await mdToHtml(content);
+  return { frontMatter, tocHtml, contentHtml, content };
 };
 
 export async function getPostById(id: string) {
   const postDir = id;
   const mdFilePath = path.join(process.cwd(), CONTENTS_DIR, postDir, "index.md");
-  const { frontMatter, tocHtml, content } = await parseMarkdown(
+  const { frontMatter, tocHtml, contentHtml, content } = await parseMarkdown(
     fs.readFileSync(mdFilePath, "utf-8")
   );
-  return { frontMatter, tocHtml, content };
+  return { frontMatter, tocHtml, contentHtml, content };
 }
 
 export function getPostIDs() {
