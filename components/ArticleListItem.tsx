@@ -16,7 +16,7 @@ type Props = {
 export const ArticleListItem = ({ tags, title, link, publishedAt, timeToRead, excerpt }: Props) => {
   const { t } = useTranslation();
   return (
-    <article css={articleListStyle} itemScope itemType="http://schema.org/Article">
+    <article css={articleListStyle} itemScope itemType="https://schema.org/Article">
       <header>
         <h2>
           <Link href={link} itemProp="url">
