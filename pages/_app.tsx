@@ -5,6 +5,7 @@ import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 
 import { GlobalStyle } from "styles/global";
+import { GoogleAnalytics } from "components/GoogleAnalytics";
 import { BaseLayout } from "components/BaseLayout";
 import { GA_ID } from "utils/const";
 
@@ -50,6 +51,8 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       {/* html, body タグへのスタイル定義 */}
       <GlobalStyle />
+      {/* Google Analytics */}
+      <GoogleAnalytics />
       <BaseLayout>
         <Component {...pageProps} />
       </BaseLayout>
