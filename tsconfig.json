@@ -14,11 +14,11 @@
     "allowJs": true,
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "markdown-toc": ["types/markdown-toc.d.ts"]
+      "markdown-toc": ["types/markdown-toc.d.ts.ts"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "src"],
   "exclude": ["node_modules"]
 }
