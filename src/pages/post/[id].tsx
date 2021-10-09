@@ -4,6 +4,7 @@ import { SEO } from "components/SEO";
 import { FrontMatter, getPostById, getPostIDs } from "lib/api";
 import { Toc } from "components/Toc";
 import { PostHeader } from "components/PostHeader";
+import { siteMetadata } from "utils/const";
 import { dateFormat } from "utils/dateFormat";
 import { useTranslation, supportLocales } from "utils/useTranslation";
 
@@ -55,7 +56,11 @@ export default function Post({ frontMatter, tocHtml, contentHtml }: Props) {
 
   return (
     <>
-      <SEO title={title} metaDescription={description || excerpt} />
+      <SEO
+        title={title}
+        metaDescription={description || excerpt}
+        ogpImage={`${siteMetadata.siteUrl}/api/ogp?title=${title}`}
+      />
       <aside css={asideStyle}>
         <Toc tocHtml={tocHtml} />
       </aside>
