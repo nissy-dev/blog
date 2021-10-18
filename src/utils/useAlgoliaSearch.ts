@@ -13,7 +13,6 @@ type HitDoc = FrontMatter & {
 
 export type SearchHitType = Hit<HitDoc>;
 
-// TODO: index も必要であれば外から取るようにしたほうが良さそう
 export const useAlgoliaSearch = (query: string) => {
   const [searchHits, setSearchHits] = useState<SearchHitType[]>([]);
   const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY);

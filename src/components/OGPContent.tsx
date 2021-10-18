@@ -32,7 +32,7 @@ export const OGPContent = (props: Props) => (
 );
 
 const styles = css`
-  /* 文字化け用 */
+  /* TODO: 文字化けを防ぐためにGoogle Fontを読み込む */
   /* stylelint-disable-next-line no-invalid-position-at-import-rule */
   @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700&display=swap");
 
