@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { css } from "@emotion/react";
 
 import { FaList } from "components/icons";
@@ -9,52 +10,71 @@ type Props = {
 
 export const MobileToc = ({ tocHtml }: Props) => {
   const { t } = useTranslation();
+  const [showToc, setState] = useState(false);
   return (
     <div css={tocStyle}>
       <div>
-        <FaList />
+        <button
+          type="button"
+          onClick={() => setState(!showToc)}
+          title={t("toggle-toc")}
+          aria-label={!showToc ? t("open-toc") : t("close-toc")}
+        >
+          <FaList />
+        </button>
         <span>{t("table-of-contents")}</span>
       </div>
-      <div dangerouslySetInnerHTML={{ __html: tocHtml }} />
+      {showToc && <div dangerouslySetInnerHTML={{ __html: tocHtml }} />}
     </div>
   );
 };
 
 const tocStyle = css`
-  padding-right: 2rem;
+  display: none;
 
-  > div:nth-of-type(1) {
+  @media screen and (max-width: 640px) {
     display: flex;
-    align-items: center;
-    font-size: 1.25rem;
-    font-weight: var(--font-bold);
-    color: var(--foreground);
+    flex-direction: column;
+    padding-top: 2rem;
+    padding-right: 2rem;
 
-    > svg {
-      width: 1.25rem;
-      height: 1.25rem;
-    }
+    > div:nth-of-type(1) {
+      display: flex;
+      align-items: center;
 
-    > span {
-      padding-left: 0.5rem;
-    }
-  }
+      > button {
+        width: 2rem;
+        height: 2rem;
+        padding: 0.35rem;
+        color: var(--background);
+        background-color: var(--base);
+        border-radius: 1rem;
+        opacity: 0.8;
+      }
 
-  > div:nth-of-type(2) {
-    height: 80%;
-    padding-top: 1rem;
-    overflow: scroll;
-
-    li {
-      padding: 0.25rem 0 0.25rem 1rem;
-
-      > a {
-        color: var(--link-color);
+      > span {
+        padding-left: 0.5rem;
+        font-size: 1.25rem;
+        font-weight: var(--font-bold);
+        color: var(--base);
       }
     }
 
-    > ul > li {
-      border-left: 3px solid var(--gray-300);
+    > div:nth-of-type(2) {
+      padding-top: 1rem;
+      padding-left: 0.5rem;
+
+      li {
+        padding: 0.25rem 0 0.25rem 1rem;
+
+        > a {
+          color: var(--link-color);
+        }
+      }
+
+      > ul > li {
+        border-left: 3px solid var(--gray-300);
+      }
     }
   }
 `;

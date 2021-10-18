@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-import { useMediaQuery } from "react-responsive";
 
 import { SEO } from "components/SEO";
 import { FrontMatter, getPostById, getPostIDs } from "lib/api";
@@ -53,9 +52,6 @@ export async function getStaticPaths() {
 }
 
 export default function Post({ frontMatter, tocHtml, contentHtml }: Props) {
-  const isMobile = useMediaQuery({
-    query: "(max-width: 640px)",
-  });
   const { locale } = useTranslation();
   const { tags, description, title, date, timeToRead, excerpt } = frontMatter;
 
@@ -66,11 +62,9 @@ export default function Post({ frontMatter, tocHtml, contentHtml }: Props) {
         metaDescription={description || excerpt}
         ogpImage={`${siteMetadata.siteUrl}/api/ogp?title=${title}`}
       />
-      {!isMobile && (
-        <aside css={asideStyle}>
-          <Toc tocHtml={tocHtml} />
-        </aside>
-      )}
+      <aside css={asideStyle}>
+        <Toc tocHtml={tocHtml} />
+      </aside>
       <main css={mainStyle}>
         <PostHeader
           tags={tags}
@@ -78,7 +72,7 @@ export default function Post({ frontMatter, tocHtml, contentHtml }: Props) {
           title={title}
           timeToRead={timeToRead}
         />
-        {isMobile && <MobileToc tocHtml={tocHtml} />}
+        <MobileToc tocHtml={tocHtml} />
         <div
           css={mdContentStyle}
           className="markdown-body"
@@ -93,6 +87,10 @@ const asideStyle = css`
   position: fixed;
   top: 90px;
   left: calc(50% + var(--max-width) / 2 + 1rem);
+
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 const mainStyle = css`
