@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 import { SEO } from "components/SEO";
 import { FrontMatter, getPostById, getPostIDs } from "lib/api";
 import { Toc } from "components/Toc";
+import { MobileToc } from "components/MobileToc";
 import { PostHeader } from "components/PostHeader";
 import { siteMetadata } from "utils/const";
 import { dateFormat } from "utils/dateFormat";
@@ -71,6 +72,7 @@ export default function Post({ frontMatter, tocHtml, contentHtml }: Props) {
           title={title}
           timeToRead={timeToRead}
         />
+        <MobileToc tocHtml={tocHtml} />
         <div
           css={mdContentStyle}
           className="markdown-body"
@@ -85,6 +87,10 @@ const asideStyle = css`
   position: fixed;
   top: 90px;
   left: calc(50% + var(--max-width) / 2 + 1rem);
+
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 const mainStyle = css`

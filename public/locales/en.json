@@ -17,5 +17,8 @@
   "search-box-placeholder": "Search here...",
   "search-box": "Search Box",
   "search-no-results": "No results found for query",
-  "tags": "Tags"
+  "tags": "Tags",
+  "toggle-toc": "Toggle Table of Contents",
+  "open-toc": "Show table of contents",
+  "close-toc": "Hide table of contents"
 }

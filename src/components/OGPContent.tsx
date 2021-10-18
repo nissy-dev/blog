@@ -32,6 +32,10 @@ export const OGPContent = (props: Props) => (
 );
 
 const styles = css`
+  /* 文字化け用 */
+  /* stylelint-disable-next-line no-invalid-position-at-import-rule */
+  @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700&display=swap");
+
   html,
   body {
     width: calc(1200px - 75px * 2);
@@ -43,8 +47,8 @@ const styles = css`
     display: flex;
     flex-direction: column;
     padding: 50px 75px;
-    font-family: -apple-system, system-ui, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo,
-      sans-serif, "Segoe UI Emoji";
+    font-family: "M PLUS 1p", sans-serif;
+    font-weight: 500;
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
@@ -62,7 +66,7 @@ const styles = css`
 
     > span {
       font-size: 48px;
-      font-weight: 600;
+      font-weight: 700;
       color: #ef6c35;
     }
   }
@@ -76,7 +80,7 @@ const styles = css`
 
     > div {
       font-size: 54px;
-      font-weight: 600;
+      font-weight: 700;
       text-align: center;
     }
   }

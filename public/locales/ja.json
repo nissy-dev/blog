@@ -17,5 +17,8 @@
   "search-box-placeholder": "キーワードを入力",
   "search-box": "検索ボックス",
   "search-no-results": "No results found for query",
-  "tags": "タグ"
+  "tags": "タグ",
+  "toggle-toc": "Toggle Table of Contents",
+  "open-toc": "目次を開く",
+  "close-toc": "目次を閉じる"
 }

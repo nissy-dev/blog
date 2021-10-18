@@ -7,9 +7,11 @@ const resources = { ja, en };
 const defaultLocale = "ja";
 
 export type Locale = keyof typeof resources;
+
 type i18nKey = keyof typeof resources["ja"];
 
 export const supportLocales = Object.keys(resources) as Locale[];
+
 const isSupportLocale = (locale: string | undefined): locale is Locale =>
   locale !== undefined && Object.keys(resources).includes(locale);
 
