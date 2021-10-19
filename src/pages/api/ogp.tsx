@@ -19,8 +19,8 @@ export default async function OGP(req: NextApiRequest, res: NextApiResponse): Pr
   const image = await page.screenshot({ type: "png" });
   await browser.close();
 
-  // APIレスポンスの生成;
-  // res.setHeader("Cache-Control", "s-maxage=31536000, stale-while-revalidate");
+  // APIレスポンスの生成
+  res.setHeader("Cache-Control", "max-age=216000, s-maxage=216000, stale-while-revalidate");
   res.setHeader("Content-Type", "image/png");
   res.end(image);
 }
