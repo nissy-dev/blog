@@ -62,7 +62,7 @@ export default function Post({ frontMatter, tocHtml, contentHtml }: Props) {
         metaDescription={description || excerpt}
         ogpImage={`${siteMetadata.siteUrl}/api/ogp?title=${title}`}
       />
-      <aside css={asideStyle}>
+      <aside css={tocWrapperStyle}>
         <Toc tocHtml={tocHtml} />
       </aside>
       <main css={mainStyle}>
@@ -72,7 +72,9 @@ export default function Post({ frontMatter, tocHtml, contentHtml }: Props) {
           title={title}
           timeToRead={timeToRead}
         />
-        <MobileToc tocHtml={tocHtml} />
+        <div css={mobileTocWrapperStyle}>
+          <MobileToc tocHtml={tocHtml} />
+        </div>
         <div
           css={mdContentStyle}
           className="markdown-body"
@@ -83,7 +85,7 @@ export default function Post({ frontMatter, tocHtml, contentHtml }: Props) {
   );
 }
 
-const asideStyle = css`
+const tocWrapperStyle = css`
   position: fixed;
   top: 90px;
   left: calc(50% + var(--max-width) / 2 + 1rem);
@@ -95,6 +97,15 @@ const asideStyle = css`
 
 const mainStyle = css`
   padding: 2rem 0;
+`;
+
+const mobileTocWrapperStyle = css`
+  padding-top: 2rem;
+  padding-right: 2rem;
+
+  @media screen and (min-width: 640px) {
+    display: none;
+  }
 `;
 
 const mdContentStyle = css`

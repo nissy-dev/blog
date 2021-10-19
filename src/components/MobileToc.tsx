@@ -30,50 +30,44 @@ export const MobileToc = ({ tocHtml }: Props) => {
 };
 
 const tocStyle = css`
-  display: none;
+  display: flex;
+  flex-direction: column;
 
-  @media screen and (max-width: 640px) {
+  > div:nth-of-type(1) {
     display: flex;
-    flex-direction: column;
-    padding-top: 2rem;
-    padding-right: 2rem;
+    align-items: center;
 
-    > div:nth-of-type(1) {
-      display: flex;
-      align-items: center;
+    > button {
+      width: 2rem;
+      height: 2rem;
+      padding: 0.35rem;
+      color: var(--background);
+      background-color: var(--base);
+      border-radius: 1rem;
+    }
 
-      > button {
-        width: 2rem;
-        height: 2rem;
-        padding: 0.35rem;
-        color: var(--background);
-        background-color: var(--base);
-        border-radius: 1rem;
-      }
+    > span {
+      padding-left: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: var(--font-bold);
+      color: var(--base);
+    }
+  }
 
-      > span {
-        padding-left: 0.5rem;
-        font-size: 1.25rem;
-        font-weight: var(--font-bold);
-        color: var(--base);
+  > div:nth-of-type(2) {
+    padding-top: 1rem;
+    padding-left: 0.5rem;
+
+    li {
+      padding: 0.25rem 0 0.25rem 1rem;
+
+      > a {
+        color: var(--link-color);
       }
     }
 
-    > div:nth-of-type(2) {
-      padding-top: 1rem;
-      padding-left: 0.5rem;
-
-      li {
-        padding: 0.25rem 0 0.25rem 1rem;
-
-        > a {
-          color: var(--link-color);
-        }
-      }
-
-      > ul > li {
-        border-left: 3px solid var(--gray-300);
-      }
+    > ul > li {
+      border-left: 3px solid var(--gray-300);
     }
   }
 `;
