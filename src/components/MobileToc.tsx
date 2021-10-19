@@ -49,7 +49,6 @@ const tocStyle = css`
         color: var(--background);
         background-color: var(--base);
         border-radius: 1rem;
-        opacity: 0.8;
       }
 
       > span {
