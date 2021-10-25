@@ -110,6 +110,7 @@ const mobileTocWrapperStyle = css`
 
 const mdContentStyle = css`
   padding: 2rem 0;
+  line-height: 1.75;
   color: var(--foreground);
 
   h2 {
