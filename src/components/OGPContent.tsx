@@ -4,7 +4,7 @@ import { siteMetadata } from "utils/const";
 import { FaGithub } from "components/icons";
 
 type Props = {
-  title: string;
+  html: string;
 };
 
 export const OGPContent = (props: Props) => (
@@ -15,7 +15,7 @@ export const OGPContent = (props: Props) => (
         <span>{siteMetadata.title}</span>
       </header>
       <main>
-        <div>{props.title}</div>
+        <div dangerouslySetInnerHTML={{ __html: props.html }} />
       </main>
       <footer>
         <div>

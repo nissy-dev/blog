@@ -1,13 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import ReactDOM from "react-dom/server";
 import * as playwright from "playwright-aws-lambda";
+import DOMPurify from "isomorphic-dompurify";
+import { loadDefaultJapaneseParser } from "budoux";
 
 import { OGPContent } from "components/OGPContent";
 
 export default async function OGP(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   // HTMLの生成
   const { title } = req.query;
-  const props = { title: (title as string) ?? "" };
+  // XSSを防ぐためにDOMPurifyを使用
+  const sanitizedTitle = DOMPurify.sanitize((title as string) ?? "");
+  const parser = loadDefaultJapaneseParser();
+  const props = { html: parser.translateHTMLString(sanitizedTitle) };
   const markup = ReactDOM.renderToStaticMarkup(<OGPContent {...props} />);
   const html = `<!doctype html>${markup}`;
 
