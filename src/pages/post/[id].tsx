@@ -112,6 +112,7 @@ const mdContentStyle = css`
   padding: 2rem 0;
   line-height: 1.75;
   color: var(--foreground);
+  background-color: var(--background);
 
   h2 {
     border-bottom: 1px solid var(--gray-300);
