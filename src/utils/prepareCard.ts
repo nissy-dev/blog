@@ -28,7 +28,7 @@ export const extractCardData = async (url: string): Promise<CardData | undefined
     data.favicon = `https://www.google.com/s2/favicons?domain=${hostname}`;
     data.url = url;
   } catch (e) {
-    throw Error("Unable to extract card data");
+    return undefined;
   }
 
   if (!cardDataValidator(data)) {
