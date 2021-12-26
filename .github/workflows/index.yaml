@@ -11,6 +11,7 @@ jobs:
         uses: actions/checkout@v1
       - name: update index
         run: |
+          apt-get update -y && apt -y install jq
           CONFIG=$(cat docsearch.json | jq -r tostring)
           pipenv run python -m src.index
         env:
