@@ -158,4 +158,69 @@ const mdContentStyle = css`
     margin-right: auto;
     margin-left: auto;
   }
+
+  .card-link {
+    display: flex;
+    flex-direction: row;
+    max-height: 7rem;
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--foreground);
+    border: 1px solid var(--gray-300);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem var(--gray-300);
+  }
+
+  .card-link:hover {
+    text-decoration: none;
+  }
+
+  .card-content {
+    flex: 1;
+    min-width: 0;
+
+    > .card-content-title {
+      overflow: hidden;
+      font-weight: var(--font-bold);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    > .card-content-description {
+      padding: 0.5rem 0;
+      overflow: hidden;
+      font-size: 0.5rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    > .card-content-hostname {
+      display: flex;
+      flex-direction: row;
+      font-size: 0.25rem;
+
+      > img {
+        width: 1rem;
+        margin-right: 0.25rem;
+        margin-left: 0;
+      }
+    }
+  }
+
+  .card-thumbnail {
+    display: flex;
+    width: 20%;
+    padding-left: 0.5rem;
+    text-align: center;
+
+    > img {
+      object-fit: contain;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .card-thumbnail {
+      width: 30%;
+    }
+  }
 `;
