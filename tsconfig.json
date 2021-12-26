@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "module": "esnext",
     "strict": true,
     "esModuleInterop": true,
@@ -16,9 +19,17 @@
     "jsxImportSource": "@emotion/react",
     "baseUrl": "src",
     "paths": {
-      "markdown-toc": ["types/markdown-toc.d.ts.ts"]
-    }
+      "markdown-toc": [
+        "types/markdown-toc.d.ts.ts"
+      ]
+    },
+    "incremental": true
   },
-  "include": ["next-env.d.ts", "src"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
