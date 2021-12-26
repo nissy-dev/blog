@@ -1,0 +1,12 @@
+{
+  "index_name": "blog.nissy.dev",
+  "sitemap_urls": ["https://blog.nissy.dev/sitemap.xml"],
+  "selectors": {
+    "lvl0": "#__next main div h1",
+    "lvl1": ".markdown-body h2",
+    "lvl2": ".markdown-body h3",
+    "lvl3": ".markdown-body h4",
+    "lvl4": ".markdown-body h5",
+    "text": ".markdown-body p, .markdown-body li"
+  }
+}
