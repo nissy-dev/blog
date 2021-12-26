@@ -1,9 +1,11 @@
+// See: https://github.com/styled-components/styled-components/issues/3607
 module.exports = {
-  processors: ["stylelint-processor-styled-components"],
-  extends: [
-    "stylelint-config-recommended",
-    "stylelint-config-styled-components",
-    "stylelint-config-recess-order",
+  extends: ["stylelint-config-recommended", "stylelint-config-recess-order"],
+  overrides: [
+    {
+      files: ["**/*.{js,ts,jsx,tsx}"],
+      customSyntax: "@stylelint/postcss-css-in-js",
+    },
   ],
   rules: {
     "no-descending-specificity": null,
