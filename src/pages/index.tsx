@@ -5,7 +5,6 @@ import { SEO } from "components/SEO";
 import { ArticleListItem } from "components/ArticleListItem";
 import { Pagination } from "components/Pagination";
 import { FrontMatter, getFrontMatters } from "lib/api";
-import { generateIndex } from "lib/algolia";
 import { dateFormat } from "utils/dateFormat";
 import { usePagination } from "utils/usePagination";
 
@@ -14,10 +13,6 @@ type Props = {
 };
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
-  if (process.env.NODE_ENV === "production") {
-    await generateIndex();
-  }
-
   const frontMatters = await getFrontMatters();
 
   return {

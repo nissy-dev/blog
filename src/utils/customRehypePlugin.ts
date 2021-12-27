@@ -4,7 +4,7 @@ import { is } from "unist-util-is";
 import { Root as HastRoot, Element, ElementContent } from "hast";
 import { h } from "hastscript";
 
-import { extractCardData, CardData } from "./prepareCard";
+import { extractCardData, CardData } from "./extractCardData";
 
 type PartialRequired<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
 
