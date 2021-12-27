@@ -69,14 +69,14 @@ const buildCardContent = (cardData: CardData) => {
     h("div", { class: "card-content-title" }, cardData.title),
     h("div", { class: "card-content-description" }, cardData.description),
     h("div", { class: "card-content-hostname" }, [
-      h("img", { src: cardData.favicon, class: "hostname-favicon" }),
+      h("img", { src: cardData.favicon, class: "hostname-favicon", loading: "lazy" }),
       h("span", { class: "hostname-favicon" }, cardData.hostname),
     ]),
   ]);
 
   if (cardData.image) {
     const cardImgContent = h("div", { class: "card-thumbnail" }, [
-      h("img", { src: cardData.image, class: "thumbnail-img" }),
+      h("img", { src: cardData.image, class: "thumbnail-img", loading: "lazy" }),
     ]);
     return h(
       "a",
