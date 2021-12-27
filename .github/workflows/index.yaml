@@ -4,13 +4,13 @@ jobs:
   update-index:
     if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
-    container:
-      image: algolia/docsearch-scraper
     steps:
       - name: checkout
         uses: actions/checkout@v1
       - name: update index
+        uses: algolia/docsearch-scraper
         run: |
+          ls
           apt-get update -y && apt -y install jq
           CONFIG=$(cat docsearch.json | jq -r tostring)
           pipenv run python -m src.index
