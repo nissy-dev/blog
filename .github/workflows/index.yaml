@@ -9,10 +9,17 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v1
+      - name: prepare environment variable
+        run: |
+          apt-get update -y && apt -y install jq
+          echo "CONFIG=$(cat docsearch.json | jq -r tostring)" >> $GITHUB_ENV
+      # see: https://github.com/adapttive/algolia-docsearch-action
       - name: update index
         run: |
-          CONFIG=$(cat docsearch.json | jq -r tostring)
-          pipenv run python -m src.index
+          cd /root && pipenv install && pipenv run python -m src.index
         env:
+          WORKON_HOME: /root
+          PIPENV_PIPFILE: /root/Pipfile
           API_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
           APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          CONFIG: ${{ env.CONFIG }}
