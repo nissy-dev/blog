@@ -14,18 +14,16 @@ export const Header = () => {
 
   return (
     <header css={headerStyle}>
-      <div>
-        <Link css={titleContainerStyle} href="/" aria-label={t("nav-title")}>
-          <h1>{siteMetadata.title}</h1>
-        </Link>
-        <ProfileButton />
-        <ThemeSwitchButton />
-        <DocSearch
-          appId={ALGOLIA_APP_ID}
-          indexName={ALGOLIA_INDEX_NAME}
-          apiKey={ALGOLIA_SEARCH_KEY}
-        />
-      </div>
+      <Link css={titleContainerStyle} href="/" aria-label={t("nav-title")}>
+        <h1>{siteMetadata.title}</h1>
+      </Link>
+      <ProfileButton />
+      <ThemeSwitchButton />
+      <DocSearch
+        appId={ALGOLIA_APP_ID}
+        indexName={ALGOLIA_INDEX_NAME}
+        apiKey={ALGOLIA_SEARCH_KEY}
+      />
     </header>
   );
 };
@@ -33,17 +31,12 @@ export const Header = () => {
 const headerStyle = css`
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding-top: 1rem;
   padding-bottom: 0.25rem;
 
-  > div:nth-of-type(1) {
-    display: flex;
-    flex-direction: row;
-  }
-
-  > div:nth-of-type(2) {
-    position: relative;
+  > button:nth-of-type(2) {
+    margin-left: 0;
   }
 `;
 
