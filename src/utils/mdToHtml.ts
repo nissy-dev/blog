@@ -19,9 +19,9 @@ export const mdToHtml = async (content: string): Promise<string> => {
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings)
     .use(rehypeHighlight)
+    .use(rehypeConvertLinkToCard)
     .use(rehypeInsertTargetBlank)
     .use(rehypeInsertLazyload)
-    .use(rehypeConvertLinkToCard)
     .use(rehypeStringify);
   const contentHtml = await mdProcessor.process(content);
   return contentHtml.toString();

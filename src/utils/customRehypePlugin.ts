@@ -69,25 +69,17 @@ const buildCardContent = (cardData: CardData) => {
     h("div", { class: "card-content-title" }, cardData.title),
     h("div", { class: "card-content-description" }, cardData.description),
     h("div", { class: "card-content-hostname" }, [
-      h("img", { src: cardData.favicon, class: "hostname-favicon", loading: "lazy" }),
+      h("img", { src: cardData.favicon, class: "hostname-favicon" }),
       h("span", { class: "hostname-favicon" }, cardData.hostname),
     ]),
   ]);
 
   if (cardData.image) {
     const cardImgContent = h("div", { class: "card-thumbnail" }, [
-      h("img", { src: cardData.image, class: "thumbnail-img", loading: "lazy" }),
+      h("img", { src: cardData.image, class: "thumbnail-img" }),
     ]);
-    return h(
-      "a",
-      { class: "card-link", target: "_blank", rel: "noopener noreferrer", href: cardData.url },
-      [cardContentNode, cardImgContent]
-    );
+    return h("a", { class: "card-link", href: cardData.url }, [cardContentNode, cardImgContent]);
   } else {
-    return h(
-      "a",
-      { class: "card-link", target: "_blank", rel: "noopener noreferrer", href: cardData.url },
-      [cardContentNode]
-    );
+    return h("a", { class: "card-link", href: cardData.url }, [cardContentNode]);
   }
 };
