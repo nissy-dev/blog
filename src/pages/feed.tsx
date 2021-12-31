@@ -11,7 +11,7 @@ async function generateFeedXml() {
     id: siteMetadata.siteUrl,
     title: siteMetadata.title,
     description: siteMetadata.description,
-    copyright: "Copyright (C) 2020 Daiki Nishikawa",
+    copyright: "Copyright (C) 2021 Daiki Nishikawa",
     language: "ja",
   });
 
