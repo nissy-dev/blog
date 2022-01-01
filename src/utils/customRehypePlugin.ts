@@ -75,11 +75,18 @@ const buildCardContent = (cardData: CardData) => {
   ]);
 
   if (cardData.image) {
-    const cardImgContent = h("div", { class: "card-thumbnail" }, [
+    const cardThumbnailContent = h("div", { class: "card-thumbnail" }, [
       h("img", { src: cardData.image, class: "thumbnail-img" }),
     ]);
-    return h("a", { class: "card-link", href: cardData.url }, [cardContentNode, cardImgContent]);
+    return h("a", { class: "card-link", href: cardData.url }, [
+      cardContentNode,
+      cardThumbnailContent,
+    ]);
   } else {
-    return h("a", { class: "card-link", href: cardData.url }, [cardContentNode]);
+    const cardThumbnailContent = h("div", { class: "card-thumbnail" });
+    return h("a", { class: "card-link", href: cardData.url }, [
+      cardContentNode,
+      cardThumbnailContent,
+    ]);
   }
 };

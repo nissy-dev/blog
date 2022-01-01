@@ -1,4 +1,4 @@
-import ogs, { OpenGraphImage } from "open-graph-scraper";
+import ogs, { OpenGraphImage, SuccessResult } from "open-graph-scraper";
 
 export type CardData = {
   title: string;
@@ -16,14 +16,14 @@ const cardDataValidator = (data: { [key: string]: string | undefined }): data is
 export const extractCardData = async (url: string): Promise<CardData | undefined> => {
   const data: { [key: string]: string | undefined } = {};
   try {
-    const ogsData = await ogs({ url });
-    if (!ogsData.error) {
-      const { result } = ogsData;
-      data.title = result.ogTitle;
-      data.description = result.ogDescription;
-      // ここは型が複雑なので、キャストした
-      data.image = (result.ogImage as OpenGraphImage).url;
-    }
+    // @ts-ignore: 型が間違っている
+    const ogsData = await ogs({ url, downloadLimit: 1000000 * 20 });
+    // @ts-ignore: 型が間違っている
+    const { result } = ogsData as SuccessResult;
+    data.title = result.ogTitle;
+    data.description = result.ogDescription;
+    // ここは型が複雑なので、キャストした
+    data.image = (result.ogImage as OpenGraphImage).url;
     const hostname = new URL(url).hostname;
     data.hostname = hostname;
     data.favicon = `https://www.google.com/s2/favicons?domain=${hostname}`;

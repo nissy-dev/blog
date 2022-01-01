@@ -165,7 +165,7 @@ const mdContentStyle = css`
     flex-direction: row;
     max-height: 7rem;
     padding: 0.5rem 0 0.5rem 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
     color: var(--foreground);
     border: 1px solid var(--gray-300);
     border-radius: 0.5rem;
