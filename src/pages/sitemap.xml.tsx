@@ -1,5 +1,5 @@
 // see: https://zenn.dev/catnose99/articles/c441954a987c24
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps } from "next";
 
 import { getFrontMatters } from "lib/api";
 import { siteMetadata } from "utils/const";
@@ -22,7 +22,7 @@ async function generateSitemapXml(): Promise<string> {
   return xml;
 }
 
-export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const xml = await generateSitemapXml();
 
   res.statusCode = 200;

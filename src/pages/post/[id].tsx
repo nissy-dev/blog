@@ -34,7 +34,7 @@ export const getStaticProps = async ({ params }: Context): Promise<{ props: Prop
 };
 
 export async function getStaticPaths() {
-  const postIds = getPostIDs();
+  const postIds = await getPostIDs();
 
   return {
     paths: postIds.flatMap((postId) => {

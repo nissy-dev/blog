@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
 
@@ -29,29 +29,30 @@ type ParseResult = {
 const parseMarkdown = async (mdFileContents: string): Promise<ParseResult> => {
   const { data, content } = matter(mdFileContents);
   const timeToRead = calcTimeToRead(content);
-  const excerpt = await extractExcerpt(content);
+  const [excerpt, tocHtml, contentHtml] = await Promise.all([
+    extractExcerpt(content),
+    tocGenerator(content),
+    mdToHtml(content),
+  ]);
   const frontMatter = { ...data, timeToRead, excerpt } as FrontMatter;
-  const tocHtml = await tocGenerator(content);
-  const contentHtml = await mdToHtml(content);
   return { frontMatter, tocHtml, contentHtml, content };
 };
 
 export async function getPostById(id: string) {
   const postDir = id;
   const mdFilePath = path.join(process.cwd(), CONTENTS_DIR, postDir, "index.md");
-  const { frontMatter, tocHtml, contentHtml, content } = await parseMarkdown(
-    fs.readFileSync(mdFilePath, "utf-8")
-  );
+  const mdFileContents = await fs.readFile(mdFilePath, "utf8");
+  const { frontMatter, tocHtml, contentHtml, content } = await parseMarkdown(mdFileContents);
   return { frontMatter, tocHtml, contentHtml, content };
 }
 
-export function getPostIDs() {
+export async function getPostIDs() {
   const contentsDir = path.join(process.cwd(), CONTENTS_DIR);
-  return fs.readdirSync(contentsDir);
+  return fs.readdir(contentsDir);
 }
 
 export async function getFrontMatters(tag?: string) {
-  const allPostIds = getPostIDs();
+  const allPostIds = await getPostIDs();
   const getFrontMatterPromises = allPostIds.map(async (postId) => {
     const { frontMatter } = await getPostById(postId);
     return { id: postId, ...frontMatter };
@@ -59,14 +60,14 @@ export async function getFrontMatters(tag?: string) {
 
   let frontMatters = await Promise.all(getFrontMatterPromises);
   if (tag !== undefined) {
-    frontMatters = frontMatters.filter((frontMatter) => frontMatter.tags?.includes(tag));
+    frontMatters = frontMatters.filter((frontMatter) => frontMatter.tags.includes(tag));
   }
   // 投稿日が新しい順に並び替える
   return frontMatters.sort((a, b) => (a.date > b.date ? -1 : 1));
 }
 
 export async function getTags() {
-  const allPostIds = getPostIDs();
+  const allPostIds = await getPostIDs();
   const getFrontMatterPromises = allPostIds.map(async (postId) => {
     const { frontMatter } = await getPostById(postId);
     return { id: postId, ...frontMatter };

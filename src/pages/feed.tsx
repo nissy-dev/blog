@@ -1,5 +1,5 @@
 // see: https://zenn.dev/catnose99/articles/c7754ba6e4adac
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps } from "next";
 
 import { Feed } from "feed";
 
@@ -28,7 +28,7 @@ async function generateFeedXml() {
   return feed.rss2();
 }
 
-export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const xml = await generateFeedXml();
 
   res.statusCode = 200;
