@@ -1,5 +1,8 @@
 name: Update index
-on: [deployment_status]
+on:
+  deployment_status:
+    branches:
+      - main
 jobs:
   update-index:
     if: github.event.deployment_status.state == 'success'
