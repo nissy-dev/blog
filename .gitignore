@@ -106,3 +106,5 @@ dist
 # pwa output
 public/sw*
 public/workbox*
+public/sitemap.xml
+public/feed

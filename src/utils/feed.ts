@@ -1,17 +1,18 @@
 // see: https://zenn.dev/catnose99/articles/c7754ba6e4adac
-import { GetServerSideProps } from "next";
+import fs from "fs";
+import path from "path";
 
 import { Feed } from "feed";
 
 import { getFrontMatters } from "lib/api";
 import { siteMetadata } from "utils/const";
 
-async function generateFeedXml() {
+export async function generateFeedXml(): Promise<void> {
   const feed = new Feed({
     id: siteMetadata.siteUrl,
     title: siteMetadata.title,
     description: siteMetadata.description,
-    copyright: "Copyright (C) 2021 Daiki Nishikawa",
+    copyright: `Copyright (C) ${new Date().getFullYear()} Daiki Nishikawa`,
     language: "ja",
   });
 
@@ -25,21 +26,5 @@ async function generateFeedXml() {
     });
   });
 
-  return feed.rss2();
+  fs.writeFileSync(path.join(process.cwd(), "public", "feed"), feed.rss2());
 }
-
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const xml = await generateFeedXml();
-
-  res.statusCode = 200;
-  res.setHeader("Cache-Control", "s-maxage=86400, stale-while-revalidate"); // 24時間キャッシュする
-  res.setHeader("Content-Type", "text/xml");
-  res.end(xml);
-
-  return {
-    props: {},
-  };
-};
-
-const Page = () => null;
-export default Page;
