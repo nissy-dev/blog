@@ -26,7 +26,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
-    "@svgr/webpack": "^6.1.2",
+    "@svgr/webpack": "^6.2.0",
     "budoux": "^0.0.3",
     "feed": "^4.2.2",
     "github-markdown-css": "^5.1.0",
