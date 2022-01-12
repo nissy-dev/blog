@@ -7,18 +7,12 @@ import { Pagination } from "components/Pagination";
 import { FrontMatter, getFrontMatters } from "lib/api";
 import { dateFormat } from "utils/dateFormat";
 import { usePagination } from "utils/usePagination";
-import { generateSitemapXml } from "utils/sitemap";
-import { generateFeedXml } from "utils/feed";
 
 type Props = {
   frontMatters: Array<{ id: string } & FrontMatter>;
 };
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
-  // TODD: ESMなどの関係上、TSのスクリプトをnodeで実行させるのが大変なのでここで実行させている
-  await generateSitemapXml();
-  await generateFeedXml();
-
   const frontMatters = await getFrontMatters();
 
   return {
