@@ -1,0 +1,156 @@
+---
+title: "Web Speed Hackathon 2021 mini での学び"
+date: "2022-01-16T08:16:31.263Z"
+description: "Web Speed Hackathon 2021 mini で学習できたことを振り返ります。"
+tags: ["blog"]
+---
+
+Web Speed Hackathon 2021 mini に参加していたのですが、[こちら](https://trap.jp/post/1481/)のほぼ満点を出した人の記事を元に、自分でも色々やってみた時に学習したことをまとめます。
+
+[こちらのスクラップ](https://zenn.dev/nissy_dev/scraps/ee4f104134e064)でまとめていたのですが、色々興味のある内容があって話が脱線することも多かったので、再度自分のためにまとめ直した記事です。
+
+## 学んだこと
+
+### CSS のプロパティ
+
+#### object-fit
+
+縦横比を維持、中央配置、トリミング、以上がすべて自動で行われる `object-fit: cover` をよく使う気がする。背景画像については、似たような設定が `background-size` でできることは知っていたが、画像については知らなかった。
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
+
+#### aspect-ratio
+
+名前の通り、要素の縦横のアスペクト比を定義できる。`aspect-ratio`は、レイアウトシフトを防ぐことにも効果を発揮することがある。
+
+Flexbox の場合、要素のコンテンツによって幅や高さが決定することがあり、レイアウトシフトの原因になっている。予め、`aspect-ratio` で要素の幅と高さを決めることで、レイアウトシフトを防ぐことが可能。
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
+
+### 画像のファイル形式
+
+WebP にすべきかと思っていたけど、より高画質でサイズの小さい AVIF と呼ばれる形式が最近は開発されている。(サポートブラウザは、[こちら](https://caniuse.com/avif)を参考)
+
+さらに、ユーザの UX を考えると、プログレッシブな画像のほうが好ましいい場合も多い。プログレッシブな画像というのは、徐々にレンダリングされる画像のこと。PNG や JPEG はプログレッシブだが、WebP はプログレッシブではない。このため、プログレッシブに対応した WebP2 も開発されている。以下のブログの内容は、非常に勉強になった。
+
+https://zenn.dev/gunta/articles/64de0540bafb3d
+
+### 動画のファイル形式
+
+ブラウザでの再生なら WebM のフォーマットが良い。ソースはあまり見つけられなかったが、Google が積極的にブラウザに有利なフォーマットとして開発しているらしい。昨年夏に Safari が対応したので、Chrome、Safari、Firefox などの主要なブラウザでは扱う事ができる。
+
+### Passive Event Listeners
+
+スクロールに関するイベントリスナーは、以下のように第 3 引数に `passive: true` を渡すことで、スクロール時のパフォーマンスを改善できる。
+
+```js
+document.addEventListener("touchstart", onTouchStart, { passive: true });
+```
+
+jxck さんのブログに、この機能が解決する問題が細かく解説されている。
+
+> Scroll Event にイベントリスナが登録された場合、そのイベントリスナの中で preventDefault() が呼ばれる場合は、スクロールを止めなくてはいけない。
+
+> ところが、登録されたイベントリスナの中で preventDefault() が実行されるかどうかは、実際にイベントリスナを実行してみないとわからない。
+
+> つまりブラウザは、 Scroll Event にイベントリスナが登録されている場合、ハンドラの実行が完了し preventDefault() が呼ばれなかったことを確認してからでないと、スクロールすることができない。
+
+https://blog.jxck.io/entries/2016-06-09/passive-event-listeners.html
+
+https://web.dev/uses-passive-event-listeners/
+
+### JS でのバイナリデータの扱い方
+
+#### ArrayBuffer と TypedArray
+
+ArrayBuffer は、バイナリデータを扱うための基底クラスで、バイナリデータを格納する箱 (領域) のイメージ。TypedArray (Unit8Array, Uint16Array など) は、ArrayBuffer を操作するためのクラス。TypedArray からしかバイナリデータを追加、削除することはできない。どちらも ES2015 で標準化されたクラス。
+
+```ts
+const buf = new ArrayBuffer(8);
+console.log(buf); // ArrayBuffer { byteLength: 8 }
+buf[0] = 0; // エラーは出ないけど、値として反映されない
+
+const ua = new Uint8Array(buf);
+console.log(ua); // Uint8Array [ 0, 0, 0, 0, 0, 0, 0, 0 ]
+ua[0] = 1;
+console.log(ua); // Uint8Array [ 1, 0, 0, 0, 0, 0, 0, 0 ]
+```
+
+#### Buffer
+
+Buffer は、ES2015 以前から Node.js が独自に実装していたバイナリデータを扱うためのクラス。 現在は、Unit8Array を継承したクラスとなっており、TypedArray に実装されているすべてのメソッドが利用可能である。
+
+https://nodejs.org/api/buffer.html#buffers-and-typedarrays
+
+以下のように、一部互換性がないところもある。
+
+> Buffer#slice の実装は、既存の Buffer のコピーなしで作成するのに対し、TypedArray#slice の実装はコピーを作成するため、動作に違いが出ます。
+
+https://techblog.yahoo.co.jp/advent-calendar-2016/node_new_buffer/
+
+### font-display の設定
+
+- `font-display: block`: フォントがダウンロードされるまでは何も画面に表示されない
+- `font-display: swap`: フォントがダウンロードされるまでの間は代替フォントで表示される
+
+読み込みを早くするには、`font-display: swap` の方が良い。
+
+### Lazy loading
+
+ファーストビューに表示されている画像まで Lazy loading してしまうと、LCP のスコアが悪くなるので注意する。
+
+また画像だけではなく、画面外で要素の描画をスキップできる `content-visibility` も存在する。細かい使い方については、以下のブログが参考になる。
+
+https://techblog.yahoo.co.jp/entry/2020090830016393/
+
+### キャッシュの扱い方
+
+### Cloudflare の基礎
+
+Cloudflare の CDN を利用する場合は、対象サイトのドメインのネームサーバーを Cloudflare が管理するネームサーバに変更し、プロキシの設定を行うことで利用できる。
+
+試しにこのブログを Cloudflare に乗せて見たところ、リダイレクトループが起こったりしたものの、CDN から配信することができた。コンテンツは、[こちらのドキュメント](https://support.cloudflare.com/hc/ja/articles/200168076-Cloudflare-HTTP-2%E3%81%A8HTTP-3%E3%81%AE%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)の理由から HTTP3 で配信されるようになった。
+
+> ブラウザと Web サーバーが利用可能な最高位のプロトコルを自動的にネゴシエートします。そのため、HTTP/3 は HTTP/2 よりも優先されます。Cloudflare が HTTP/1.x を使うのは、オリジン Web サーバーと Cloudflare の間だけです。
+
+キャシュヒットしているかどうかは、レスポンスヘッダの `CF-Cache-Status` の値などをみればいいらしい。デフォルトでキャッシュするファイルの一覧は以下のリンクから確認できる。HTML はデフォルトでキャッシュされない。
+
+https://developers.cloudflare.com/cache/about/default-cache-behavior#h_a01982d4-d5b6-4744-bb9b-a71da62c160a
+
+ちなみに、リダイレクトループが起きた原因は、**エッジサーバーからオリジンサーバーへのリクエストにはデフォルトで HTTP を利用し**、オリジンが HTTP を HTTPS にリダイレクトするためだった。(結局、[Vercel では Cloudflare を使うことが推奨されてなかった](https://vercel.com/support/articles/using-cloudflare-with-vercel)のですぐにやめた。)
+
+Cloudflare はドメイン移管も行っていて、卸売価格でドメインを管理できる。(.dev は移管できなかった...)
+
+### Google App Engine の基礎
+
+Google App Engine でのデプロイは、デプロイに必要な `app.yaml` を作成し、基本的に以下の 3 ステップで行える。
+
+```sh
+// プロジェクトの作成
+$ gcloud projects create test-project --set-as-default
+
+// App Engine の作成
+$ gcloud app create --project=test-project
+
+// デプロイ
+$ gcloud app deploy
+```
+
+App Engine は、Standard 環境と Flexible 環境を提供している。違いや注意すべき点については、以下のブログに丁寧に書かれている。特に、Standard 環境の自動スケーリングの設定については、小さくするのを忘れないようにしたい。
+
+https://zenn.dev/catnose99/articles/f99ea2a8b985b2
+
+今回は、Standard 環境で yarn コメントを実行させることができずに 1 日位ハマってしまった... サンプルなどを見ても、基本的には Flexible が推奨されている感じがするので、もしデプロイするなら はじめは Flexible を試すのが良いかもしれない。
+
+https://github.com/GoogleCloudPlatform/nodejs-docs-samples/tree/d0e24cecafa33174fe5ba56f1ffa12c746ff539e/appengine
+
+## 感想
+
+- preact の移行は以外とサクッとできる
+  - webpack でエイリアス書くだけ
+- Code Splitting の単位がよくわからない
+  - Suspense 単位...?
+  - コンペ中、[Route-based code splitting](https://reactjs.org/docs/code-splitting.html#route-based-code-splitting) でやろうとしたけどうまくいかなかった...
+- GAE を使う場合、ルートドメインを登録しないと、Cloudflare の CDN は利用できない (?)
+  - これはちゃんと理解できていない...
+  - [こちらの方法](https://blog.kakakikikeke.com/2019/02/how-to-set-custom-domain-on-gae.html)で、サブドメインを GAE に登録したが、CDN は利用できなさそうだった
