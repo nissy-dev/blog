@@ -41,7 +41,7 @@ https://zenn.dev/gunta/articles/64de0540bafb3d
 
 ### Passive Event Listeners
 
-スクロールに関するイベントリスナーは、以下のように第 3 引数に `passive: true` を渡すことで、スクロール時のパフォーマンスを改善できる。
+スクロールに関するイベントに登録するリスナーは、以下のように第 3 引数に `passive: true` を渡すことで、パフォーマンスを改善できる。
 
 ```js
 document.addEventListener("touchstart", onTouchStart, { passive: true });
@@ -103,7 +103,81 @@ https://techblog.yahoo.co.jp/advent-calendar-2016/node_new_buffer/
 
 https://techblog.yahoo.co.jp/entry/2020090830016393/
 
-### キャッシュの扱い方
+### キャッシュのおさらい
+
+#### キャッシュの流れ
+
+1. レスポンスを保存する
+2. 保存したレスポンスを再利用する
+
+#### キャッシュの種類
+
+- local (private) キャッシュ
+  - 特定のユーザー専用のキャッシュ
+  - ブラウザのキャッシュなどが該当する
+- shared キャッシュ
+  - 複数のユーザがレスポンスを再利用するためのキャッシュ
+  - Proxy や CDN のキャッシュなどが該当する
+
+#### キャッシュの設定
+
+- public
+  - レスポンスをどのキャッシュ (local、shared ともに) にも保存し、再利用できる
+- private
+  - レスポンスを local キャッシュのみに保存し、再利用できる
+- no-cache
+  - レスポンスをどのキャッシュ (local、shared ともに) にも保存できる
+  - キャッシュが stale (有効期限が過ぎている) かどうかに関わらず、再利用時に必ずサーバーに確認を取る必要がある
+- no-store
+  - レスポンスをどのキャッシュ (local、shared ともに) にも保存させない
+
+個人情報などを扱うページについては、local キャッシュのみを許可する `private` を設定する。どこにもキャッシュされたくない場合は、`no-store` を設定する。(`no-cache` ではない！！)
+
+ちなみに、なにも Cache-Control を設定しない場合、レスポンスはどこかでキャッシュされる可能性があるので、キャッシュされたくない値を使うときは注意する。
+
+#### キャッシュのライフサイクル周りの設定
+
+- max-age
+  - キャッシュの有効時間の設定 (local、shared キャッシュともに有効)
+  - 1 ヶ月 (2592000) 、１年 (31536000) とかの値をセットすればよい
+- s-maxage
+  - shared キャッシュの有効時間の上書きに使う
+- must-revalidate
+  - キャッシュが stale (有効期限が過ぎている) の時に、再利用時に必ずサーバーに確認をとる必要がある
+
+`max-age=0` は、キャッシュが無効にはならず、Request Collapsing の場合にキャッシュが返ってしまうことに注意する。
+
+> CDN からオリジンへのリクエストの処理中に、同じ URL に対してリクエストが発生すると、最初のレスポンスを待って、2 つ目以降のリクエストにも同じレスポンスが返される仕様になっていました。
+
+https://speakerdeck.com/kazeburo/cdn-in-mercari
+
+`must-revalidate` は、一見 `no-cache` と似ているけど、キャッシュが stale かどうかで挙動が異なる。
+
+#### stale-while-revalidate
+
+キャッシュが stale になったら、指定された期間内は stale なキャッシュを返しつつ、バックグラウンドでキャッシュを更新する設定。
+
+> 「キャッシュは効かせたいが、なるべく新鮮なリソースを提供したい。」などといった要望に対処する
+
+https://blog.jxck.io/entries/2016-04-16/stale-while-revalidate.html
+
+#### immutable
+
+キャッシュが有効期限内であればリロード時もキャッシュを再利用させる設定。ブラウザがリロードする際は、キャッシュが fresh (有効期限内) か stale かどうかに関わらず、条件付きリクエストを発行し、キャッシュの検証を行う。
+
+https://blog.jxck.io/entries/2016-07-12/cache-control-immutable.html
+
+#### 条件付きリクエスト
+
+`no-cache` や `must-revalidate` の設定のときに行われている、キャッシュの再利用時にサーバーにキャッシュの有効性を問い合わせるリクエストを条件付きリクエストと呼ぶ。
+
+有効性の評価については、リソースが変更された最終時刻のタイムスタンプかリソースのハッシュ値を利用する。リソースが変更された最終時刻のタイムスタンプの場合は、最初のリソース取得のときにサーバーが `Last-Modified` でタイムスタンプをブラウザに返し、送られた `Last-Modified` を使って `If-Modified-Since` ヘッダを付与した条件付きリクエストをサーバーに送信する。サーバーでは、タイムスタンプの時刻をつかってキャッシュが有効がどうか判断する。リソースのハッシュ値の場合は、最初のリソース取得のときにサーバーが `Etag` でタイムスタンプをブラウザに返し、送られた `Etag` を使って `If-Non-Match` ヘッダを付与した条件付きリクエストをサーバーに送信する。サーバーでは、ハッシュ値をつかってキャッシュが有効がどうか判断する。
+
+#### キャッシュ設定の基本
+
+まとめると、以下のフローチャートを元に設定するのが良さそう。
+
+https://web.dev/http-cache/#flowchart
 
 ### Cloudflare の基礎
 
@@ -140,7 +214,7 @@ App Engine は、Standard 環境と Flexible 環境を提供している。違�
 
 https://zenn.dev/catnose99/articles/f99ea2a8b985b2
 
-今回は、Standard 環境で yarn コメントを実行させることができずに 1 日位ハマってしまった... サンプルなどを見ても、基本的には Flexible が推奨されている感じがするので、もしデプロイするなら はじめは Flexible を試すのが良いかもしれない。
+今回は、Standard 環境で yarn コマンドを実行させることができずに 1 日位ハマってしまった... サンプルなどを見ても、基本的には Flexible が推奨されている感じがするので、もしデプロイするなら はじめは Flexible を試すのが良いかもしれない。
 
 https://github.com/GoogleCloudPlatform/nodejs-docs-samples/tree/d0e24cecafa33174fe5ba56f1ffa12c746ff539e/appengine
 
@@ -149,7 +223,7 @@ https://github.com/GoogleCloudPlatform/nodejs-docs-samples/tree/d0e24cecafa33174
 - preact の移行は以外とサクッとできる
   - webpack でエイリアス書くだけ
 - Code Splitting の単位がよくわからない
-  - Suspense 単位...?
+  - Lazy import 単位、Webpack の管轄
   - コンペ中、[Route-based code splitting](https://reactjs.org/docs/code-splitting.html#route-based-code-splitting) でやろうとしたけどうまくいかなかった...
 - GAE を使う場合、ルートドメインを登録しないと、Cloudflare の CDN は利用できない (?)
   - これはちゃんと理解できていない...
