@@ -1,15 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
-import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
-import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
-import { faHome } from "@fortawesome/free-solid-svg-icons/faHome";
-import { faList } from "@fortawesome/free-solid-svg-icons/faList";
-import { faMoon } from "@fortawesome/free-solid-svg-icons/faMoon";
-import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
-import { faSun } from "@fortawesome/free-solid-svg-icons/faSun";
-import { faTag } from "@fortawesome/free-solid-svg-icons/faTag";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
+import {
+  faCalendarAlt,
+  faClock,
+  faEnvelope,
+  faHome,
+  faList,
+  faMoon,
+  faSearch,
+  faSun,
+  faTag,
+} from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 import SearchByAlgolia from "./search-by-algolia.svg";
 
