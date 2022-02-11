@@ -1,10 +1,10 @@
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeHighlight from "rehype-highlight";
+import rehypeSlug from "rehype-slug";
+import rehypeStringify from "rehype-stringify";
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remark2Rehype from "remark-rehype";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeHighlight from "rehype-highlight";
-import rehypeStringify from "rehype-stringify";
 
 import {
   rehypeInsertTargetBlank,

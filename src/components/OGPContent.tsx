@@ -1,7 +1,7 @@
 import { css, Global } from "@emotion/react";
 
-import { siteMetadata } from "utils/const";
 import { FaGithub } from "components/icons";
+import { siteMetadata } from "utils/const";
 
 type Props = {
   html: string;

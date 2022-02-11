@@ -1,8 +1,8 @@
-import { Transformer } from "unified";
-import { visit } from "unist-util-visit";
-import { is } from "unist-util-is";
 import { Root as HastRoot, Element, ElementContent } from "hast";
 import { h } from "hastscript";
+import { Transformer } from "unified";
+import { is } from "unist-util-is";
+import { visit } from "unist-util-visit";
 
 import { extractCardData, CardData } from "./extractCardData";
 

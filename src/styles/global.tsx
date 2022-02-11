@@ -1,8 +1,8 @@
 // @ts-nocheck
 import { css, Global } from "@emotion/react";
-import resetCss from "the-new-css-reset/css/reset.css";
-import codeBlockStyle from "highlight.js/styles/nord.css";
 import githubMarkdownCss from "github-markdown-css/github-markdown.css";
+import codeBlockStyle from "highlight.js/styles/nord.css";
+import resetCss from "the-new-css-reset/css/reset.css";
 
 export const GlobalStyle = () => (
   <Global

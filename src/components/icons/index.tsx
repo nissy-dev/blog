@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import {
   faCalendarAlt,
   faClock,
@@ -10,7 +10,7 @@ import {
   faSun,
   faTag,
 } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import SearchByAlgolia from "./search-by-algolia.svg";
 

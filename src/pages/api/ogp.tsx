@@ -1,10 +1,11 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import ReactDOM from "react-dom/server";
-import * as playwright from "playwright-aws-lambda";
-import DOMPurify from "isomorphic-dompurify";
 import { loadDefaultJapaneseParser } from "budoux";
+import DOMPurify from "isomorphic-dompurify";
+import * as playwright from "playwright-aws-lambda";
+import ReactDOM from "react-dom/server";
 
 import { OGPContent } from "components/OGPContent";
+
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function OGP(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   // HTMLの生成

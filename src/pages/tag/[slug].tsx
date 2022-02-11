@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
 
-import { SEO } from "components/SEO";
 import { ArticleListItem } from "components/ArticleListItem";
 import { Pagination } from "components/Pagination";
+import { SEO } from "components/SEO";
 import { FrontMatter, getFrontMatters, getTags } from "lib/api";
 import { dateFormat } from "utils/dateFormat";
 import { usePagination } from "utils/usePagination";

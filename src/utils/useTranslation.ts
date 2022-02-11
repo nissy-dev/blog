@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 
-import ja from "../../public/locales/ja.json";
 import en from "../../public/locales/en.json";
+import ja from "../../public/locales/ja.json";
 
 const resources = { ja, en };
 const defaultLocale = "ja";

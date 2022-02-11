@@ -1,5 +1,5 @@
-import { css } from "@emotion/react";
 import { DocSearch } from "@docsearch/react";
+import { css } from "@emotion/react";
 
 import "@docsearch/css";
 

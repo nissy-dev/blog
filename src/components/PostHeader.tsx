@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 
-import { Link } from "components/Link";
 import { FaTag, FaCalendarAlt, FaClock } from "components/icons";
+import { Link } from "components/Link";
 
 type Props = {
   tags: Array<string>;

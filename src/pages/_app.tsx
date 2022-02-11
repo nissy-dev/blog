@@ -1,13 +1,14 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import type { AppProps } from "next/app";
-import Head from "next/head";
 import { ThemeProvider } from "next-themes";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-import { GlobalStyle } from "styles/global";
-import { GoogleAnalytics } from "components/GoogleAnalytics";
 import { BaseLayout } from "components/BaseLayout";
+import { GoogleAnalytics } from "components/GoogleAnalytics";
+import { GlobalStyle } from "styles/global";
 import { GA_ID } from "utils/const";
+
+import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
   // PVカウント用コード

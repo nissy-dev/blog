@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
 
 import { FaEnvelope, FaGithub, FaTwitter } from "components/icons";
-import { useTranslation } from "utils/useTranslation";
 import { siteMetadata } from "utils/const";
+import { useTranslation } from "utils/useTranslation";
 
 const snsLinks = [
   {
