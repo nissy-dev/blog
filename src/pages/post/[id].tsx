@@ -5,8 +5,8 @@ import { PostHeader } from "components/PostHeader";
 import { SEO } from "components/SEO";
 import { Toc } from "components/Toc";
 import { FrontMatter, getPostById, getPostIDs } from "lib/api";
-import { siteMetadata } from "utils/const";
 import { dateFormat } from "utils/dateFormat";
+import { getOgpImagePath } from "utils/ogp";
 import { useTranslation, supportLocales } from "utils/useTranslation";
 
 type Context = {
@@ -16,6 +16,7 @@ type Context = {
 };
 
 type Props = {
+  ogpImagePath: string;
   frontMatter: FrontMatter;
   tocHtml: string;
   contentHtml: string;
@@ -23,9 +24,11 @@ type Props = {
 
 export const getStaticProps = async ({ params }: Context): Promise<{ props: Props }> => {
   const { frontMatter, tocHtml, contentHtml } = await getPostById(params.id);
+  const ogpImagePath = getOgpImagePath(params.id);
 
   return {
     props: {
+      ogpImagePath,
       frontMatter,
       tocHtml,
       contentHtml,
@@ -51,17 +54,13 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Post({ frontMatter, tocHtml, contentHtml }: Props) {
+export default function Post({ ogpImagePath, frontMatter, tocHtml, contentHtml }: Props) {
   const { locale } = useTranslation();
   const { tags, description, title, date, timeToRead, excerpt } = frontMatter;
 
   return (
     <>
-      <SEO
-        title={title}
-        metaDescription={description || excerpt}
-        ogpImage={`${siteMetadata.siteUrl}/api/ogp?title=${title}`}
-      />
+      <SEO title={title} metaDescription={description || excerpt} ogpImage={ogpImagePath} />
       <aside css={tocWrapperStyle}>
         <Toc tocHtml={tocHtml} />
       </aside>
