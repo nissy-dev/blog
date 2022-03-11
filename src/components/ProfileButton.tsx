@@ -1,8 +1,9 @@
 import { css } from "@emotion/react";
 
-import { FaHome } from "components/icons";
-import { siteMetadata } from "utils/const";
-import { useTranslation } from "utils/useTranslation";
+import { siteMetadata } from "../utils/const";
+import { useTranslation } from "../utils/useTranslation";
+
+import { FaHome } from "./icons";
 
 export const ProfileButton = () => {
   const { t } = useTranslation();

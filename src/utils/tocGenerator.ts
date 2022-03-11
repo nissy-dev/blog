@@ -1,7 +1,9 @@
 import toc from "markdown-toc";
 import rehypeStringify from "rehype-stringify";
-import { remark } from "remark";
+import remarkCore from "remark";
 import remark2Rehype from "remark-rehype";
+
+const { remark } = remarkCore;
 
 export const tocGenerator = async (content: string): Promise<string> => {
   const extractTocMarkdown = toc(content, { maxdepth: 3 }).content;

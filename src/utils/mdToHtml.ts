@@ -10,7 +10,7 @@ import {
   rehypeInsertTargetBlank,
   rehypeInsertLazyload,
   rehypeConvertLinkToCard,
-} from "utils/customRehypePlugin";
+} from "./customRehypePlugin";
 
 export const mdToHtml = async (content: string): Promise<string> => {
   const mdProcessor = remark()

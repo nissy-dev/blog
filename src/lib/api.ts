@@ -3,10 +3,10 @@ import path from "path";
 
 import matter from "gray-matter";
 
-import { calcTimeToRead } from "utils/calcTimeToRead";
-import { extractExcerpt } from "utils/extractExcerpt";
-import { mdToHtml } from "utils/mdToHtml";
-import { tocGenerator } from "utils/tocGenerator";
+import { calcTimeToRead } from "../utils/calcTimeToRead";
+import { extractExcerpt } from "../utils/extractExcerpt";
+import { mdToHtml } from "../utils/mdToHtml";
+import { tocGenerator } from "../utils/tocGenerator";
 
 // rootディレクトリから見た時のパスを指定する
 const CONTENTS_DIR = "contents";

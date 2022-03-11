@@ -5,8 +5,8 @@ import { loadDefaultJapaneseParser } from "budoux";
 import { chromium } from "playwright";
 import ReactDOM from "react-dom/server";
 
-import { OGPContent } from "components/OGPContent";
-import { getFrontMatters } from "lib/api";
+import { OGPContent } from "../components/OGPContent";
+import { getFrontMatters } from "../lib/api";
 
 const OGP_DIR = "images/ogps";
 

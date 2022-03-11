@@ -4,8 +4,9 @@ import path from "path";
 
 import { Feed } from "feed";
 
-import { getFrontMatters } from "lib/api";
-import { siteMetadata } from "utils/const";
+import { getFrontMatters } from "../lib/api";
+
+import { siteMetadata } from "./const";
 
 export async function generateFeedXml(): Promise<void> {
   const feed = new Feed({

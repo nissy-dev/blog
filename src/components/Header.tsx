@@ -3,11 +3,17 @@ import { css } from "@emotion/react";
 
 import "@docsearch/css";
 
-import { Link } from "components/Link";
-import { ProfileButton } from "components/ProfileButton";
-import { ThemeSwitchButton } from "components/ThemeSwitchButton";
-import { siteMetadata, ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY, ALGOLIA_INDEX_NAME } from "utils/const";
-import { useTranslation } from "utils/useTranslation";
+import {
+  siteMetadata,
+  ALGOLIA_APP_ID,
+  ALGOLIA_SEARCH_KEY,
+  ALGOLIA_INDEX_NAME,
+} from "../utils/const";
+import { useTranslation } from "../utils/useTranslation";
+
+import { Link } from "./Link";
+import { ProfileButton } from "./ProfileButton";
+import { ThemeSwitchButton } from "./ThemeSwitchButton";
 
 export const Header = () => {
   const { t } = useTranslation();

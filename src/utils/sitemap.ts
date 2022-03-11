@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-import { getFrontMatters } from "lib/api";
+import { getFrontMatters } from "../lib/api";
 
 import { siteMetadata } from "./const";
 
