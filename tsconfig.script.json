@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
+    "jsx": "react"
   },
-  "include": ["next-env.d.ts", "src", "scripts"],
+  "include": ["src", "scripts"]
 }

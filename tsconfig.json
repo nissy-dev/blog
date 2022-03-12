@@ -29,13 +29,4 @@
     "next-env.d.ts",
     "src"
   ],
-  "exclude": [
-    "node_modules"
-  ],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "NodeNext"
-    },
-    "include": ["src", "scripts"],
-  }
 }
