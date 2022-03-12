@@ -1,8 +1,9 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 
-import { FaList } from "components/icons";
-import { useTranslation } from "utils/useTranslation";
+import { useTranslation } from "../utils/useTranslation";
+
+import { FaList } from "./icons";
 
 type Props = {
   tocHtml: string;

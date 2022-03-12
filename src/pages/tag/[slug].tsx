@@ -1,12 +1,12 @@
 import { css } from "@emotion/react";
 
-import { ArticleListItem } from "components/ArticleListItem";
-import { Pagination } from "components/Pagination";
-import { SEO } from "components/SEO";
-import { FrontMatter, getFrontMatters, getTags } from "lib/api";
-import { dateFormat } from "utils/dateFormat";
-import { usePagination } from "utils/usePagination";
-import { useTranslation, supportLocales } from "utils/useTranslation";
+import { ArticleListItem } from "../../components/ArticleListItem";
+import { Pagination } from "../../components/Pagination";
+import { SEO } from "../../components/SEO";
+import { FrontMatter, getFrontMatters, getTags } from "../../lib/api";
+import { dateFormat } from "../../utils/dateFormat";
+import { usePagination } from "../../utils/usePagination";
+import { useTranslation, supportLocales } from "../../utils/useTranslation";
 
 type Context = {
   params: {

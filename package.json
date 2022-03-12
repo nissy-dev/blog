@@ -6,7 +6,9 @@
     "postinstall": "npx playwright install",
     "prepare": "git config --local core.hooksPath .githooks",
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run build:static && npm run build:next",
+    "build:next": "next build",
+    "build:static": "ts-node -P tsconfig.script.json scripts/generateStaticFiles.tsx",
     "start": "next start",
     "lint": "run-p -l -c --aggregate-output lint:*",
     "lint:tsc": "tsc",
@@ -77,6 +79,7 @@
     "stylelint": "^14.5.0",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-recommended": "^7.0.0",
+    "ts-node": "^10.7.0",
     "typescript": "^4.6.2"
   },
   "lint-staged": {

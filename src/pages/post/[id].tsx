@@ -1,13 +1,13 @@
 import { css } from "@emotion/react";
 
-import { MobileToc } from "components/MobileToc";
-import { PostHeader } from "components/PostHeader";
-import { SEO } from "components/SEO";
-import { Toc } from "components/Toc";
-import { FrontMatter, getPostById, getPostIDs } from "lib/api";
-import { dateFormat } from "utils/dateFormat";
-import { getOgpImagePath } from "utils/ogp";
-import { useTranslation, supportLocales } from "utils/useTranslation";
+import { MobileToc } from "../../components/MobileToc";
+import { PostHeader } from "../../components/PostHeader";
+import { SEO } from "../../components/SEO";
+import { Toc } from "../../components/Toc";
+import { FrontMatter, getPostById, getPostIDs } from "../../lib/api";
+import { dateFormat } from "../../utils/dateFormat";
+import { getOgpImagePath } from "../../utils/ogp";
+import { useTranslation, supportLocales } from "../../utils/useTranslation";
 
 type Context = {
   params: {

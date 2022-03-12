@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import { siteMetadata } from "utils/const";
+import { siteMetadata } from "../utils/const";
 
 type Props = {
   title: string;

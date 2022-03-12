@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-import { FrontMatter } from "lib/api";
+import { FrontMatter } from "../lib/api";
 
 const PER_PAGES = 10;
 

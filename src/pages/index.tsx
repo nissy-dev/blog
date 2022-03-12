@@ -1,28 +1,18 @@
 import { css } from "@emotion/react";
 
-import { ArticleListItem } from "components/ArticleListItem";
-import { Pagination } from "components/Pagination";
-import { SEO } from "components/SEO";
-import { FrontMatter, getFrontMatters } from "lib/api";
-import { dateFormat } from "utils/dateFormat";
-import { generateFeedXml } from "utils/feed";
-import { generateOgpImages } from "utils/ogp";
-import { generateSitemapXml } from "utils/sitemap";
-import { usePagination } from "utils/usePagination";
-import { useTranslation } from "utils/useTranslation";
+import { ArticleListItem } from "../components/ArticleListItem";
+import { Pagination } from "../components/Pagination";
+import { SEO } from "../components/SEO";
+import { FrontMatter, getFrontMatters } from "../lib/api";
+import { dateFormat } from "../utils/dateFormat";
+import { usePagination } from "../utils/usePagination";
+import { useTranslation } from "../utils/useTranslation";
 
 type Props = {
   frontMatters: Array<{ id: string } & FrontMatter>;
 };
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
-  // TODD: ESMなどの関係上、TSのスクリプトをnodeで実行させるのが大変なのでここで実行させている
-  if (process.env.NODE_ENV === "production") {
-    await generateSitemapXml();
-    await generateFeedXml();
-    await generateOgpImages();
-  }
-
   const frontMatters = await getFrontMatters();
 
   return {

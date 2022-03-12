@@ -3,10 +3,10 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-import { BaseLayout } from "components/BaseLayout";
-import { GoogleAnalytics } from "components/GoogleAnalytics";
-import { GlobalStyle } from "styles/global";
-import { GA_ID } from "utils/const";
+import { BaseLayout } from "../components/BaseLayout";
+import { GoogleAnalytics } from "../components/GoogleAnalytics";
+import { GlobalStyle } from "../styles/global";
+import { GA_ID } from "../utils/const";
 
 import type { AppProps } from "next/app";
 
