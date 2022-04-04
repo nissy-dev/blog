@@ -30,7 +30,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.0",
     "@fortawesome/react-fontawesome": "^0.1.17",
     "@svgr/webpack": "^6.2.0",
-    "budoux": "^0.0.3",
+    "budoux": "^0.1.0",
     "feed": "^4.2.2",
     "github-markdown-css": "^5.1.0",
     "highlight.js": "^11.5.0",
