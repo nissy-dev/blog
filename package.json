@@ -42,7 +42,7 @@
     "the-new-css-reset": "^1.5.1"
   },
   "devDependencies": {
-    "@emotion/babel-plugin": "^11.7.2",
+    "@emotion/babel-plugin": "^11.9.2",
     "@next/bundle-analyzer": "^12.1.0",
     "@stylelint/postcss-css-in-js": "^0.37.2",
     "@types/gtag.js": "^0.0.8",
