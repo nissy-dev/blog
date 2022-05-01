@@ -39,7 +39,7 @@
     "next-themes": "^0.1.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "the-new-css-reset": "^1.5.1"
+    "the-new-css-reset": "^1.6.0"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.9.2",
