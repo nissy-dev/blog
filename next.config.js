@@ -11,6 +11,7 @@ const baseConfig = {
   },
   experimental: {
     esmExternals: true,
+    nextScriptWorkers: true,
   },
   webpack(config) {
     config.module.rules.push({
