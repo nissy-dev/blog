@@ -12,6 +12,7 @@ const config = withBundleAnalyzer({
   },
   experimental: {
     esmExternals: true,
+    nextScriptWorkers: true,
   },
   emotion: true,
 });

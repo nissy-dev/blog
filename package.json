@@ -23,6 +23,7 @@
     "bundle-analyzer": "ANALYZE=true next build"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.5.3",
     "@docsearch/react": "^3.0.0",
     "@emotion/react": "^11.9.0",
     "@react-icons/all-files": "^4.1.0",
