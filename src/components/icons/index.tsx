@@ -1,30 +1,16 @@
-import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import {
-  faCalendarAlt,
-  faClock,
-  faEnvelope,
-  faHome,
-  faList,
-  faMoon,
-  faSearch,
-  faSun,
-  faTag,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaCalendarAlt } from "@react-icons/all-files/fa/FaCalendarAlt";
+import { FaClock } from "@react-icons/all-files/fa/FaClock";
+import { FaEnvelope } from "@react-icons/all-files/fa/FaEnvelope";
+import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
+import { FaHome } from "@react-icons/all-files/fa/FaHome";
+import { FaList } from "@react-icons/all-files/fa/FaList";
+import { FaMoon } from "@react-icons/all-files/fa/FaMoon";
+import { FaSearch } from "@react-icons/all-files/fa/FaSearch";
+import { FaSun } from "@react-icons/all-files/fa/FaSun";
+import { FaTag } from "@react-icons/all-files/fa/FaTag";
+import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 
-import SearchByAlgolia from "./search-by-algolia.svg";
-
-const FaCalendarAlt = () => <FontAwesomeIcon icon={faCalendarAlt} />;
-const FaClock = () => <FontAwesomeIcon icon={faClock} />;
-const FaEnvelope = () => <FontAwesomeIcon icon={faEnvelope} />;
-const FaGithub = () => <FontAwesomeIcon icon={faGithub} />;
-const FaHome = () => <FontAwesomeIcon icon={faHome} />;
-const FaList = () => <FontAwesomeIcon icon={faList} />;
-const FaMoon = () => <FontAwesomeIcon icon={faMoon} />;
-const FaSearch = () => <FontAwesomeIcon icon={faSearch} />;
-const FaSun = () => <FontAwesomeIcon icon={faSun} />;
-const FaTag = () => <FontAwesomeIcon icon={faTag} />;
-const FaTwitter = () => <FontAwesomeIcon icon={faTwitter} />;
+import { SearchByAlgolia } from "./SearchByAlgolia";
 
 export {
   FaCalendarAlt,

@@ -1,10 +1,11 @@
 const withPWA = require("next-pwa");
 const runtimeCaching = require("next-pwa/cache");
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
+const withBundleAnalyzer =
+  process.env.ANALYZE === "true"
+    ? require("@next/bundle-analyzer")({ enabled: true })
+    : (config) => config;
 
-const baseConfig = {
+const config = withBundleAnalyzer({
   i18n: {
     locales: ["en", "ja"],
     defaultLocale: "ja",
@@ -12,14 +13,8 @@ const baseConfig = {
   experimental: {
     esmExternals: true,
   },
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-    return config;
-  },
-};
+  emotion: true,
+});
 
 module.exports =
   process.env.NODE_ENV === "production"
@@ -28,6 +23,6 @@ module.exports =
           dest: "public",
           runtimeCaching,
         },
-        ...baseConfig,
+        ...config,
       })
-    : withBundleAnalyzer(baseConfig);
+    : config;
