@@ -10,8 +10,6 @@ import { FaSun } from "@react-icons/all-files/fa/FaSun";
 import { FaTag } from "@react-icons/all-files/fa/FaTag";
 import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 
-import { SearchByAlgolia } from "./SearchByAlgolia";
-
 export {
   FaCalendarAlt,
   FaClock,
@@ -20,7 +18,6 @@ export {
   FaHome,
   FaList,
   FaMoon,
-  SearchByAlgolia,
   FaSearch,
   FaSun,
   FaTag,
