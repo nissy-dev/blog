@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { siteMetadata } from "../utils/const";
 import { useTranslation } from "../utils/useTranslation";
 
-import { FaEnvelope, FaGithub, FaTwitter } from "./icons";
+import { FaEnvelope, FaGithub, FaTwitter } from "./Icons";
 
 const snsLinks = [
   {

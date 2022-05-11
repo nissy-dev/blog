@@ -3,7 +3,7 @@ import { useTheme } from "next-themes";
 
 import { useTranslation } from "../utils/useTranslation";
 
-import { FaMoon, FaSun } from "./icons";
+import { FaMoon, FaSun } from "./Icons";
 
 export const ThemeSwitchButton = () => {
   const { theme, setTheme, resolvedTheme } = useTheme();

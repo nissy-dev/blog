@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 
 import { useTranslation } from "../utils/useTranslation";
 
-import { FaTag, FaCalendarAlt, FaClock } from "./icons";
+import { FaTag, FaCalendarAlt, FaClock } from "./Icons";
 import { Link } from "./Link";
 
 type Props = {

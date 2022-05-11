@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { siteMetadata } from "../utils/const";
 import { useTranslation } from "../utils/useTranslation";
 
-import { FaHome } from "./icons";
+import { FaHome } from "./Icons";
 
 export const ProfileButton = () => {
   const { t } = useTranslation();
