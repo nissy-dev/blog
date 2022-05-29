@@ -14,7 +14,7 @@ export const ProfileButton = () => {
       href={siteMetadata.profileSiteUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={t("nav-profile")}
+      title={t("nav-profile")}
     >
       <FaHome />
     </a>

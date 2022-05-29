@@ -38,7 +38,7 @@ export const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             href={link.href}
-            aria-label={t(link.ariaLabel)}
+            title={t(link.ariaLabel)}
           >
             {link.icon}
           </a>

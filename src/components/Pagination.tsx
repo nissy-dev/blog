@@ -1,5 +1,7 @@
 import { css } from "@emotion/react";
 
+import { useTranslation } from "src/utils/useTranslation";
+
 import { Link } from "./Link";
 
 type Props = {
@@ -9,6 +11,7 @@ type Props = {
 };
 
 export const Pagination = ({ pathName, currentPage, totalPages }: Props) => {
+  const { t } = useTranslation();
   return (
     <div css={paginationStyle}>
       <Link
@@ -17,16 +20,18 @@ export const Pagination = ({ pathName, currentPage, totalPages }: Props) => {
           pathname: pathName,
           query: { page: encodeURIComponent(currentPage - 1) },
         }}
+        title={t("go-to-previous-page")}
       >
         ←
       </Link>
-      <div>{`${currentPage} / ${totalPages}`}</div>
+      <span>{`${currentPage} / ${totalPages}`}</span>
       <Link
         css={currentPage >= totalPages && hiddenStyle}
         href={{
           pathname: pathName,
           query: { page: encodeURIComponent(currentPage + 1) },
         }}
+        title={t("go-to-next-page")}
       >
         →
       </Link>
@@ -40,7 +45,7 @@ const paginationStyle = css`
   justify-content: center;
   color: var(--foreground);
 
-  > div:nth-of-type(1) {
+  > span:nth-of-type(1) {
     padding: 0 1rem;
   }
 `;

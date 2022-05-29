@@ -20,7 +20,7 @@ export const ArticleListItem = ({ tags, title, link, publishedAt, timeToRead, ex
     <article css={articleListStyle} itemScope itemType="https://schema.org/Article">
       <header>
         <h2>
-          <Link href={link} itemProp="url">
+          <Link href={link} itemProp="url" title={title}>
             <span itemProp="headline">{title}</span>
           </Link>
         </h2>
@@ -37,7 +37,11 @@ export const ArticleListItem = ({ tags, title, link, publishedAt, timeToRead, ex
             <FaTag />
             {tags.map((tag) => {
               return (
-                <Link key={tag} href={`/tag/${encodeURIComponent(tag)}`}>
+                <Link
+                  key={tag}
+                  href={`/tag/${encodeURIComponent(tag)}`}
+                  title={`${t("tags")}: #${tag}`}
+                >
                   <span>{`#${tag}`}</span>
                 </Link>
               );

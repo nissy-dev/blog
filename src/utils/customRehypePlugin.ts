@@ -78,13 +78,13 @@ const buildCardContent = (cardData: CardData) => {
     const cardThumbnailContent = h("div", { class: "card-thumbnail" }, [
       h("img", { src: cardData.image, class: "thumbnail-img" }),
     ]);
-    return h("a", { class: "card-link", href: cardData.url }, [
+    return h("a", { class: "card-link", href: cardData.url, title: cardData.title }, [
       cardContentNode,
       cardThumbnailContent,
     ]);
   } else {
     const cardThumbnailContent = h("div", { class: "card-thumbnail" });
-    return h("a", { class: "card-link", href: cardData.url }, [
+    return h("a", { class: "card-link", href: cardData.url, title: cardData.title }, [
       cardContentNode,
       cardThumbnailContent,
     ]);

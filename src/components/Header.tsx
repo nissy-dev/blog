@@ -27,7 +27,7 @@ export const Header = () => {
 
   return (
     <header css={headerStyle}>
-      <Link css={titleContainerStyle} href="/" aria-label={t("nav-title")}>
+      <Link css={titleContainerStyle} href="/" title={t("nav-title")}>
         <h1>{siteMetadata.title}</h1>
       </Link>
       <ProfileButton />

@@ -20,5 +20,7 @@
   "tags": "タグ",
   "toggle-toc": "Toggle Table of Contents",
   "open-toc": "目次を開く",
-  "close-toc": "目次を閉じる"
+  "close-toc": "目次を閉じる",
+  "go-to-previous-page": "前のページへ",
+  "go-to-next-page": "次のページへ"
 }
