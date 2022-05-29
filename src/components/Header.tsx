@@ -1,5 +1,5 @@
-import { DocSearch } from "@docsearch/react";
 import { css } from "@emotion/react";
+import dynamic from "next/dynamic";
 
 import "@docsearch/css";
 
@@ -14,6 +14,13 @@ import { useTranslation } from "../utils/useTranslation";
 import { Link } from "./Link";
 import { ProfileButton } from "./ProfileButton";
 import { ThemeSwitchButton } from "./ThemeSwitchButton";
+
+import type { DocSearchProps } from "@docsearch/react";
+
+// @docsearch/react is 20kb over, so use dynamic import
+const DocSearch = dynamic<DocSearchProps>(() =>
+  import("@docsearch/react").then((module) => module.DocSearch)
+);
 
 export const Header = () => {
   const { t } = useTranslation();

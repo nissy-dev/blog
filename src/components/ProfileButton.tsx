@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { siteMetadata } from "../utils/const";
 import { useTranslation } from "../utils/useTranslation";
 
-import { FaHome } from "./icons";
+import { FaHome } from "./Icons";
 
 export const ProfileButton = () => {
   const { t } = useTranslation();
@@ -25,5 +25,11 @@ const buttonStyle = css`
   width: 2.5rem;
   height: 2.5rem;
   padding: 0.5rem;
+  margin-right: 0.5rem;
   color: var(--foreground);
+
+  > svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
 `;

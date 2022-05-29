@@ -1,6 +1,5 @@
 import { css, Global } from "@emotion/react";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
 
 import { siteMetadata } from "../src/utils/const";
 
@@ -20,7 +19,7 @@ export const OGPContent = (props: Props) => (
       </main>
       <footer>
         <div>
-          <FontAwesomeIcon icon={faGithub} />
+          <FaGithub />
           <span>{siteMetadata.github}</span>
         </div>
         {/* <div>

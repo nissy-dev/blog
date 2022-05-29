@@ -3,7 +3,7 @@ import { useTheme } from "next-themes";
 
 import { useTranslation } from "../utils/useTranslation";
 
-import { FaMoon, FaSun } from "./icons";
+import { FaMoon, FaSun } from "./Icons";
 
 export const ThemeSwitchButton = () => {
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -27,5 +27,11 @@ const buttonStyle = css`
   width: 2.5rem;
   height: 2.5rem;
   padding: 0.5rem;
+  margin-right: 0.5rem;
   color: var(--foreground);
+
+  > svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 `;

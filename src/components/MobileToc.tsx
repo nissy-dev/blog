@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { useTranslation } from "../utils/useTranslation";
 
-import { FaList } from "./icons";
+import { FaList } from "./Icons";
 
 type Props = {
   tocHtml: string;
