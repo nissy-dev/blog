@@ -21,6 +21,8 @@ module.exports =
     ? withPWA({
         pwa: {
           dest: "public",
+          // see: https://github.com/shadowwalker/next-pwa/issues/344
+          dynamicStartUrl: false,
         },
         ...config,
       })
