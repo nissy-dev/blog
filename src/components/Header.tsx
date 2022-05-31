@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
 import "@docsearch/css";
 
@@ -32,11 +33,13 @@ export const Header = () => {
       </Link>
       <ProfileButton />
       <ThemeSwitchButton />
-      <DocSearch
-        appId={ALGOLIA_APP_ID}
-        indexName={ALGOLIA_INDEX_NAME}
-        apiKey={ALGOLIA_SEARCH_KEY}
-      />
+      <Suspense fallback={null}>
+        <DocSearch
+          appId={ALGOLIA_APP_ID}
+          indexName={ALGOLIA_INDEX_NAME}
+          apiKey={ALGOLIA_SEARCH_KEY}
+        />
+      </Suspense>
     </header>
   );
 };
