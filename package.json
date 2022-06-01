@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.1.6",
-    "@stylelint/postcss-css-in-js": "^0.37.3",
+    "@stylelint/postcss-css-in-js": "^0.38.0",
     "@types/gtag.js": "^0.0.10",
     "@types/lodash.truncate": "^4.4.7",
     "@types/open-graph-scraper": "^4.8.1",
