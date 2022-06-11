@@ -36,9 +36,11 @@ const tocStyle = css`
 
   > div:nth-of-type(1) {
     display: flex;
-    align-items: center;
 
     > button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 2rem;
       height: 2rem;
       padding: 0.35rem;
