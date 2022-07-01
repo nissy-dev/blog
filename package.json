@@ -68,7 +68,7 @@
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
     "remark-rehype": "^10.1.0",
-    "scaffdog": "^1.2.0",
+    "scaffdog": "^1.5.0",
     "strip-markdown": "^5.0.0",
     "stylelint": "^14.8.1",
     "stylelint-config-recess-order": "^3.0.0",
