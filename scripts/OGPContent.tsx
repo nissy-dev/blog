@@ -1,5 +1,6 @@
 import { css, Global } from "@emotion/react";
 import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
+import * as React from "react";
 
 import { siteMetadata } from "../src/utils/const";
 

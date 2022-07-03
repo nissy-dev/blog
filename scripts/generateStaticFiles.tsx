@@ -4,6 +4,7 @@ import path from "path";
 import { loadDefaultJapaneseParser } from "budoux";
 import { Feed } from "feed";
 import { chromium } from "playwright";
+import * as React from "react";
 import ReactDOM from "react-dom/server";
 
 import { siteMetadata, OGP_DIR } from "../src/utils/const";
