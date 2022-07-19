@@ -10,24 +10,33 @@ type Props = {
   title: string;
   link: string;
   publishedAt: string;
+  publishedAtISOString: string;
   timeToRead: number;
   excerpt: string;
 };
 
-export const ArticleListItem = ({ tags, title, link, publishedAt, timeToRead, excerpt }: Props) => {
+export const ArticleListItem = ({
+  tags,
+  title,
+  link,
+  publishedAt,
+  publishedAtISOString,
+  timeToRead,
+  excerpt,
+}: Props) => {
   const { t } = useTranslation();
   return (
     <article css={articleListStyle}>
       <header>
         <h2>
-          <Link href={link} itemProp="url" title={title}>
+          <Link href={link} title={title}>
             {title}
           </Link>
         </h2>
         <div>
           <div>
             <FaCalendarAlt />
-            <span>{publishedAt}</span>
+            <time dateTime={publishedAtISOString}>{publishedAt}</time>
           </div>
           <div>
             <FaClock />

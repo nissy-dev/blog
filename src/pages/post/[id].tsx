@@ -57,6 +57,7 @@ export async function getStaticPaths() {
 export default function Post({ ogpImagePath, frontMatter, tocHtml, contentHtml }: Props) {
   const { locale } = useTranslation();
   const { tags, description, title, date, timeToRead, excerpt } = frontMatter;
+  const { dateDisplayString, dateISOString } = dateFormat(new Date(date), locale);
 
   return (
     <>
@@ -67,7 +68,8 @@ export default function Post({ ogpImagePath, frontMatter, tocHtml, contentHtml }
       <main css={mainStyle}>
         <PostHeader
           tags={tags}
-          publishedAt={dateFormat(new Date(date), locale)}
+          publishedAt={dateDisplayString}
+          publishedAtISOString={dateISOString}
           title={title}
           timeToRead={timeToRead}
         />

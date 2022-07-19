@@ -33,13 +33,15 @@ export default function Home({ frontMatters }: Props) {
       <SEO title={title} metaDescription={description} />
       <h1>{title}</h1>
       {currentFrontMatters.map((frontMatter) => {
+        const { dateDisplayString, dateISOString } = dateFormat(new Date(frontMatter.date), locale);
         return (
           <ArticleListItem
             key={frontMatter.id}
             tags={frontMatter.tags}
             title={frontMatter.title}
             link={encodeURI(`/post/${frontMatter.id}`)}
-            publishedAt={dateFormat(new Date(frontMatter.date), locale)}
+            publishedAt={dateDisplayString}
+            publishedAtISOString={dateISOString}
             timeToRead={frontMatter.timeToRead}
             excerpt={frontMatter.excerpt}
           />

@@ -8,11 +8,18 @@ import { Link } from "./Link";
 type Props = {
   tags: Array<string>;
   publishedAt: string;
+  publishedAtISOString: string;
   title: string;
   timeToRead: number;
 };
 
-export const PostHeader = ({ tags, publishedAt, title, timeToRead }: Props) => {
+export const PostHeader = ({
+  tags,
+  publishedAt,
+  publishedAtISOString,
+  title,
+  timeToRead,
+}: Props) => {
   const { t } = useTranslation();
   return (
     <div css={postHeaderStyle}>
@@ -20,7 +27,7 @@ export const PostHeader = ({ tags, publishedAt, title, timeToRead }: Props) => {
       <div>
         <div>
           <FaCalendarAlt />
-          <span>{publishedAt}</span>
+          <time dateTime={publishedAtISOString}>{publishedAt}</time>
         </div>
         <div>
           <FaClock />
