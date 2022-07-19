@@ -17,11 +17,11 @@ type Props = {
 export const ArticleListItem = ({ tags, title, link, publishedAt, timeToRead, excerpt }: Props) => {
   const { t } = useTranslation();
   return (
-    <article css={articleListStyle} itemScope itemType="https://schema.org/Article">
+    <article css={articleListStyle}>
       <header>
         <h2>
           <Link href={link} itemProp="url" title={title}>
-            <span itemProp="headline">{title}</span>
+            {title}
           </Link>
         </h2>
         <div>
@@ -33,35 +33,27 @@ export const ArticleListItem = ({ tags, title, link, publishedAt, timeToRead, ex
             <FaClock />
             <span>{`${timeToRead} min read`}</span>
           </div>
-          <nav>
+          <div>
             <FaTag />
-            {tags.map((tag) => {
-              return (
-                <Link
-                  key={tag}
-                  href={`/tag/${encodeURIComponent(tag)}`}
-                  title={`${t("tags")}: #${tag}`}
-                >
-                  <span>{`#${tag}`}</span>
-                </Link>
-              );
-            })}
-          </nav>
+            <ul>
+              {tags.map((tag) => {
+                return (
+                  <li key={`${title}-${tag}`}>
+                    <Link key={tag} href={encodeURI(`/tag/${tag}`)} title={`${t("tags")}: #${tag}`}>
+                      {`#${tag}`}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </header>
-      <section>
-        <p
-          dangerouslySetInnerHTML={{
-            __html: excerpt,
-          }}
-          itemProp="description"
-        />
-      </section>
-      <nav>
-        <Link href={link}>
-          <span>{`${t("read-more")} →`}</span>
-        </Link>
-      </nav>
+      <p
+        dangerouslySetInnerHTML={{
+          __html: excerpt,
+        }}
+      />
     </article>
   );
 };
@@ -75,8 +67,6 @@ const articleListStyle = css`
   box-shadow: 0 0.125rem 0.25rem var(--gray-300);
 
   > header {
-    padding-bottom: 0.75rem;
-
     > h2 {
       font-size: 1.25rem;
       font-weight: var(--font-bold);
@@ -86,10 +76,9 @@ const articleListStyle = css`
     > div {
       display: flex;
       flex-wrap: wrap;
-      padding-bottom: 0.5rem;
+      padding-bottom: 1.25rem;
 
-      nav,
-      div {
+      > div {
         display: flex;
         align-items: center;
         padding-top: 0.5rem;
@@ -100,28 +89,24 @@ const articleListStyle = css`
           height: 1rem;
           margin-right: 0.25rem;
         }
-      }
 
-      nav > a {
-        padding-right: 0.5rem;
+        > ul {
+          display: flex;
+
+          > li {
+            padding-right: 0.5rem;
+          }
+        }
       }
     }
   }
 
-  > section {
+  > p {
     font-size: 0.9rem;
-  }
-
-  > nav {
-    display: flex;
-    flex-direction: row;
-    padding-top: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--foreground);
-
-    > a {
-      margin-left: auto;
-      text-decoration: underline;
-    }
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem;
   }
 `;

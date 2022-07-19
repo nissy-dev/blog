@@ -1,5 +1,7 @@
 import { css } from "@emotion/react";
 
+import { useTranslation } from "src/utils/useTranslation";
+
 import { FaTag, FaCalendarAlt, FaClock } from "./Icons";
 import { Link } from "./Link";
 
@@ -11,6 +13,7 @@ type Props = {
 };
 
 export const PostHeader = ({ tags, publishedAt, title, timeToRead }: Props) => {
+  const { t } = useTranslation();
   return (
     <div css={postHeaderStyle}>
       <h1>{title}</h1>
@@ -23,16 +26,20 @@ export const PostHeader = ({ tags, publishedAt, title, timeToRead }: Props) => {
           <FaClock />
           <span>{`${timeToRead} min read`}</span>
         </div>
-        <nav>
+        <div>
           <FaTag />
-          {tags.map((tag) => {
-            return (
-              <Link key={tag} href={`/tag/${encodeURIComponent(tag)}`}>
-                <span>{`#${tag}`}</span>
-              </Link>
-            );
-          })}
-        </nav>
+          <ul>
+            {tags.map((tag) => {
+              return (
+                <li key={`${title}-${tag}`}>
+                  <Link key={tag} href={encodeURI(`/tag/${tag}`)} title={`${t("tags")}: #${tag}`}>
+                    {`#${tag}`}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </div>
   );

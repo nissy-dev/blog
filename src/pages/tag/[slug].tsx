@@ -65,7 +65,7 @@ export default function Tag({ slug, frontMatters }: Props) {
             key={frontMatter.id}
             tags={frontMatter.tags}
             title={frontMatter.title}
-            link={`/post/${encodeURIComponent(frontMatter.id)}`}
+            link={encodeURI(`/post/${frontMatter.id}`)}
             publishedAt={dateFormat(new Date(frontMatter.date), locale)}
             timeToRead={frontMatter.timeToRead}
             excerpt={frontMatter.excerpt}

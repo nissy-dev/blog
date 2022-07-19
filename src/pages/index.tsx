@@ -31,16 +31,14 @@ export default function Home({ frontMatters }: Props) {
   return (
     <main css={mainStyle}>
       <SEO title={title} metaDescription={description} />
-      <div>
-        <h1>{title}</h1>
-      </div>
+      <h1>{title}</h1>
       {currentFrontMatters.map((frontMatter) => {
         return (
           <ArticleListItem
             key={frontMatter.id}
             tags={frontMatter.tags}
             title={frontMatter.title}
-            link={`/post/${encodeURIComponent(frontMatter.id)}`}
+            link={encodeURI(`/post/${frontMatter.id}`)}
             publishedAt={dateFormat(new Date(frontMatter.date), locale)}
             timeToRead={frontMatter.timeToRead}
             excerpt={frontMatter.excerpt}
@@ -55,7 +53,7 @@ export default function Home({ frontMatters }: Props) {
 const mainStyle = css`
   padding: 2rem 0;
 
-  > div:nth-of-type(1) {
+  > h1 {
     font-size: 1.5rem;
     font-weight: var(--font-bold);
     color: var(--base);
