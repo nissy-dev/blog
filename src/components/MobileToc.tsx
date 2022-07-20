@@ -23,7 +23,9 @@ export const MobileToc = ({ tocHtml }: Props) => {
         >
           <FaList />
         </button>
-        <span>{t("table-of-contents")}</span>
+        <div>
+          <span>{t("table-of-contents")}</span>
+        </div>
       </div>
       {showToc && <div dangerouslySetInnerHTML={{ __html: tocHtml }} />}
     </div>
@@ -43,17 +45,23 @@ const tocStyle = css`
       justify-content: center;
       width: 2rem;
       height: 2rem;
-      padding: 0.35rem;
+      /* padding: 0.35rem; */
       color: var(--background);
       background-color: var(--base);
       border-radius: 1rem;
     }
 
-    > span {
-      padding-left: 0.5rem;
-      font-size: 1.25rem;
-      font-weight: var(--font-bold);
-      color: var(--base);
+    > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      > span {
+        padding-left: 0.5rem;
+        font-size: 1.25rem;
+        font-weight: var(--font-bold);
+        color: var(--base);
+      }
     }
   }
 

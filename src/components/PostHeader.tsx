@@ -68,7 +68,6 @@ const postHeaderStyle = css`
     justify-content: center;
     padding-bottom: 0.5rem;
 
-    nav,
     div {
       display: flex;
       align-items: center;
@@ -81,10 +80,14 @@ const postHeaderStyle = css`
         height: 1rem;
         margin-right: 0.5rem;
       }
-    }
 
-    nav > a {
-      padding-right: 0.5rem;
+      > ul {
+        display: flex;
+
+        > li {
+          padding-right: 0.5rem;
+        }
+      }
     }
   }
 `;
