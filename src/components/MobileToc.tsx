@@ -25,13 +25,13 @@ export const MobileToc = ({ tocHtml }: Props) => {
           <FaList />
         </button>
         <div>
-          <span id="toc-title">{t("table-of-contents")}</span>
+          <span id="mobile-toc-title">{t("table-of-contents")}</span>
         </div>
       </div>
       {showToc && (
         <nav
           id="mobile-toc"
-          aria-labelledby="toc-title"
+          aria-labelledby="mobile-toc-title"
           dangerouslySetInnerHTML={{ __html: tocHtml }}
         />
       )}
