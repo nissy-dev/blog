@@ -18,16 +18,23 @@ export const MobileToc = ({ tocHtml }: Props) => {
         <button
           type="button"
           onClick={() => setState(!showToc)}
-          title={t("toggle-toc")}
-          aria-label={!showToc ? t("open-toc") : t("close-toc")}
+          title={!showToc ? t("open-toc") : t("close-toc")}
+          aria-controls="mobile-toc"
+          aria-expanded={showToc}
         >
           <FaList />
         </button>
         <div>
-          <span>{t("table-of-contents")}</span>
+          <span id="toc-title">{t("table-of-contents")}</span>
         </div>
       </div>
-      {showToc && <div dangerouslySetInnerHTML={{ __html: tocHtml }} />}
+      {showToc && (
+        <nav
+          id="mobile-toc"
+          aria-labelledby="toc-title"
+          dangerouslySetInnerHTML={{ __html: tocHtml }}
+        />
+      )}
     </div>
   );
 };
@@ -36,7 +43,7 @@ const tocStyle = css`
   display: flex;
   flex-direction: column;
 
-  > div:nth-of-type(1) {
+  > div {
     display: flex;
 
     > button {
@@ -65,7 +72,7 @@ const tocStyle = css`
     }
   }
 
-  > div:nth-of-type(2) {
+  > nav {
     padding-top: 1rem;
     padding-left: 0.5rem;
 

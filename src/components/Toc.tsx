@@ -14,9 +14,9 @@ export const Toc = ({ tocHtml }: Props) => {
     <div css={tocStyle}>
       <div>
         <FaList />
-        <span>{t("table-of-contents")}</span>
+        <span id="toc-title">{t("table-of-contents")}</span>
       </div>
-      <div dangerouslySetInnerHTML={{ __html: tocHtml }} />
+      <nav aria-labelledby="toc-title" dangerouslySetInnerHTML={{ __html: tocHtml }} />
     </div>
   );
 };
@@ -24,7 +24,7 @@ export const Toc = ({ tocHtml }: Props) => {
 const tocStyle = css`
   padding-right: 2rem;
 
-  > div:nth-of-type(1) {
+  > div {
     display: flex;
     align-items: center;
     font-size: 1.25rem;
@@ -41,7 +41,7 @@ const tocStyle = css`
     }
   }
 
-  > div:nth-of-type(2) {
+  > nav {
     height: 80%;
     padding-top: 1rem;
     overflow: scroll;

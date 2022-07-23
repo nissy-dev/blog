@@ -31,19 +31,15 @@ export const Footer = () => {
 
   return (
     <footer css={footerStyle}>
-      <div>
+      <ul>
         {snsLinks.map((link) => (
-          <a
-            key={link.snsName}
-            target="_blank"
-            rel="noopener noreferrer"
-            href={link.href}
-            title={t(link.ariaLabel)}
-          >
-            {link.icon}
-          </a>
+          <li key={link.snsName}>
+            <a target="_blank" rel="noopener noreferrer" href={link.href} title={t(link.ariaLabel)}>
+              {link.icon}
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
       <div>{`© ${new Date().getFullYear()} ${siteMetadata.author}`}</div>
     </footer>
   );
@@ -56,12 +52,13 @@ const footerStyle = css`
   padding-bottom: 3rem;
   color: var(--foreground);
 
-  > div:nth-of-type(1) {
+  > ul {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 0.5rem;
     width: 8rem;
 
-    svg {
+    > li > a > svg {
       width: 1.5rem;
       height: 1.5rem;
 
