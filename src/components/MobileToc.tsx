@@ -28,13 +28,12 @@ export const MobileToc = ({ tocHtml }: Props) => {
           <span id="mobile-toc-title">{t("table-of-contents")}</span>
         </div>
       </div>
-      {showToc && (
-        <nav
-          id="mobile-toc"
-          aria-labelledby="mobile-toc-title"
-          dangerouslySetInnerHTML={{ __html: tocHtml }}
-        />
-      )}
+      <nav
+        id="mobile-toc"
+        aria-labelledby="mobile-toc-title"
+        dangerouslySetInnerHTML={{ __html: showToc ? tocHtml : "" }}
+        aria-hidden={!showToc}
+      />
     </div>
   );
 };
