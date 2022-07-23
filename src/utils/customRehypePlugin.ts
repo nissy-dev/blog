@@ -27,7 +27,7 @@ export const rehypeInsertTargetBlank: () => Transformer<HastRoot> = () => {
   return transformer;
 };
 
-export const rehypeInsertLazyload: () => Transformer<HastRoot> = () => {
+export const rehypeInsertLazyLoad: () => Transformer<HastRoot> = () => {
   const transformer: Transformer<HastRoot> = (tree) => {
     const insertTargetBlank = (node: Element) => {
       if (is(node, { tagName: "img" }) && hasProperties(node)) {

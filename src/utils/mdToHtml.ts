@@ -8,7 +8,7 @@ import remark2Rehype from "remark-rehype";
 
 import {
   rehypeInsertTargetBlank,
-  rehypeInsertLazyload,
+  rehypeInsertLazyLoad,
   rehypeConvertLinkToCard,
 } from "./customRehypePlugin";
 
@@ -21,7 +21,7 @@ export const mdToHtml = async (content: string): Promise<string> => {
     .use(rehypeHighlight)
     .use(rehypeConvertLinkToCard)
     .use(rehypeInsertTargetBlank)
-    .use(rehypeInsertLazyload)
+    .use(rehypeInsertLazyLoad)
     .use(rehypeStringify);
   const contentHtml = await mdProcessor.process(content);
   return contentHtml.toString();
