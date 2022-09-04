@@ -1,5 +1,8 @@
-const withPWA = require("next-pwa");
-const runtimeCaching = require("next-pwa/cache");
+const withPWA = require("next-pwa")({
+  dest: "public",
+  // see: https://github.com/shadowwalker/next-pwa/issues/344
+  dynamicStartUrl: false,
+});
 const withBundleAnalyzer =
   process.env.ANALYZE === "true"
     ? require("@next/bundle-analyzer")({ enabled: true })
@@ -16,14 +19,4 @@ const config = withBundleAnalyzer({
   emotion: true,
 });
 
-module.exports =
-  process.env.NODE_ENV === "production"
-    ? withPWA({
-        pwa: {
-          dest: "public",
-          // see: https://github.com/shadowwalker/next-pwa/issues/344
-          dynamicStartUrl: false,
-        },
-        ...config,
-      })
-    : config;
+module.exports = process.env.NODE_ENV === "production" ? withPWA(config) : config;
