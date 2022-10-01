@@ -38,7 +38,7 @@
     "the-new-css-reset": "^1.7.2"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^12.2.0",
+    "@next/bundle-analyzer": "^12.3.1",
     "@stylelint/postcss-css-in-js": "^0.38.0",
     "@types/gtag.js": "^0.0.10",
     "@types/open-graph-scraper": "^4.8.1",
