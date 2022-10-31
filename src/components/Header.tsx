@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { Suspense } from "react";
 
 import "@docsearch/css";
@@ -12,7 +13,6 @@ import {
 } from "../utils/const";
 import { useTranslation } from "../utils/useTranslation";
 
-import { Link } from "./Link";
 import { ProfileButton } from "./ProfileButton";
 import { ThemeSwitchButton } from "./ThemeSwitchButton";
 

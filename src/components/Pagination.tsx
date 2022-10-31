@@ -1,8 +1,7 @@
 import { css } from "@emotion/react";
+import Link from "next/link";
 
 import { useTranslation } from "src/utils/useTranslation";
-
-import { Link } from "./Link";
 
 type Props = {
   pathName: string;
