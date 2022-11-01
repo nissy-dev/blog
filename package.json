@@ -23,7 +23,7 @@
     "bundle-analyzer": "ANALYZE=true next build"
   },
   "dependencies": {
-    "@docsearch/react": "^3.2.1",
+    "@docsearch/react": "^3.3.0",
     "@emotion/react": "^11.10.0",
     "@react-icons/all-files": "^4.1.0",
     "budoux": "^0.2.0",
