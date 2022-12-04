@@ -41,7 +41,6 @@
     "@next/bundle-analyzer": "^13.0.1",
     "@stylelint/postcss-css-in-js": "^0.38.0",
     "@types/gtag.js": "^0.0.10",
-    "@types/open-graph-scraper": "^4.8.1",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
