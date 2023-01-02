@@ -145,10 +145,6 @@ const mdContentStyle = css`
     color: var(--link-color);
   }
 
-  code:not(.hljs) {
-    background-color: var(--code-background-color);
-  }
-
   blockquote {
     color: var(--blockquote-color);
     border-left: 0.25em solid var(--blockquote-border-color);

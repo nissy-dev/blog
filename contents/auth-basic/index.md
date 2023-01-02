@@ -52,7 +52,7 @@ Web で支える技術で出てきたものを主に取リ扱う。
 
 クライアントのリクエストヘッダの例
 
-```
+```text
 Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
 ```
 
@@ -62,7 +62,7 @@ Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
 - ログアウトが厳密にサポートされていないため、セッション管理にはあまり向かない
 - ログアウトは、任意の URI で「WWW-Authenticate」ヘッダを加えて 401 のレスポンスを返すと一応できる
 
-```
+```text
 WWW-Authenticate: Basic realm="Exmaple.co.jp"
 ```
 
@@ -76,7 +76,7 @@ WWW-Authenticate: Basic realm="Exmaple.co.jp"
 
 credentials の作成方法
 
-```
+```text
 A1 = username ":" realm ":" password
 A2 = HTTPのメソッド ":" コンテンツのURI (":" メッセージボディ)
 
