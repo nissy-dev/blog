@@ -18,14 +18,8 @@ export const OGPContent = (props: Props) => (
         <div dangerouslySetInnerHTML={{ __html: props.html }} />
       </main>
       <footer>
-        <div>
-          <FaGithub />
-          <span>{siteMetadata.github}</span>
-        </div>
-        {/* <div>
-          <FaTwitter />
-          <span>{siteMetadata.twitter}</span>
-        </div> */}
+        <FaGithub />
+        <span>{siteMetadata.github}</span>
       </footer>
     </body>
   </html>
@@ -59,11 +53,6 @@ const styles = css`
     align-items: center;
     justify-content: flex-start;
 
-    > img {
-      width: 48px;
-      height: 48px;
-    }
-
     > span {
       font-size: 48px;
       font-weight: 700;
@@ -88,27 +77,17 @@ const styles = css`
   footer {
     display: flex;
     flex: 1;
+    gap: 10px;
+    align-items: center;
     justify-content: flex-end;
 
-    > div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 24px;
-
-      span {
-        margin-left: 10px;
-        font-size: 36px;
-      }
-
-      svg {
-        width: 36px;
-        height: 36px;
-      }
+    > span {
+      font-size: 36px;
     }
 
-    /* > div:nth-child(2) > svg {
-      color: rgb(29, 155, 240);
-    } */
+    > svg {
+      width: 36px;
+      height: 36px;
+    }
   }
 `;
