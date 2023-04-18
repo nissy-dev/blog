@@ -17,7 +17,7 @@ Babel の生みの親である [Sebastian McKenzie](https://twitter.com/sebmck) 
 
 [^1]: [archive-js](https://github.com/rome/tools/tree/archived-js) ブランチにコードが残っています。
 
-Rust で書き直す決断に至った理由については、Rust の型システムやモジュールシステムによって安全性や正確性が保証された 3rd party crate を利用できることなどを挙げています。[^2] また、Rust で書き直すタイミングで、AST ではなく CST を採用しました。より詳細な内容については、[Rome will be written in Rust](https://rome.tools/blog/2021/09/21/rome-will-be-rewritten-in-rust/) というブログでも解説されているので参考にしてもらえればと思います。
+Rust で書き直す決断に至った理由については、Rust の型システムやモジュールシステムによって安全性や正確性が保証された 3rd party crate を利用できることなどを挙げています。[^2] また、Rust で書き直すタイミングで、AST ではなく [Rowan](https://github.com/rust-analyzer/rowan) ベースの CST を採用しました。より詳細な内容については、[Rome will be written in Rust](https://rome.tools/blog/2021/09/21/rome-will-be-rewritten-in-rust/) というブログでも解説されているので参考にしてもらえればと思います。
 
 [^2]: Jamie Kyle さんの [ツイート](https://twitter.com/buildsghost/status/1422628909376442371) で解説されていました。
 
@@ -91,12 +91,12 @@ Emanuele さんは、「Rome Tools, Inc をやめた後もコントリビュー�
 またこれはあくまで自分の感覚にはなりますが、他のメンバーに関してもフルタイムメンバーではないので、元々のマイルストーンにあった bundler や test runner などのツールチェーンを統一する勢いは現在のところないと思います。
 
 勢いという点では、Rspack の開発をリードしていた [Boshen](https://twitter.com/boshen_c) さんが自分の学習のために最近開発している [OXC](https://github.com/Boshen/oxc) の方があると思います。
-Discord では、Rust で TypeScript checker を実装している [enzo](https://github.com/kaleidawave/ezno) の作者と協力するような動きも見られ、周りの人を巻き込んで開発を進めていくのが上手いなと感じています。[^11]
+Discord では、Rust で TypeScript checker を実装している [enzo](https://github.com/kaleidawave/ezno) の作者と協力するような動きも見られ、周りの人を巻き込んで開発を進めていくのが上手いなと感じます。[^11]
 
 [^11]: Discord のコメントは[こちら](https://discord.com/channels/1079625926024900739/1080723403595591700/1091005139776700527)です。Rspack も Webpack や Nx のチームをうまく巻き込みながら進めていたのが印象的でした。
 
 ## 最後に
 
-JavaScript の開発に必要なツールチェーンが増え続けている課題感にはすごい共感しているので、Rome だけに限らずできる限りその問題を解消するような動きには今後も貢献していきたいと思います。
+JavaScript の開発に必要なツールチェーンが増え続けている課題感にはすごい共感しているので、Rome に限らずできる限りその問題を解消するような活動には今後も貢献していきたいと思います。
 また、Rome にコントリビューションすることで、JavaScript だけではなく CSS や HTML のパーサーも実装している SWC は本当にすごいと再認識しました。
 いろんなツールが SWC に依存していく一方でコントリビューターが増えていないので、自分にも何かできることがないかなあと思ったりしています。
