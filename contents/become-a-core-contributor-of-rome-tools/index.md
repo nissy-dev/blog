@@ -1,7 +1,7 @@
 ---
 title: "Rome の core contributor になった"
-date: "2023-03-13T14:16:26.854Z"
-description: "description"
+date: "2023-04-19"
+description: "Rome の core contributor になったので、なるまでの振り返りと現在の Rome の状況について少し書きたいと思います"
 tags: ["blog"]
 ---
 
@@ -21,7 +21,7 @@ Rust で書き直す決断に至った理由については、Rust の型シス�
 
 [^2]: Jamie Kyle さんの [ツイート](https://twitter.com/buildsghost/status/1422628909376442371) で解説されていました。
 
-## Rome Tools, Inc と開発体制の変遷
+## Rome Tools, Inc と開発の変遷
 
 Rome はこのように OSS として始まり、開発初期の頃は 10 名程度のメンバーが開発に参加していました。[^3]
 
@@ -62,7 +62,7 @@ https://rome.tools/blog/2021/05/04/announcing-rome-tools-inc
 SWC plugin を作るところから始めていったのですが、自分のスキルレベルに合った issue やコントリビューションネタを見つけることに苦労し、最終的には継続的なコントリビューションにつながりませんでした。
 そして、次に興味を持ったプロジェクトが Rome でした。
 
-しばらく Rust を書いていて思ったことなのですが、test runner が組み込まれていたり、zero config の linter や formatter が整っている状態での開発は非常に快適で、Rome の掲げる理想にとても共感していました。
+しばらく Rust を書いていて思ったことなのですが、test runner が組み込まれていたり、zero config の linter や formatter が整っている状態での開発は非常に快適で、Rome の掲げる理想にとても共感しました。
 さらに、GitHub の [Project](https://github.com/rome/tools/projects) を使った透明性のある開発体制[^8]や丁寧なドキュメントの存在 ([linter](https://rustdocs.rome.tools/rome_analyze/index.html)・[formatter](https://rustdocs.rome.tools/rome_js_formatter/index.html)) などに惹かれて、good first issue にチャレンジすることにしました。
 実際に取り掛かってみると、SWC のときと比べて簡単に PR を出すことができました。
 いくつか good first issue に取り組んだ後は、TypeScript の新しい構文 (satisfies 構文など) の対応をメインに、少しずつ継続的にコントリビューションしていました。
@@ -88,15 +88,18 @@ Emanuele さんは、「Rome Tools, Inc をやめた後もコントリビュー�
 [^10]: Discord 内でスレッドは立ちましたが、これをまとめていく動きも現在はできていません。
 
 個人としても、しばらくは formatter や linter 周りの対応をメインですることになりそうです。
-またこれはあくまで自分の感覚にはなりますが、他のメンバーに関してもフルタイムメンバーではないので、元々のマイルストーンにあった bundler や test runner などのツールチェーンを統一する勢いは現在のところないと思います。
-
-勢いという点では、Rspack の開発をリードしていた [Boshen](https://twitter.com/boshen_c) さんが自分の学習のために最近開発している [OXC](https://github.com/Boshen/oxc) の方があると思います。
-Discord では、Rust で TypeScript checker を実装している [enzo](https://github.com/kaleidawave/ezno) の作者と協力するような動きも見られ、周りの人を巻き込んで開発を進めていくのが上手いなと感じます。[^11]
-
-[^11]: Discord のコメントは[こちら](https://discord.com/channels/1079625926024900739/1080723403595591700/1091005139776700527)です。Rspack も Webpack や Nx のチームをうまく巻き込みながら進めていたのが印象的でした。
+またこれはあくまで自分の感覚にはなりますが、他のメンバーに関してもフルタイムメンバーではないので、元々掲げていた bundler や test runner などのツールチェーンを統一する勢いは現在のところないと思います。
 
 ## 最後に
 
 JavaScript の開発に必要なツールチェーンが増え続けている課題感にはすごい共感しているので、Rome に限らずできる限りその問題を解消するような活動には今後も貢献していきたいと思います。
 また、Rome にコントリビューションすることで、JavaScript だけではなく CSS や HTML のパーサーも実装している SWC は本当にすごいと再認識しました。
 いろんなツールが SWC に依存していく一方でコントリビューターが増えていないので、自分にも何かできることがないかなあと思ったりしています。
+
+あとは、最近の勢いのある OSS は Twitter などでうまくいろんな人を巻き込んでいるなと感じます。
+ブログを投稿する直前に、Rust で Python の linter や formatter を書き換えている [Ruff が資金調達した](https://twitter.com/charliermarsh/status/1648358440450834432)ニュースを見ました。
+Ruff の作者も非常に Twitter でアクティブに活動し、開発メンバーは少ないものの多くの人の意見などを取り入れてプロジェクトを進めているように見えました。
+また、Rspack の開発もしていた [Boshen](https://twitter.com/boshen_c) さんが自分の学習のために最近開発している [OXC](https://github.com/Boshen/oxc) も開発が活発です。
+Discord では、Rust で TypeScript checker を実装している [enzo](https://github.com/kaleidawave/ezno) の作者と協力するような動きも見られ、周りの人を巻き込んで開発を進めていくのが上手いなと感じます。[^11]
+
+[^11]: Discord のコメントは[こちら](https://discord.com/channels/1079625926024900739/1080723403595591700/1091005139776700527)です。Rspack も Webpack や Nx のチームをうまく巻き込みながら進めていたのが印象的でした。
