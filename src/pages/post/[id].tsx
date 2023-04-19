@@ -216,6 +216,16 @@ const mdContentStyle = css`
     }
   }
 
+  /* GitHub Markdown CSS の設定を上書きする */
+  .footnotes {
+    color: var(--foreground);
+    border-top: none;
+
+    li:target {
+      color: var(--foreground);
+    }
+  }
+
   @media screen and (max-width: 640px) {
     .card-thumbnail {
       width: 30%;
