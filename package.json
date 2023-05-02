@@ -68,7 +68,7 @@
     "scaffdog": "^2.5.0",
     "strip-markdown": "^5.0.0",
     "stylelint": "^15.6.0",
-    "stylelint-config-recess-order": "^3.1.0",
+    "stylelint-config-recess-order": "^4.0.0",
     "stylelint-config-recommended": "^11.0.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.3"
