@@ -1,6 +1,6 @@
-import { ThemeProvider } from "next-themes";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { ThemeProvider } from "next-themes";
 import { useEffect } from "react";
 
 import { BaseLayout } from "../components/BaseLayout";
