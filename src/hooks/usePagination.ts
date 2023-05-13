@@ -1,13 +1,12 @@
-import { useRouter } from "next/router";
+import { usePathname, useSearchParams } from "next/navigation";
 
 import { FrontMatter } from "../lib/api";
 
 const PER_PAGES = 10;
 
 export const usePagination = (frontMatters: Array<{ id: string } & FrontMatter>) => {
-  const router = useRouter();
-  const pathname = router.asPath.split(/\?/)[0];
-  const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const queryParams = searchParams.get("page");
   const currentPage = queryParams === null ? 1 : parseInt(queryParams, 10);
   const totalPages = Math.ceil(frontMatters.length / PER_PAGES);

@@ -1,9 +1,11 @@
-import { css } from "@emotion/react";
+"use client";
+
 import Link from "next/link";
 
-import { useTranslation } from "src/utils/useTranslation";
+import { useTranslation } from "../i18n/client";
 
 import { FaTag, FaCalendarAlt, FaClock } from "./Icons";
+import styles from "./PostHeader.module.scss";
 
 type Props = {
   tags: Array<string>;
@@ -22,7 +24,7 @@ export const PostHeader = ({
 }: Props) => {
   const { t } = useTranslation();
   return (
-    <div css={postHeaderStyle}>
+    <div className={styles["post-header"]}>
       <h1>{title}</h1>
       <div>
         <div>
@@ -51,43 +53,3 @@ export const PostHeader = ({
     </div>
   );
 };
-
-const postHeaderStyle = css`
-  color: var(--base);
-  border-bottom: 1px solid var(--base);
-
-  > h1 {
-    font-size: 1.75rem;
-    font-weight: var(--font-bold);
-    text-align: center;
-  }
-
-  > div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-bottom: 0.5rem;
-
-    div {
-      display: flex;
-      align-items: center;
-      padding-top: 0.5rem;
-      padding-right: 0.5rem;
-      font-size: 1rem;
-
-      > svg {
-        width: 1rem;
-        height: 1rem;
-        margin-right: 0.5rem;
-      }
-
-      > ul {
-        display: flex;
-
-        > li {
-          padding-right: 0.5rem;
-        }
-      }
-    }
-  }
-`;

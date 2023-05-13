@@ -1,7 +1,10 @@
-import { css } from "@emotion/react";
+"use client";
+
 import Link from "next/link";
 
-import { useTranslation } from "src/utils/useTranslation";
+import { useTranslation } from "../i18n/client";
+
+import styles from "./Pagination.module.scss";
 
 type Props = {
   pathName: string;
@@ -12,9 +15,9 @@ type Props = {
 export const Pagination = ({ pathName, currentPage, totalPages }: Props) => {
   const { t } = useTranslation();
   return (
-    <div css={paginationStyle}>
+    <div className={styles.pagination}>
       <Link
-        css={currentPage <= 1 && hiddenStyle}
+        // css={currentPage <= 1 && hiddenStyle}
         href={{
           pathname: pathName,
           query: { page: encodeURIComponent(currentPage - 1) },
@@ -25,7 +28,7 @@ export const Pagination = ({ pathName, currentPage, totalPages }: Props) => {
       </Link>
       <span>{`${currentPage} / ${totalPages}`}</span>
       <Link
-        css={currentPage >= totalPages && hiddenStyle}
+        // css={currentPage >= totalPages && hiddenStyle}
         href={{
           pathname: pathName,
           query: { page: encodeURIComponent(currentPage + 1) },
@@ -37,18 +40,3 @@ export const Pagination = ({ pathName, currentPage, totalPages }: Props) => {
     </div>
   );
 };
-
-const paginationStyle = css`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  color: var(--foreground);
-
-  > span:nth-of-type(1) {
-    padding: 0 1rem;
-  }
-`;
-
-const hiddenStyle = css`
-  visibility: hidden;
-`;

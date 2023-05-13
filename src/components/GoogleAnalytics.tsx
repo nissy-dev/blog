@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-import { GA_ID } from "../utils/const";
+import { GA_ID } from "../const";
 
 export const GoogleAnalytics = () => (
   <>

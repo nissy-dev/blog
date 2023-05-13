@@ -1,16 +1,17 @@
-import { css } from "@emotion/react";
+"use client";
 
-import { siteMetadata } from "../utils/const";
-import { useTranslation } from "../utils/useTranslation";
+import { siteMetadata } from "../const";
+import { useTranslation } from "../i18n/client";
 
 import { FaHome } from "./Icons";
+import styles from "./ProfileButton.module.scss";
 
 export const ProfileButton = () => {
   const { t } = useTranslation();
 
   return (
     <a
-      css={buttonStyle}
+      className={styles.button}
       href={siteMetadata.profileSiteUrl}
       target="_blank"
       rel="noopener noreferrer"
@@ -20,16 +21,3 @@ export const ProfileButton = () => {
     </a>
   );
 };
-
-const buttonStyle = css`
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0.5rem;
-  margin-right: 0.5rem;
-  color: var(--foreground);
-
-  > svg {
-    width: 1.75rem;
-    height: 1.75rem;
-  }
-`;

@@ -3,7 +3,7 @@ import path from "path";
 
 import matter from "gray-matter";
 
-import { CONTENTS_DIR } from "../src/utils/const";
+import { CONTENTS_DIR } from "../src/const";
 
 type FrontMatter = {
   title: string;

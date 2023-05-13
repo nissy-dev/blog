@@ -1,8 +1,9 @@
-import { css } from "@emotion/react";
+"use client";
 
-import { siteMetadata } from "../utils/const";
-import { useTranslation } from "../utils/useTranslation";
+import { siteMetadata } from "../const";
+import { useTranslation } from "../i18n/client";
 
+import styles from "./Footer.module.scss";
 import { FaEnvelope, FaGithub, FaTwitter } from "./Icons";
 
 const snsLinks = [
@@ -30,7 +31,7 @@ export const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer css={footerStyle}>
+    <footer className={styles.footer}>
       <ul>
         {snsLinks.map((link) => (
           <li key={link.snsName}>
@@ -44,27 +45,3 @@ export const Footer = () => {
     </footer>
   );
 };
-
-const footerStyle = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 3rem;
-  color: var(--foreground);
-
-  > ul {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 0.5rem;
-    width: 8rem;
-
-    > li > a > svg {
-      width: 1.5rem;
-      height: 1.5rem;
-
-      :hover {
-        color: var(--base);
-      }
-    }
-  }
-`;

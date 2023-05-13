@@ -109,3 +109,5 @@ public/workbox*
 public/sitemap.xml
 public/feed
 public/images/ogps
+
+src/**/*.css.*
