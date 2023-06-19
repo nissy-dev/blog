@@ -8,14 +8,7 @@ type Props = {
 };
 
 export const OGPContent = (props: Props) => (
-  <html
-    style={{
-      width: "calc(1200px - 75px * 2)",
-      height: "calc(630px - 50px * 2)",
-      margin: 0,
-    }}
-    lang="ja"
-  >
+  <html lang="ja">
     {/* eslint-disable-next-line @next/next/no-head-element */}
     <head>
       <style>
@@ -36,6 +29,7 @@ body {
         fontWeight: 500,
         wordWrap: "break-word",
         overflowWrap: "break-word",
+        padding: "50px 75px",
       }}
     >
       <header
