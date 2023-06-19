@@ -1,91 +1,102 @@
-import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
+import React from "react";
 
-import { siteMetadata } from "../src/utils/const";
+import { FaGithub } from "../src/components/Icons";
+import { siteMetadata } from "../src/const";
 
 type Props = {
   html: string;
 };
 
 export const OGPContent = (props: Props) => (
-  <html lang="ja">
-    <body>
-      <header>
-        <span>{siteMetadata.title}</span>
+  <html
+    style={{
+      width: "calc(1200px - 75px * 2)",
+      height: "calc(630px - 50px * 2)",
+      margin: 0,
+    }}
+    lang="ja"
+  >
+    {/* eslint-disable-next-line @next/next/no-head-element */}
+    <head>
+      <style>
+        {`@import url("https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700&display=swap");
+html,
+body {
+  width: calc(1200px - 75px * 2);
+  height: calc(630px - 50px * 2);
+  margin: 0;
+}`}
+      </style>
+    </head>
+    <body
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        fontFamily: "'M PLUS 1p', sans-serif",
+        fontWeight: 500,
+        wordWrap: "break-word",
+        overflowWrap: "break-word",
+      }}
+    >
+      <header
+        style={{
+          display: "flex",
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "flex-start",
+        }}
+      >
+        <span
+          style={{
+            fontSize: "48px",
+            fontWeight: 700,
+            color: "#ef6c35",
+          }}
+        >
+          {siteMetadata.title}
+        </span>
       </header>
-      <main>
-        <div dangerouslySetInnerHTML={{ __html: props.html }} />
+      <main
+        style={{
+          display: "flex",
+          flex: 3,
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "0 50px",
+        }}
+      >
+        <div
+          style={{
+            fontSize: "54px",
+            fontWeight: 700,
+            textAlign: "center",
+          }}
+          dangerouslySetInnerHTML={{ __html: props.html }}
+        />
       </main>
-      <footer>
-        <FaGithub />
-        <span>{siteMetadata.github}</span>
+      <footer
+        style={{
+          display: "flex",
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "flex-end",
+          gap: "10px",
+        }}
+      >
+        <FaGithub
+          style={{
+            width: "36px",
+            height: "36px",
+          }}
+        />
+        <span
+          style={{
+            fontSize: "36px",
+          }}
+        >
+          {siteMetadata.github}
+        </span>
       </footer>
     </body>
   </html>
 );
-
-// const styles = css`
-//   /* TODO: 文字化けを防ぐためにGoogle Fontを読み込む */
-//   /* stylelint-disable-next-line no-invalid-position-at-import-rule */
-//   @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700&display=swap");
-
-//   html,
-//   body {
-//     width: calc(1200px - 75px * 2);
-//     height: calc(630px - 50px * 2);
-//     margin: 0;
-//   }
-
-//   body {
-//     display: flex;
-//     flex-direction: column;
-//     padding: 50px 75px;
-//     font-family: "M PLUS 1p", sans-serif;
-//     font-weight: 500;
-//     word-wrap: break-word;
-//     overflow-wrap: break-word;
-//   }
-
-//   header {
-//     display: flex;
-//     flex: 1;
-//     align-items: center;
-//     justify-content: flex-start;
-
-//     > span {
-//       font-size: 48px;
-//       font-weight: 700;
-//       color: #ef6c35;
-//     }
-//   }
-
-//   main {
-//     display: flex;
-//     flex: 3;
-//     align-items: center;
-//     justify-content: center;
-//     padding: 0 50px;
-
-//     > div {
-//       font-size: 54px;
-//       font-weight: 700;
-//       text-align: center;
-//     }
-//   }
-
-//   footer {
-//     display: flex;
-//     flex: 1;
-//     gap: 10px;
-//     align-items: center;
-//     justify-content: flex-end;
-
-//     > span {
-//       font-size: 36px;
-//     }
-
-//     > svg {
-//       width: 36px;
-//       height: 36px;
-//     }
-//   }
-// `;

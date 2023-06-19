@@ -4,9 +4,10 @@ import path from "path";
 import { loadDefaultJapaneseParser } from "budoux";
 import { Feed } from "feed";
 import { chromium } from "playwright";
+import React from "react";
 import ReactDOM from "react-dom/server";
 
-import { siteMetadata, OGP_DIR } from "../src/utils/const";
+import { siteMetadata, OGP_DIR } from "../src/const";
 
 import { getFrontMatters } from "./api";
 import { OGPContent } from "./OGPContent";
