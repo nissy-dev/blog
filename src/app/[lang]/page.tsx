@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 import { Home } from "../../components/Home";
 import { Locale, supportLocales } from "../../i18n/resources";
@@ -25,5 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Page() {
   const frontMatters = await getFrontMatters();
-  return <Home frontMatters={frontMatters} />;
+  return (
+    <Suspense fallback={null}>
+      <Home frontMatters={frontMatters} />
+    </Suspense>
+  );
 }

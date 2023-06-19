@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 import { Tag } from "../../../../components/Tag";
 import { Locale, supportLocales } from "../../../../i18n/resources";
@@ -29,5 +30,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Page({ params }: Props) {
   const frontMatters = await getFrontMatters(params.slug);
-  return <Tag slug={params.slug} frontMatters={frontMatters} />;
+  return (
+    <Suspense fallback={null}>
+      <Tag slug={params.slug} frontMatters={frontMatters} />;
+    </Suspense>
+  );
 }
