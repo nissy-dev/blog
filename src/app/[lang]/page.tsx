@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 import { Home } from "../../components/Home";
-import { Locale, supportLocales } from "../../i18n/resources";
+import { Locale, SUPPORTED_LOCALES } from "../../i18n/resources";
 import { getTranslation } from "../../i18n/server";
 import { getFrontMatters } from "../../lib/api";
 
@@ -13,7 +13,7 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return supportLocales.map((locale) => ({ lang: locale }));
+  return SUPPORTED_LOCALES.map((locale) => ({ lang: locale }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

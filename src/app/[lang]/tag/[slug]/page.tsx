@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 import { Tag } from "../../../../components/Tag";
-import { Locale, supportLocales } from "../../../../i18n/resources";
+import { Locale, SUPPORTED_LOCALES } from "../../../../i18n/resources";
 import { getTranslation } from "../../../../i18n/server";
 import { getFrontMatters, getTags } from "../../../../lib/api";
 
@@ -16,7 +16,7 @@ type Props = {
 export async function generateStaticParams() {
   const tags = await getTags();
   return tags.flatMap((tag) => {
-    return supportLocales.map((locale) => ({ slug: tag, lang: locale }));
+    return SUPPORTED_LOCALES.map((locale) => ({ slug: tag, lang: locale }));
   });
 }
 
