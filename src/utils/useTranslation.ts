@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useCallback } from "react";
 
 import en from "../../public/locales/en.json";
 import ja from "../../public/locales/ja.json";
@@ -22,8 +23,11 @@ export const useTranslation = (): {
   const { locale } = useRouter();
   const currentLocale = isSupportLocale(locale) ? locale : defaultLocale;
 
-  const translate = (key: i18nKey) => {
-    return resources[currentLocale][key];
-  };
+  const translate = useCallback(
+    (key: i18nKey) => {
+      return resources[currentLocale][key];
+    },
+    [currentLocale]
+  );
   return { t: translate, locale: currentLocale };
 };
