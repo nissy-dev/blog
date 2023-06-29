@@ -1,5 +1,5 @@
 ---
-title: "Oxc はうまくいくのか？"
+title: "Rome の contributor からみた Oxc の印象"
 date: "2023-06-25T07:51:40.672Z"
 description: "description"
 tags: ["blog"]
