@@ -1,5 +1,3 @@
-"use client";
-
 import { useTranslation } from "../i18n/client";
 
 import { FaList } from "./Icons";

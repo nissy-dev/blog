@@ -1,9 +1,9 @@
 import "server-only";
 
-import { RESOURCES, SUPPORTED_LOCALES, Locale, i18nKey } from "./resources";
+import { RESOURCES, Locale, i18nKey, isSupportLocale } from "./resources";
 
 export const getTranslation = (locale: Locale) => {
-  if (!SUPPORTED_LOCALES.includes(locale)) {
+  if (!isSupportLocale(locale)) {
     throw new Error(`Unsupported locale: ${locale}`);
   }
   return { t: (key: i18nKey) => RESOURCES[locale][key] };

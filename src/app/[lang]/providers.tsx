@@ -2,6 +2,12 @@
 
 import { ThemeProvider } from "next-themes";
 
-export function Providers({ children }: { children: React.ReactNode }) {
-  return <ThemeProvider>{children}</ThemeProvider>;
+import { LocaleContext } from "../../i18n/client";
+
+export function Providers({ children, lang }: { children: React.ReactNode; lang: string }) {
+  return (
+    <ThemeProvider>
+      <LocaleContext.Provider value={lang}>{children}</LocaleContext.Provider>
+    </ThemeProvider>
+  );
 }

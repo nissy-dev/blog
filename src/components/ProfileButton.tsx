@@ -1,5 +1,3 @@
-"use client";
-
 import { siteMetadata } from "../const";
 import { useTranslation } from "../i18n/client";
 

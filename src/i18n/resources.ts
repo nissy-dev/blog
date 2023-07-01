@@ -6,3 +6,6 @@ export const SUPPORTED_LOCALES = Object.keys(RESOURCES) as Locale[];
 export const DEFAULT_LOCALE = "ja";
 export type Locale = keyof typeof RESOURCES;
 export type i18nKey = keyof typeof RESOURCES["ja"];
+
+export const isSupportLocale = (locale: string | undefined): locale is Locale =>
+  locale !== undefined && Object.keys(RESOURCES).includes(locale);

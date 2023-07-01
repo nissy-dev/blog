@@ -1,5 +1,3 @@
-"use client";
-
 import { useTheme } from "next-themes";
 
 import { useTranslation } from "../i18n/client";

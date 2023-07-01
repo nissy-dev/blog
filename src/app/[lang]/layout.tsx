@@ -48,7 +48,7 @@ export default function RootLayout({
     <html lang={params.lang} suppressHydrationWarning>
       <GoogleAnalytics />
       <body>
-        <Providers>
+        <Providers lang={params.lang}>
           <Header />
           {children}
           <Footer />
