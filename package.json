@@ -26,7 +26,7 @@
     "@docsearch/react": "^3.5.1",
     "@emotion/react": "^11.11.1",
     "@react-icons/all-files": "^4.1.0",
-    "budoux": "^0.4.1",
+    "budoux": "^0.5.1",
     "feed": "^4.2.2",
     "github-markdown-css": "^5.2.0",
     "highlight.js": "^11.8.0",
