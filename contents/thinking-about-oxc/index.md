@@ -29,7 +29,7 @@ Rome は、近年の Web 開発に必要なツールチェーンの設定の多�
 
 > Provide the basic building blocks for creating your own tools by having good API designs
 
-## Rome はうまくいくのか？
+## Rome の現状
 
 Oxc がうまくいくかどうかの話の前に、そもそも Rome について振り返ってみます。
 
@@ -102,7 +102,7 @@ Rome の開発者としては、やはりプラグインを Rust という形で
 
 ちなみに、Rome の開発を支えていた [Emanuele さん](https://twitter.com/ematipico)と [Micha さん](https://twitter.com/MichaReiser)は開発初期の頃から Oxc にアーキテクチャのアドバイスを頻繁に行なっています。また、Rome も Oxc から Rust の細かい Tips を導入することもあります。そのため、Rome と Oxc はお互いにより良いツールチェーンを提供するために切磋琢磨する関係になっています。
 
-## 自分はどうしていくのか
+## 最後に
 
 ざっくりと Rome と Oxc について個人的に振り返ってみました。
 
