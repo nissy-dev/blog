@@ -4,12 +4,21 @@ const withBundleAnalyzer =
     : (config) => config;
 
 const config = withBundleAnalyzer({
-  i18n: {
-    locales: ["en", "ja"],
-    defaultLocale: "ja",
-  },
-  compiler: {
-    emotion: true,
+  async rewrites() {
+    return [
+      {
+        source: "/",
+        destination: "/ja/",
+      },
+      {
+        source: "/post/:id",
+        destination: "/ja/post/:id",
+      },
+      {
+        source: "/tag/:slug",
+        destination: "/ja/tag/:slug",
+      },
+    ];
   },
 });
 

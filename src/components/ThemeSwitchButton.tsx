@@ -1,9 +1,9 @@
-import { css } from "@emotion/react";
 import { useTheme } from "next-themes";
 
-import { useTranslation } from "../utils/useTranslation";
+import { useTranslation } from "../i18n/client";
 
 import { FaMoon, FaSun } from "./Icons";
+import styles from "./ThemeSwitchButton.module.scss";
 
 export const ThemeSwitchButton = () => {
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -14,7 +14,7 @@ export const ThemeSwitchButton = () => {
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      css={buttonStyle}
+      className={styles.button}
       title={t("toggle-theme")}
       aria-label={isDark ? t("switch-light-mode") : t("switch-dark-mode")}
     >
@@ -22,16 +22,3 @@ export const ThemeSwitchButton = () => {
     </button>
   );
 };
-
-const buttonStyle = css`
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0.5rem;
-  margin-right: 0.5rem;
-  color: var(--foreground);
-
-  > svg {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-`;

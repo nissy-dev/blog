@@ -3,11 +3,12 @@ import path from "path";
 
 import matter from "gray-matter";
 
-import { calcTimeToRead } from "../utils/calcTimeToRead";
-import { CONTENTS_DIR } from "../utils/const";
-import { extractExcerpt } from "../utils/extractExcerpt";
-import { mdToHtml } from "../utils/mdToHtml";
-import { tocGenerator } from "../utils/tocGenerator";
+import { CONTENTS_DIR } from "../const";
+
+import { calcTimeToRead } from "./utils/calcTimeToRead";
+import { extractExcerpt } from "./utils/extractExcerpt";
+import { mdToHtml } from "./utils/mdToHtml";
+import { tocGenerator } from "./utils/tocGenerator";
 
 export type FrontMatter = {
   title: string;

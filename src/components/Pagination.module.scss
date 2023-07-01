@@ -1,0 +1,14 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: var(--foreground);
+
+  > span:nth-of-type(1) {
+    padding: 0 1rem;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}

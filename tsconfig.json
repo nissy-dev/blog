@@ -16,18 +16,23 @@
     "isolatedModules": true,
     "allowJs": true,
     "jsx": "preserve",
-    "jsxImportSource": "@emotion/react",
     "baseUrl": ".",
     "paths": {
       "markdown-toc": [
         "types/markdown-toc.d.ts.ts"
       ]
     },
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
-    "src"
+    "src",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
