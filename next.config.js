@@ -11,6 +11,7 @@ const config = withBundleAnalyzer({
   compiler: {
     emotion: true,
   },
+  staticPageGenerationTimeout: 300,
 });
 
 module.exports = config;
