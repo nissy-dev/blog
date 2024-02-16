@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "group:allNonMajor",
+    "config:base"
+  ],
+  "dependencyDashboard": false,
+  "enabledManagers": ["npm", "github-actions"],
+  "automerge": true,
+  "rebaseWhen": "conflicted",
+  "labels": ["renovate"],
+  // cron で実行するので limit は 0 にしておく
+  "prConcurrentLimit": 0,
+  "minimumReleaseAge": "7 days",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    }
+  ]
+}
