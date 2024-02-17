@@ -7,13 +7,14 @@
   "repositories": [
     "nissy-dev/blog",
   ],
-  "dependencyDashboard": false,
+  "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
   "enabledManagers": ["npm", "github-actions"],
   "automerge": true,
   "rebaseWhen": "conflicted",
   "labels": ["renovate"],
   // cron で実行するので limit は 0 にしておく
   "prConcurrentLimit": 0,
+  "prHourlyLimit": 0,
   "minimumReleaseAge": "7 days",
   "rangeStrategy": "pin",
   "packageRules": [

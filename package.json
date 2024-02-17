@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "postinstall": "npx playwright install",
+    "postinstall": "npx playwright install chromium",
     "prepare": "git config --local core.hooksPath .githooks",
     "dev": "next dev",
     "build": "npm run build:static && npm run build:next",
