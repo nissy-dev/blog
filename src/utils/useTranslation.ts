@@ -9,7 +9,7 @@ const defaultLocale = "ja";
 
 export type Locale = keyof typeof resources;
 
-type i18nKey = keyof typeof resources["ja"];
+type i18nKey = keyof (typeof resources)["ja"];
 
 export const supportLocales = Object.keys(resources) as Locale[];
 
@@ -27,7 +27,7 @@ export const useTranslation = (): {
     (key: i18nKey) => {
       return resources[currentLocale][key];
     },
-    [currentLocale]
+    [currentLocale],
   );
   return { t: translate, locale: currentLocale };
 };

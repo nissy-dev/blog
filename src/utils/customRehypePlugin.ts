@@ -43,14 +43,14 @@ export const rehypeInsertLazyLoad: () => Transformer<HastRoot> = () => {
 export const rehypeConvertLinkToCard: () => Transformer<HastRoot> = () => {
   const transformer: Transformer<HastRoot> = async (tree) => {
     const transformers: (() => Promise<void>)[] = [];
-    const convertLinkToCard = (node: Element, index: number | null) => {
+    const convertLinkToCard = (node: Element, index: number | undefined) => {
       if (is(node, { tagName: "p" }) && node.children.length === 1) {
         const child = node.children[0];
         if (is(child, { tagName: "a" }) && hasProperties(child)) {
           transformers.push(async () => {
             const link = (child.properties.href as string) ?? "";
             const cardData = await extractCardData(link);
-            if (cardData && index !== null) {
+            if (cardData && index !== undefined) {
               const cardContent = buildCardContent(cardData);
               tree.children.splice(index, 1, cardContent);
             }

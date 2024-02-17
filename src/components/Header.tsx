@@ -20,7 +20,7 @@ import type { DocSearchProps } from "@docsearch/react";
 
 // @docsearch/react is 20kb over, so use dynamic import
 const DocSearch = dynamic<DocSearchProps>(() =>
-  import("@docsearch/react").then((module) => module.DocSearch)
+  import("@docsearch/react").then((module) => module.DocSearch),
 );
 
 export const Header = () => {

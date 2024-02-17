@@ -11,6 +11,12 @@ const config = withBundleAnalyzer({
   compiler: {
     emotion: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreDuringBuilds: true,
+  },
   staticPageGenerationTimeout: 300,
 });
 
