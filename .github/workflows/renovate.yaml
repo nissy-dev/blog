@@ -3,6 +3,9 @@ name: Renovate
 on:
   schedule:
     - cron: 0 */6 * * *
+  push:
+    branches:
+      - main
 
 jobs:
   renovate:
@@ -13,4 +16,5 @@ jobs:
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v40.0.3
         with:
+          configurationFile: renovate.json5
           token: ${{ secrets.RENOVATE_TOKEN }}
