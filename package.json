@@ -54,7 +54,7 @@
     "lint-staged": "13.3.0",
     "markdown-toc": "1.2.0",
     "npm-run-all2": "5.0.2",
-    "open-graph-scraper": "5.2.3",
+    "open-graph-scraper": "6.3.4",
     "playwright": "1.38.1",
     "prettier": "2.8.8",
     "reading-time": "1.5.0",
