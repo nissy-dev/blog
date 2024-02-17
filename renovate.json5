@@ -4,6 +4,9 @@
     "group:allNonMajor",
     "config:recommended"
   ],
+  "repositories": [
+    "nissy-dev/blog",
+  ],
   "dependencyDashboard": false,
   "enabledManagers": ["npm", "github-actions"],
   "automerge": true,
