@@ -54,7 +54,7 @@
     "markdown-toc": "1.2.0",
     "npm-run-all2": "6.1.2",
     "open-graph-scraper": "6.4.0",
-    "playwright": "1.41.2",
+    "playwright": "1.42.0",
     "prettier": "3.2.5",
     "reading-time": "1.5.0",
     "rehype-autolink-headings": "7.1.0",
