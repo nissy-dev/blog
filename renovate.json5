@@ -1,11 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ],
-  "repositories": [
-    "nissy-dev/blog"
-  ],
+  "extends": ["config:recommended"],
+  "repositories": ["nissy-dev/blog"],
+  "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
+  "platform": "github",
   "enabledManagers": ["npm", "github-actions", "docker-compose", "dockerfile"],
   "automerge": true,
   "rebaseWhen": "conflicted",
