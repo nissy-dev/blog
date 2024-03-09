@@ -16,20 +16,30 @@
   "separateMultipleMajor": true,
   "packageRules": [
     {
-      "matchDepTypes": ["action"],
+      "groupName": "dependencies",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies"]
+    },
+    {
+      "groupName": "devDependencies",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"]
+    },
+    {
+      "groupName": "docker",
+      "matchManagers": ["dockerfile", "docker-compose"]
+    },
+    {
+      "groupName": "actions",
+      "matchManagers": ["github-actions"],
+    },
+    // third party の GitHub Actions は pinDigests を有効にする
+    {
+      "matchManagers": ["github-actions"],
       "excludePackagePrefixes": ["actions/"],
-      "pinDigests": true,
-      "groupName": "actions"
+      "pinDigests": true
     },
-    {
-      "matchDepTypes": ["dependencies"],
-      "groupName": "dependencies"
-    },
-    {
-      "matchDepTypes": ["devDependencies"],
-      "groupName": "devDependencies"
-    },
-    // next.js は minimumReleaseAge を伸ばす
+    // Next.js は minimumReleaseAge を伸ばす
     {
       "matchPackageNames": ["next"],
       "matchManagers": ["npm"],
@@ -44,6 +54,6 @@
       // - Minor: 全て対象
       // - Patch: 0 のみ対象
       "allowedVersions": "/^[0-9]+[24680]\\.[0-9]+\\.0$/"
-    },
+    }
   ]
 }
