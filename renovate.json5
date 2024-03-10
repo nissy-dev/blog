@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": ["config:base"],
   "repositories": ["nissy-dev/blog"],
   "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
   "platform": "github",
@@ -31,7 +31,7 @@
     },
     {
       "groupName": "actions",
-      "matchManagers": ["github-actions"],
+      "matchManagers": ["github-actions"]
     },
     // third party の GitHub Actions は pinDigests を有効にする
     {
@@ -39,10 +39,16 @@
       "excludePackagePrefixes": ["actions/"],
       "pinDigests": true
     },
+    // devdeps と deps を一緒にあげるものは個別で grouping を指定する
     // Next.js は minimumReleaseAge を伸ばす
     {
-      "matchPackageNames": ["next"],
-      "matchManagers": ["npm"],
+      "matchPackageNames": ["nextjs"],
+      "extends": ["monorepo:nextjs"],
+      "minimumReleaseAge": "14 days"
+    },
+    {
+      "matchPackageNames": ["react"],
+      "extends": ["monorepo:react"],
       "minimumReleaseAge": "14 days"
     },
     // Node.js のアップデートは LTS に限定する
