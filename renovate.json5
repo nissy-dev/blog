@@ -3,8 +3,8 @@
   "extends": ["config:base"],
   "repositories": ["nissy-dev/blog"],
   "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
-  "platform": "github",
   "enabledManagers": ["npm", "github-actions", "docker-compose", "dockerfile"],
+  // branch protection を設定しないと自動マージされないので注意
   "automerge": true,
   "rebaseWhen": "conflicted",
   "labels": ["renovate"],
@@ -13,6 +13,7 @@
   "prHourlyLimit": 0,
   "minimumReleaseAge": "3 days",
   "rangeStrategy": "pin",
+  // major バージョンの更新は別 PR にする
   "separateMultipleMajor": true,
   "packageRules": [
     {
