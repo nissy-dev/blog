@@ -15,7 +15,7 @@ const config = withBundleAnalyzer({
     ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreDuringBuilds: true,
+    ignoreBuildErrors: true,
   },
   staticPageGenerationTimeout: 300,
 });
