@@ -1,0 +1,66 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
+  "repositories": ["nissy-dev/blog"],
+  "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
+  "enabledManagers": ["npm", "github-actions", "docker-compose", "dockerfile"],
+  // branch protection を設定しないと自動マージされないので注意
+  "automerge": true,
+  "rebaseWhen": "conflicted",
+  "labels": ["renovate"],
+  // cron で実行するので limit は 0 にしておく
+  "prConcurrentLimit": 0,
+  "prHourlyLimit": 0,
+  "minimumReleaseAge": "3 days",
+  "rangeStrategy": "pin",
+  // major バージョンの更新は別 PR にする
+  "separateMultipleMajor": true,
+  "packageRules": [
+    {
+      "groupName": "dependencies",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies"]
+    },
+    {
+      "groupName": "devDependencies",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"]
+    },
+    {
+      "groupName": "docker",
+      "matchManagers": ["dockerfile", "docker-compose"]
+    },
+    {
+      "groupName": "actions",
+      "matchManagers": ["github-actions"]
+    },
+    // third party の GitHub Actions は pinDigests を有効にする
+    {
+      "matchManagers": ["github-actions"],
+      "excludePackagePrefixes": ["actions/"],
+      "pinDigests": true
+    },
+    // devdeps と deps を一緒にあげるものは個別で grouping を指定する
+    // Next.js は minimumReleaseAge を伸ばす
+    {
+      "matchPackageNames": ["nextjs"],
+      "extends": ["monorepo:nextjs"],
+      "minimumReleaseAge": "14 days"
+    },
+    {
+      "matchPackageNames": ["react"],
+      "extends": ["monorepo:react"],
+      "minimumReleaseAge": "14 days"
+    },
+    // Node.js のアップデートは LTS に限定する
+    {
+      "groupName": "Node.js",
+      "matchPackageNames": ["node", "@types/node"],
+      // この正規表現は､下記を表す。
+      // - Major: 偶数のみ
+      // - Minor: 全て対象
+      // - Patch: 0 のみ対象
+      "allowedVersions": "/^[0-9]+[24680]\\.[0-9]+\\.0$/"
+    }
+  ]
+}

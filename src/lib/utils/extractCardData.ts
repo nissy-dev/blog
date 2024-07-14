@@ -9,37 +9,11 @@ export type CardData = {
   url: string;
 };
 
-type OgsResultType = {
-  ogTitle: string;
-  ogDescription: string;
-  ogImage: {
-    url: string;
-  };
-};
-
-const isOgsResultType = (result: object): result is OgsResultType => {
-  if (
-    "ogTitle" in result &&
-    typeof result.ogTitle === "string" &&
-    "ogDescription" in result &&
-    typeof result.ogDescription === "string" &&
-    "ogImage" in result &&
-    typeof result.ogImage === "object" &&
-    result.ogImage !== null &&
-    "url" in result.ogImage &&
-    typeof result.ogImage.url === "string"
-  ) {
-    return true;
-  }
-
-  return false;
-};
-
 export const extractCardData = async (url: string): Promise<CardData | undefined> => {
   try {
-    const ogsData = await ogs({ url, downloadLimit: 1000000 * 20 });
+    const ogsData = await ogs({ url });
     const { result } = ogsData;
-    if (!isOgsResultType(result)) {
+    if (!result.ogTitle || !result.ogDescription) {
       throw new Error("Invalid result type.");
     }
 
@@ -47,7 +21,7 @@ export const extractCardData = async (url: string): Promise<CardData | undefined
     return {
       title: result.ogTitle,
       description: result.ogDescription,
-      image: result.ogImage.url,
+      image: result.ogImage?.[0].url,
       hostname,
       favicon: `https://www.google.com/s2/favicons?domain=${hostname}`,
       url,
