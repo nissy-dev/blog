@@ -19,7 +19,6 @@
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix:prettier": "npm run lint:prettier -- --write",
     "fix:css": "npm run lint:css -- --fix",
-    "post": "scaffdog generate new-post",
     "bundle-analyzer": "ANALYZE=true next build"
   },
   "dependencies": {
@@ -68,7 +67,6 @@
     "remark-gfm": "^3.0.1",
     "remark-rehype": "^10.1.0",
     "sass": "^1.63.3",
-    "scaffdog": "^2.5.0",
     "strip-markdown": "^5.0.0",
     "stylelint": "^15.6.0",
     "stylelint-config-css-modules": "^4.2.0",
