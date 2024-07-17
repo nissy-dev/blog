@@ -1,0 +1,22 @@
+.tocWrapper {
+  position: fixed;
+  top: 90px;
+  left: calc(50% + var(--max-width) / 2 + 1rem);
+
+  @media screen and (width <= 640px) {
+    display: none;
+  }
+}
+
+.main {
+  padding: 2rem 0;
+}
+
+.mobileTocWrapper {
+  padding-top: 2rem;
+  padding-right: 2rem;
+
+  @media screen and (width >= 640px) {
+    display: none;
+  }
+}

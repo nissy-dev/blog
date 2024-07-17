@@ -1,0 +1,21 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem;
+  color: var(--foreground);
+
+  & ul {
+    display: flex;
+    justify-content: space-between;
+    width: 8rem;
+    padding-bottom: 0.5rem;
+    & li > a > svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      & :hover {
+        color: var(--base);
+      }
+    }
+  }
+}

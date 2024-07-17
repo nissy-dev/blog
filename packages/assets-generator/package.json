@@ -1,0 +1,18 @@
+{
+  "name": "@blog/assets-generator",
+  "version": "0.1.0",
+  "private": true,
+
+  "scripts": {
+    "lint": "biome ci",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "budoux": "0.6.2",
+    "feed": "4.2.2",
+    "@blog/libs": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.10"
+  }
+}

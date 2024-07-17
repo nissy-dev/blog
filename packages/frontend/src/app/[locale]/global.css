@@ -1,0 +1,183 @@
+@import "the-new-css-reset/css/reset.css";
+@import "github-markdown-css/github-markdown.css";
+@import "highlight.js/styles/nord.css";
+
+:root {
+  --max-width: 52rem;
+  /* font: https://zenn.dev */
+  --font-body: -apple-system, system-ui, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif, "Segoe UI Emoji";
+  /* font-weight */
+  --font-bold: 600;
+  /* color */
+  --base: #ef6c35;
+  --black: #23282f;
+  --gray-500: #9e9e9e;
+  --gray-300: #e0e0e0;
+  --gray-200: #eeeeee;
+  --gray-50: #fafafa;
+  --light-blue-a700: #0091ea;
+  --blue-800: #1565c0;
+  --blue-gray-800: #37474f;
+  --background: var(--gray-50);
+  --foreground: var(--black);
+  --link-color: var(--blue-800);
+  --code-background-color: var(--gray-200);
+  --blockquote-color: var(--gray-500);
+  --blockquote-border-color: var(--gray-300);
+}
+
+[data-theme="dark"] {
+  --background: var(--black);
+  --foreground: var(--gray-50);
+  --link-color: var(--light-blue-a700);
+  --code-background-color: var(--blue-gray-800);
+}
+
+html {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  max-width: var(--max-width);
+  padding: 0 2rem;
+  margin-right: auto;
+  margin-left: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  background-color: var(--background);
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* GitHub Markdown CSS の設定を上書きする */
+.markdown-body.markdown-body {
+  padding: 2rem 0;
+  line-height: 1.75;
+  color: var(--foreground);
+  background-color: var(--background);
+
+  & h2 {
+    border-bottom: 1px solid var(--gray-300);
+  }
+
+  & pre {
+    background: #2e3440;
+    border-radius: 0.25rem;
+  }
+
+  & ol {
+    list-style-type: decimal;
+  }
+
+  & ul {
+    list-style-type: disc;
+  }
+
+  & ul ul {
+    list-style-type: circle;
+  }
+
+  & ul ul ul {
+    list-style-type: square;
+  }
+
+  & a {
+    color: var(--link-color);
+  }
+
+  & blockquote {
+    color: var(--blockquote-color);
+    border-left: 0.25em solid var(--blockquote-border-color);
+  }
+
+  & img {
+    display: block;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  & .card-link {
+    display: flex;
+    flex-direction: row;
+    max-height: 7rem;
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--foreground);
+    border: 1px solid var(--gray-300);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem var(--gray-300);
+  }
+
+  & .card-link:hover {
+    text-decoration: none;
+  }
+
+  & .card-thumbnail {
+    display: flex;
+    width: 20%;
+    padding-left: 0.5rem;
+    text-align: center;
+
+    & img {
+      object-fit: contain;
+    }
+  }
+
+  & .card-content {
+    flex: 1;
+    min-width: 0;
+
+    & .card-content-title {
+      overflow: hidden;
+      font-weight: var(--font-bold);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    & .card-content-description {
+      padding: 0.5rem 0;
+      overflow: hidden;
+      font-size: 0.5rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    & .card-content-hostname {
+      display: flex;
+      flex-direction: row;
+      font-size: 0.25rem;
+
+      & img {
+        width: 1rem;
+        margin-right: 0.25rem;
+        margin-left: 0;
+      }
+    }
+  }
+
+  & .footnotes {
+    color: var(--foreground);
+    border-top: none;
+
+    & li:target {
+      color: var(--foreground);
+    }
+  }
+
+  @media screen and (width <= 640px) {
+    .card-thumbnail {
+      width: 30%;
+    }
+  }
+}
