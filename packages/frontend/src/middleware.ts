@@ -13,7 +13,8 @@ const extractLocale = (headers: Negotiator.Headers) => {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const pathnameIsMissingLocale = SUPPORTED_LOCALES.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+    (locale) =>
+      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
   );
   const headers = {
     "accept-language": request.headers.get("accept-language") ?? "",
@@ -23,7 +24,7 @@ export function middleware(request: NextRequest) {
   // Redirect if there is no locale
   if (pathnameIsMissingLocale && locale !== DEFAULT_LOCALE) {
     return NextResponse.redirect(
-      new URL(`/${locale}/${pathname}`, request.url)
+      new URL(`/${locale}/${pathname}`, request.url),
     );
   }
 

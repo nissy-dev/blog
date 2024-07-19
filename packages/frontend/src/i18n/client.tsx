@@ -37,7 +37,7 @@ export const useTranslation = (): {
     (key: i18nKey) => {
       return resource[key];
     },
-    [resource]
+    [resource],
   );
   return { t: translate, locale };
 };

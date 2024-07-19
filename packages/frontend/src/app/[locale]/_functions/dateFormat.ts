@@ -6,5 +6,8 @@ export const dateFormat = (date: Date, locale: Locale) => {
     month: "2-digit",
     day: "2-digit",
   });
-  return { dateDisplayString: intlDateFormat.format(date), dateISOString: date.toISOString() };
+  return {
+    dateDisplayString: intlDateFormat.format(date),
+    dateISOString: date.toISOString(),
+  };
 };

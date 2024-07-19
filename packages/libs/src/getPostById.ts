@@ -44,8 +44,7 @@ const parseMarkdown = async (mdFileContents: string): Promise<ParseResult> => {
 export async function getPostById(contentsDir: string, id: string) {
   const mdFilePath = path.resolve(contentsDir, id, "index.md");
   const mdFileContents = await fs.readFile(mdFilePath, "utf8");
-  const { frontMatter, tocHtml, contentHtml, content } = await parseMarkdown(
-    mdFileContents
-  );
+  const { frontMatter, tocHtml, contentHtml, content } =
+    await parseMarkdown(mdFileContents);
   return { frontMatter, tocHtml, contentHtml, content };
 }

@@ -10,6 +10,6 @@ export type i18nKey = keyof Awaited<
 >;
 
 export const isSupportLocale = (
-  locale: string | null | undefined
+  locale: string | null | undefined,
 ): locale is Locale =>
   locale != null && Object.keys(RESOURCES).includes(locale);

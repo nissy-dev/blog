@@ -11,7 +11,7 @@ export async function getFrontMatters(contentsDir: string, tag?: string) {
   let frontMatters = await Promise.all(getFrontMatterPromises);
   if (tag !== undefined) {
     frontMatters = frontMatters.filter((frontMatter) =>
-      frontMatter.tags.includes(tag)
+      frontMatter.tags.includes(tag),
     );
   }
   // 投稿日が新しい順に並び替える

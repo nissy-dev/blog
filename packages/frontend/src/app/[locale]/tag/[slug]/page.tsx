@@ -53,7 +53,7 @@ export default async function Page({ params, searchParams }: Props) {
       {currentFrontMatters.map((frontMatter) => {
         const { dateDisplayString, dateISOString } = dateFormat(
           new Date(frontMatter.date),
-          params.locale
+          params.locale,
         );
         return (
           <ArticleListItem

@@ -7,7 +7,7 @@ import { visit } from "unist-util-visit";
 type PartialRequired<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
 
 const hasProperties = (
-  node: ElementContent
+  node: ElementContent,
 ): node is PartialRequired<Element, "properties"> =>
   node.type === "element" && !!node.properties;
 
@@ -97,11 +97,6 @@ const buildCardContent = (linkData: LinkData) => {
     h("div", { class: "card-content-title" }, linkData.title),
     h("div", { class: "card-content-description" }, linkData.description),
     h("div", { class: "card-content-hostname" }, [
-      h("img", {
-        src: linkData.favicon,
-        class: "hostname-favicon",
-        alt: linkData.hostname,
-      }),
       h("span", { class: "hostname-favicon" }, linkData.hostname),
     ]),
   ]);
@@ -117,7 +112,7 @@ const buildCardContent = (linkData: LinkData) => {
     return h(
       "a",
       { class: "card-link", href: linkData.url, title: linkData.title },
-      [cardContentNode, cardThumbnailContent]
+      [cardContentNode, cardThumbnailContent],
     );
   }
 
@@ -125,6 +120,6 @@ const buildCardContent = (linkData: LinkData) => {
   return h(
     "a",
     { class: "card-link", href: linkData.url, title: linkData.title },
-    [cardContentNode, cardThumbnailContent]
+    [cardContentNode, cardThumbnailContent],
   );
 };

@@ -110,8 +110,7 @@ a:hover {
   & .card-link {
     display: flex;
     flex-direction: row;
-    max-height: 7rem;
-    padding: 0.5rem 0 0.5rem 1rem;
+    max-height: 6rem;
     margin-bottom: 1.5rem;
     color: var(--foreground);
     border: 1px solid var(--gray-300);
@@ -125,30 +124,37 @@ a:hover {
 
   & .card-thumbnail {
     display: flex;
-    width: 20%;
-    padding-left: 0.5rem;
+    width: 25%;
     text-align: center;
 
     & img {
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      border-radius: 0 0.5rem 0.5rem 0;
+      object-fit: cover;
     }
   }
 
   & .card-content {
+    display: flex;
     flex: 1;
+    flex-direction: column;
     min-width: 0;
+    padding: 0.5rem 0 0.5rem 1rem;
 
     & .card-content-title {
       overflow: hidden;
+      font-size: 1rem;
       font-weight: var(--font-bold);
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
     & .card-content-description {
+      flex: auto;
       padding: 0.5rem 0;
       overflow: hidden;
-      font-size: 0.5rem;
+      font-size: 0.75rem;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
@@ -156,7 +162,7 @@ a:hover {
     & .card-content-hostname {
       display: flex;
       flex-direction: row;
-      font-size: 0.25rem;
+      font-size: 0.75rem;
 
       & img {
         width: 1rem;

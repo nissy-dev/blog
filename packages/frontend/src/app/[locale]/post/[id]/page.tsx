@@ -45,12 +45,12 @@ export default async function Page({ params }: Props) {
   const { locale, id } = params;
   const { frontMatter, tocHtml, contentHtml } = await getPostById(
     CONTENTS_DIR,
-    id
+    id,
   );
   const { tags, title, date, timeToRead } = frontMatter;
   const { dateDisplayString, dateISOString } = dateFormat(
     new Date(date),
-    locale
+    locale,
   );
   return (
     <>

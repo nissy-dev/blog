@@ -4,7 +4,6 @@
   "private": true,
 
   "scripts": {
-    "lint": "biome ci",
     "typecheck": "tsc"
   },
   "dependencies": {

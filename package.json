@@ -7,7 +7,7 @@
     "build": "pnpm -r build",
     "start": "pnpm --filter @blog/frontend start",
     "dev": "pnpm --filter @blog/frontend dev",
-    "lint": "pnpm -r lint",
+    "lint": "biome ci",
     "typecheck": "pnpm -r typecheck"
   },
   "devDependencies": {
