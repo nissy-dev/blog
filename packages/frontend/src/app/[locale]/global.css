@@ -25,6 +25,8 @@
   --code-background-color: var(--gray-200);
   --blockquote-color: var(--gray-500);
   --blockquote-border-color: var(--gray-300);
+  --fa-sun-visibility: none;
+  --fa-moon-visibility: inline;
 }
 
 [data-theme="dark"] {
@@ -32,6 +34,8 @@
   --foreground: var(--gray-50);
   --link-color: var(--light-blue-a700);
   --code-background-color: var(--blue-gray-800);
+  --fa-sun-visibility: inline;
+  --fa-moon-visibility: none;
 }
 
 html {
@@ -140,7 +144,7 @@ a:hover {
     flex: 1;
     flex-direction: column;
     min-width: 0;
-    padding: 0.5rem 0 0.5rem 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
 
     & .card-content-title {
       overflow: hidden;

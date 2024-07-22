@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { ThemeProvider } from "next-themes";
 import type React from "react";
 
 import { Footer } from "../../components/Footer";
@@ -7,6 +6,7 @@ import { Header } from "../../components/Header";
 import { siteMetadata } from "../../constant";
 import { I18nProvider } from "../../i18n/client";
 import { RESOURCES, isSupportLocale } from "../../i18n/resources";
+import { ThemeInitScript, ThemeProvider } from "../../theme/theme";
 
 import "./global.css";
 
@@ -55,6 +55,7 @@ export default async function RootLayout({
   return (
     <html lang={params.locale} suppressHydrationWarning>
       <body>
+        <ThemeInitScript />
         <ThemeProvider>
           <I18nProvider value={{ locale, resource }}>
             <Header />

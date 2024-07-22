@@ -10,3 +10,11 @@
     height: 1.75rem;
   }
 }
+
+.faSun {
+  display: var(--fa-sun-visibility);
+}
+
+.faMoon {
+  display: var(--fa-moon-visibility);
+}
