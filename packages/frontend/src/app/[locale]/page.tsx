@@ -44,7 +44,7 @@ export default async function Page({ params, searchParams }: Props) {
 
   return (
     <main className={styles.main}>
-      <h1>{t("post-list-header")}</h1>
+      <h2>{t("post-list-header")}</h2>
       {currentFrontMatters.map((frontMatter) => {
         const { dateDisplayString, dateISOString } = dateFormat(
           new Date(frontMatter.date),

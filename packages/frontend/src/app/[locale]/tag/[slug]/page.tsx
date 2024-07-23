@@ -39,7 +39,7 @@ const PER_PAGES = 10;
 export default async function Page({ params, searchParams }: Props) {
   const { slug } = params;
   const { t } = await getTranslation();
-  const frontMatters = await getFrontMatters(slug);
+  const frontMatters = await getFrontMatters(CONTENTS_DIR, slug);
 
   const { page } = searchParams;
   const currentPage = typeof page !== "string" ? 1 : Number.parseInt(page, 10);
@@ -49,7 +49,7 @@ export default async function Page({ params, searchParams }: Props) {
 
   return (
     <main className={styles.main}>
-      <h1>{`${t("tags")} : #${slug}`}</h1>
+      <h2>{`${t("tags")} : #${slug}`}</h2>
       {currentFrontMatters.map((frontMatter) => {
         const { dateDisplayString, dateISOString } = dateFormat(
           new Date(frontMatter.date),

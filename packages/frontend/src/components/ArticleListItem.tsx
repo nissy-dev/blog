@@ -28,11 +28,11 @@ export const ArticleListItem = async ({
   return (
     <article className={styles.articleList}>
       <header>
-        <h2>
+        <h3>
           <Link href={link} title={title}>
             {title}
           </Link>
-        </h2>
+        </h3>
         <div>
           <div>
             <FaCalendarAlt />

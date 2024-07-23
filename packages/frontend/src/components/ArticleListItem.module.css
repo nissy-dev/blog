@@ -7,7 +7,7 @@
   box-shadow: 0 0.125rem 0.25rem var(--gray-300);
 
   & header {
-    & h2 {
+    & h3 {
       font-size: 1.25rem;
       font-weight: var(--font-bold);
       color: var(--base);

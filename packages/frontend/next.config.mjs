@@ -27,5 +27,4 @@ export default withBundleAnalyzer({
   typescript: {
     ignoreBuildErrors: true,
   },
-  staticPageGenerationTimeout: 300,
 });
