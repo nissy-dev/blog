@@ -1,14 +1,13 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { siteMetaData } from "@blog/libs/constant";
-import { getFrontMatters } from "@blog/libs/repositories";
 
-import { CONTENTS_DIR, NEXT_PUBLIC_DIR } from "../constant";
+import { NEXT_PUBLIC_DIR } from "../constant";
+import type { FrontMatters } from "../script";
 
-export async function generateSitemap(): Promise<void> {
+export async function generateSitemap(frontMatters: FrontMatters): Promise<void> {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
   xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-  const frontMatters = await getFrontMatters(CONTENTS_DIR);
   for (const frontMatter of frontMatters) {
     xml += `
   <url>
