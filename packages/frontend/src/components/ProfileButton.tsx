@@ -1,9 +1,9 @@
 "use client";
 
 import { siteMetaData } from "@blog/libs/constant";
+import { FaHome } from "react-icons/fa";
 
 import { useTranslation } from "../i18n/client";
-import { FaHome } from "./Icons";
 
 import styles from "./ProfileButton.module.css";
 

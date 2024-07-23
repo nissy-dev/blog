@@ -1,7 +1,7 @@
 import Link from "next/link";
+import { FaCalendarAlt, FaClock, FaTag } from "react-icons/fa";
 
 import { getTranslation } from "../i18n/server";
-import { FaCalendarAlt, FaClock, FaTag } from "./Icons";
 
 import styles from "./ArticleListItem.module.css";
 

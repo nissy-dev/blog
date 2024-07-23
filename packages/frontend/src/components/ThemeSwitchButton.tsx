@@ -1,10 +1,11 @@
 "use client";
 
 import { use } from "react";
+import { FaMoon, FaSun } from "react-icons/fa";
+
 import { useTranslation } from "../i18n/client";
 import { ThemeContext } from "../theme/theme";
 
-import { FaMoon, FaSun } from "./Icons";
 import styles from "./ThemeSwitchButton.module.css";
 
 export const ThemeSwitchButton = () => {

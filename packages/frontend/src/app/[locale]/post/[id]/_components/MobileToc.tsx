@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { FaList } from "react-icons/fa";
 
-import { FaList } from "../../../../../components/Icons";
 import { useTranslation } from "../../../../../i18n/client";
 
 import styles from "./MobileToc.module.css";

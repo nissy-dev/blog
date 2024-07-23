@@ -1,6 +1,6 @@
 import Link from "next/link";
+import { FaCalendarAlt, FaClock, FaTag } from "react-icons/fa";
 
-import { FaCalendarAlt, FaClock, FaTag } from "../../../../../components/Icons";
 import { getTranslation } from "../../../../../i18n/server";
 
 import styles from "./PostHeader.module.css";

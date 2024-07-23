@@ -1,4 +1,5 @@
-import { FaList } from "../../../../../components/Icons";
+import { FaList } from "react-icons/fa";
+
 import { getTranslation } from "../../../../../i18n/server";
 
 import styles from "./Toc.module.css";
