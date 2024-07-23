@@ -42,7 +42,7 @@ https://www.amazon.co.jp/dp/B09BQ5GF6G/
 - [引越しの話](http://mtjune.hateblo.jp/entry/2017/12/08/000751)
 - [初めての物件探しで学習したこと](https://fisto.hatenablog.com/entry/2016/02/15/230924)
 - [都内に引っ越す際の物件選びの話](https://shopetan.hatenablog.com/entry/2018/12/26/214534)
-- [新卒 Web エンジニアの上京引越振り返り](https://blog.p1ass.com/posts/moving-when-new-graduates/)
+- [新卒 Web エンジニアの上京引越振り返り](https://blog.p1ass.com/post-assets/moving-when-new-graduates/)
 
 引っ越しは、様々な決断を素早くこなしていく必要があり、予想していたより精神的な負担になりました。正直、社会人 1 年目に始めての引っ越しをやることはおすすめできません。社会人になる前に引っ越しの経験をしていれば、もう少し楽にこなせたのかもしれません。また、家電なども 1 からすべてそろえたので、人生で一番お金を使いました。お金がなくなるときは一瞬なんだなというのを再認識できました。
 

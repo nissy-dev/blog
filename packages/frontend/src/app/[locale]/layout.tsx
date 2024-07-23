@@ -1,9 +1,9 @@
+import { siteMetaData } from "@blog/libs/constant";
 import type { Metadata, Viewport } from "next";
 import type React from "react";
 
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import { siteMetadata } from "../../constant";
 import { I18nProvider } from "../../i18n/client";
 import { RESOURCES, isSupportLocale } from "../../i18n/resources";
 import { ThemeInitScript, ThemeProvider } from "../../theme/theme";
@@ -11,28 +11,24 @@ import { ThemeInitScript, ThemeProvider } from "../../theme/theme";
 import "./global.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteMetadata.siteUrl),
-  authors: { name: siteMetadata.author, url: siteMetadata.profileSiteUrl },
-  alternates: { canonical: siteMetadata.siteUrl },
+  metadataBase: new URL(siteMetaData.siteUrl),
+  authors: { name: siteMetaData.author, url: siteMetaData.profileSiteUrl },
+  alternates: { canonical: siteMetaData.siteUrl },
   icons: {
-    icon: "/images/icons/icon-16x16.png",
-    apple: "/images/icons/apple-touch-icon.png",
+    icon: `${siteMetaData.siteUrl}/images/icon-16x16.png`,
+    apple: `${siteMetaData.siteUrl}/images/apple-touch-icon.png`,
   },
   formatDetection: { telephone: false, email: false, address: false },
   openGraph: {
     type: "website",
-    url: siteMetadata.siteUrl,
-    siteName: siteMetadata.title,
-    images: [
-      {
-        url: "/images/ogps/icon-320x320.png",
-      },
-    ],
+    url: siteMetaData.siteUrl,
+    siteName: siteMetaData.title,
+    images: [{ url: `${siteMetaData.siteUrl}/images/icon-320x320.png` }],
   },
   twitter: {
     card: "summary",
-    site: `@${siteMetadata.twitter}`,
-    creator: `@${siteMetadata.twitter}`,
+    site: `@${siteMetaData.twitter}`,
+    creator: `@${siteMetaData.twitter}`,
   },
 };
 

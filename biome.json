@@ -13,6 +13,9 @@
       "correctness": {
         "noUndeclaredVariables": "error",
         "noUnusedVariables": "error"
+      },
+      "style": {
+        "noUnusedTemplateLiteral": "off"
       }
     }
   },

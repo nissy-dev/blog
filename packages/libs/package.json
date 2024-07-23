@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "exports": {
-    ".": "./src/index.ts"
+    "./repositories": "./src/repositories.ts",
+    "./constant": "./src/constant.ts"
   },
 
   "scripts": {

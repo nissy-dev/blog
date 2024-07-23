@@ -1,4 +1,4 @@
-import { getFrontMatters } from "@blog/libs";
+import { getFrontMatters } from "@blog/libs/repositories";
 import type { Metadata } from "next";
 
 import { ArticleListItem } from "../../components/ArticleListItem";

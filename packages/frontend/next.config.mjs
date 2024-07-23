@@ -1,4 +1,10 @@
-module.exports = {
+import NextBundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = NextBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
+
+export default withBundleAnalyzer({
   async rewrites() {
     return [
       {
@@ -22,4 +28,4 @@ module.exports = {
     ignoreBuildErrors: true,
   },
   staticPageGenerationTimeout: 300,
-};
+});

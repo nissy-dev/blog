@@ -78,7 +78,7 @@ GSoC へ参加登録をして、登録を完了しました。
 
 お祈りされました。残念。。。
 
-![お祈りメール](/images/posts/rejection-email.png)
+![お祈りメール](/post-assets/rejection-email.png)
 
 ## 反省
 

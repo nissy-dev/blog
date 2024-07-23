@@ -1,6 +1,6 @@
-import { siteMetadata } from "../constant";
-import { getTranslation } from "../i18n/server";
+import { siteMetaData } from "@blog/libs/constant";
 
+import { getTranslation } from "../i18n/server";
 import { FaEnvelope, FaGithub, FaTwitter } from "./Icons";
 
 import styles from "./Footer.module.css";
@@ -8,19 +8,19 @@ import styles from "./Footer.module.css";
 const snsLinks = [
   {
     snsName: "email",
-    href: `mailto:${siteMetadata.email}`,
+    href: `mailto:${siteMetaData.email}`,
     icon: <FaEnvelope />,
     ariaLabel: "email-link" as const,
   },
   {
     snsName: "github",
-    href: `https://github.com/${siteMetadata.github}`,
+    href: `https://github.com/${siteMetaData.github}`,
     icon: <FaGithub />,
     ariaLabel: "github-link" as const,
   },
   {
     snsName: "twitter",
-    href: `https://twitter.com/${siteMetadata.twitter}`,
+    href: `https://twitter.com/${siteMetaData.twitter}`,
     icon: <FaTwitter />,
     ariaLabel: "twitter-link" as const,
   },
@@ -44,7 +44,7 @@ export const Footer = async () => {
           </li>
         ))}
       </ul>
-      <div>{`© ${new Date().getFullYear()} ${siteMetadata.author}`}</div>
+      <div>{`© ${new Date().getFullYear()} ${siteMetaData.author}`}</div>
     </footer>
   );
 };

@@ -1,8 +1,8 @@
-import path from "node:path";
-import { getPostById, getPostIds } from "@blog/libs";
+import { siteMetaData } from "@blog/libs/constant";
+import { getPostById, getPostIds } from "@blog/libs/repositories";
 import type { Metadata } from "next";
 
-import { CONTENTS_DIR, siteMetadata } from "../../../../constant";
+import { CONTENTS_DIR } from "../../../../constant";
 import { type Locale, SUPPORTED_LOCALES } from "../../../../i18n/resources";
 import { dateFormat } from "../../_functions/dateFormat";
 import { MobileToc } from "./_components/MobileToc";
@@ -25,11 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description: description || excerpt,
     openGraph: {
-      images: [
-        {
-          url: path.join(siteMetadata.siteUrl, `/images/ogps/${params.id}.png`),
-        },
-      ],
+      images: [{ url: `${siteMetaData.siteUrl}/images/og-${params.id}.png` }],
     },
   };
 }

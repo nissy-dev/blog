@@ -3,5 +3,8 @@
   "editor.codeActionsOnSave": {
     "quickfix.biome": "explicit",
     "source.organizeImports.biome": "explicit"
+  },
+  "files.associations": {
+    "*.json5": "jsonc"
   }
 }
