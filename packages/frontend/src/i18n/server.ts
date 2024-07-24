@@ -1,22 +1,6 @@
-import "server-only";
+import { createI18nServer } from 'next-international/server'
 
-import { cache } from "react";
-import { RESOURCES, type i18nKey, isSupportLocale } from "./resources";
-
-const getLocale = cache<() => { current: string | undefined }>(() => ({
-  current: undefined,
-}));
-const getStaticParamsLocale = () => getLocale().current;
-
-export const setStaticParamsLocale = (value: string) => {
-  getLocale().current = value;
-};
-
-export const getTranslation = async () => {
-  const currentLocale = getStaticParamsLocale();
-  if (!isSupportLocale(currentLocale)) {
-    throw new Error(`Unsupported locale: ${currentLocale}`);
-  }
-  const resource = await RESOURCES[currentLocale]();
-  return { t: (key: i18nKey) => resource[key] };
-};
+export const { getI18n, getScopedI18n, getStaticParams } = createI18nServer({
+  en: () => import('./dictionaries/en'),
+  ja: () => import('./dictionaries/ja'),
+})

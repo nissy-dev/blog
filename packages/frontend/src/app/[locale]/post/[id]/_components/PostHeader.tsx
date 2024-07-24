@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaCalendarAlt, FaClock, FaTag } from "react-icons/fa";
 
-import { getTranslation } from "../../../../../i18n/server";
+import { getI18n } from "../../../../../i18n/server";
 
 import styles from "./PostHeader.module.css";
 
@@ -20,7 +20,7 @@ export const PostHeader = async ({
   title,
   timeToRead,
 }: Props) => {
-  const { t } = await getTranslation();
+  const t = await getI18n();
   return (
     <div className={styles.postHeader}>
       <h1>{title}</h1>

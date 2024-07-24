@@ -3,12 +3,12 @@
 import { siteMetaData } from "@blog/libs/constant";
 import { FaHome } from "react-icons/fa";
 
-import { useTranslation } from "../i18n/client";
+import { useI18n } from "../i18n/client";
 
 import styles from "./ProfileButton.module.css";
 
 export const ProfileButton = () => {
-  const { t } = useTranslation();
+  const t = useI18n();
 
   return (
     <a

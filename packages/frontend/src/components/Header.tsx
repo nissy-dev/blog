@@ -1,13 +1,13 @@
 import { siteMetaData } from "@blog/libs/constant";
 import Link from "next/link";
 
-import { getTranslation } from "../i18n/server";
+import { getI18n } from "../i18n/server";
 import styles from "./Header.module.css";
 import { ProfileButton } from "./ProfileButton";
 import { ThemeSwitchButton } from "./ThemeSwitchButton";
 
 export const Header = async () => {
-  const { t } = await getTranslation();
+  const t = await getI18n();
 
   return (
     <header className={styles.header}>

@@ -1,4 +1,4 @@
-{
+export default {
   "email-link": "Send an e-mail",
   "github-link": "Open Nissy's GitHub account",
   "twitter-link": "Open Nissy's Twitter account",

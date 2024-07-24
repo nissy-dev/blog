@@ -1,6 +1,6 @@
 import { FaList } from "react-icons/fa";
 
-import { getTranslation } from "../../../../../i18n/server";
+import { getI18n } from "../../../../../i18n/server";
 
 import styles from "./Toc.module.css";
 
@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const Toc = async ({ tocHtml }: Props) => {
-  const { t } = await getTranslation();
+  const t = await getI18n();
   return (
     <div className={styles.toc}>
       <div>

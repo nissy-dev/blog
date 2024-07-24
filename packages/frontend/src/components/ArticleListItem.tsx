@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaCalendarAlt, FaClock, FaTag } from "react-icons/fa";
 
-import { getTranslation } from "../i18n/server";
+import { getI18n } from "../i18n/server";
 
 import styles from "./ArticleListItem.module.css";
 
@@ -24,7 +24,7 @@ export const ArticleListItem = async ({
   timeToRead,
   excerpt,
 }: Props) => {
-  const { t } = await getTranslation();
+  const t = await getI18n();
   return (
     <article className={styles.articleList}>
       <header>

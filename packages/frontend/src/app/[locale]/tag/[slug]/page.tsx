@@ -1,11 +1,11 @@
 import { getFrontMatters, getTags } from "@blog/libs/repositories";
 import type { Metadata } from "next";
+import { setStaticParamsLocale } from "next-international/server";
 
 import { ArticleListItem } from "../../../../components/ArticleListItem";
 import { Pagination } from "../../../../components/Pagination";
 import { CONTENTS_DIR } from "../../../../constant";
-import { type Locale, SUPPORTED_LOCALES } from "../../../../i18n/resources";
-import { getTranslation, setStaticParamsLocale } from "../../../../i18n/server";
+import { getI18n, getStaticParams } from "../../../../i18n/server";
 import { dateFormat } from "../../_functions/dateFormat";
 import type { SearchParams } from "../../_types/searchParams";
 
@@ -13,13 +13,14 @@ import styles from "./page.module.css";
 
 export async function generateStaticParams() {
   const tags = await getTags(CONTENTS_DIR);
+  const locales = getStaticParams();
   return tags.flatMap((tag) => {
-    return SUPPORTED_LOCALES.map((locale) => ({ slug: tag, locale }));
+    return locales.map(({ locale }) => ({ slug: tag, locale }));
   });
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { t } = await getTranslation();
+  const t = await getI18n();
   return {
     title: `${t("tags")} : #${params.slug}`,
     description: `${t("tags")} : #${params.slug}`,
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 type Props = {
   params: {
-    locale: Locale;
+    locale: string;
     slug: string;
   };
   searchParams: SearchParams;
@@ -39,7 +40,7 @@ const PER_PAGES = 10;
 export default async function Page({ params, searchParams }: Props) {
   const { slug, locale } = params;
   setStaticParamsLocale(locale);
-  const { t } = await getTranslation();
+  const t = await getI18n();
   const frontMatters = await getFrontMatters(CONTENTS_DIR, slug);
 
   const { page } = searchParams;

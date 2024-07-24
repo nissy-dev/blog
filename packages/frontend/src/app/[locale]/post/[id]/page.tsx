@@ -1,10 +1,10 @@
 import { siteMetaData } from "@blog/libs/constant";
 import { getPostById, getPostIds } from "@blog/libs/repositories";
 import type { Metadata } from "next";
+import { setStaticParamsLocale } from "next-international/server";
 
 import { CONTENTS_DIR } from "../../../../constant";
-import { type Locale, SUPPORTED_LOCALES } from "../../../../i18n/resources";
-import { setStaticParamsLocale } from "../../../../i18n/server";
+import { getStaticParams } from "../../../../i18n/server";
 import { dateFormat } from "../../_functions/dateFormat";
 import { MobileToc } from "./_components/MobileToc";
 import { PostHeader } from "./_components/PostHeader";
@@ -14,8 +14,9 @@ import styles from "./page.module.css";
 
 export async function generateStaticParams() {
   const ids = await getPostIds(CONTENTS_DIR);
+  const locales = getStaticParams();
   return ids.flatMap((id) => {
-    return SUPPORTED_LOCALES.map((locale) => ({ id, locale }));
+    return locales.map(({ locale }) => ({ id, locale }));
   });
 }
 
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 type Props = {
   params: {
-    locale: Locale;
+    locale: string;
     id: string;
   };
 };

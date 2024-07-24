@@ -3,14 +3,14 @@
 import { use } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 
-import { useTranslation } from "../i18n/client";
+import { useI18n } from "../i18n/client";
 import { ThemeContext } from "../theme/theme";
 
 import styles from "./ThemeSwitchButton.module.css";
 
 export const ThemeSwitchButton = () => {
   const { theme, updateTheme } = use(ThemeContext);
-  const { t } = useTranslation();
+  const t = useI18n();
   const isDark = theme === "dark";
 
   return (

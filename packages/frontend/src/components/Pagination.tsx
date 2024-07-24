@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getTranslation } from "../i18n/server";
+import { getI18n } from "../i18n/server";
 
 import styles from "./Pagination.module.css";
 
@@ -15,7 +15,7 @@ export const Pagination = async ({
   currentPage,
   totalPages,
 }: Props) => {
-  const { t } = await getTranslation();
+  const t = await getI18n();
   return (
     <div className={styles.pagination}>
       <Link

@@ -4,8 +4,7 @@ import type React from "react";
 
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import { I18nProvider } from "../../i18n/client";
-import { RESOURCES, isSupportLocale } from "../../i18n/resources";
+import { I18nProviderClient } from '../../i18n/client'
 import { ThemeInitScript, ThemeProvider } from "../../theme/theme";
 
 import "./global.css";
@@ -42,21 +41,16 @@ type Props = {
 };
 
 export default async function Layout({ children, params }: Props) {
-  const { locale } = params;
-  if (!isSupportLocale(locale)) {
-    throw new Error(`Unsupported locale: ${locale}`);
-  }
-  const resource = await RESOURCES[locale]();
   return (
     <html lang={params.locale} suppressHydrationWarning>
       <body>
         <ThemeInitScript />
         <ThemeProvider>
-          <I18nProvider value={{ locale, resource }}>
+          <I18nProviderClient locale={params.locale}>
             <Header />
             {children}
             <Footer />
-          </I18nProvider>
+          </I18nProviderClient>
         </ThemeProvider>
       </body>
     </html>

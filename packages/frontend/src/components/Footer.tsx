@@ -1,7 +1,7 @@
 import { siteMetaData } from "@blog/libs/constant";
 import { FaEnvelope, FaGithub, FaTwitter } from "react-icons/fa";
 
-import { getTranslation } from "../i18n/server";
+import { getI18n } from "../i18n/server";
 
 import styles from "./Footer.module.css";
 
@@ -27,7 +27,7 @@ const snsLinks = [
 ];
 
 export const Footer = async () => {
-  const { t } = await getTranslation();
+  const t = await getI18n();
   return (
     <footer className={styles.footer}>
       <ul>

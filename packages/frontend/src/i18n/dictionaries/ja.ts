@@ -1,4 +1,4 @@
-{
+export default {
   "email-link": "メールを送る",
   "github-link": "GitHubアカウントを開く",
   "twitter-link": "Twitterアカウントを開く",

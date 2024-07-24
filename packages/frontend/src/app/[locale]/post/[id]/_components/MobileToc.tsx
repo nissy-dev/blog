@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FaList } from "react-icons/fa";
 
-import { useTranslation } from "../../../../../i18n/client";
+import { useI18n } from "../../../../../i18n/client";
 
 import styles from "./MobileToc.module.css";
 
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const MobileToc = ({ tocHtml }: Props) => {
-  const { t } = useTranslation();
+  const t = useI18n();
   const [showToc, setState] = useState(false);
   return (
     <div className={styles.toc}>
