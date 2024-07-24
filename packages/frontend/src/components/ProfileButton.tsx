@@ -1,14 +1,12 @@
-"use client";
-
 import { siteMetaData } from "@blog/libs/constant";
 import { FaHome } from "react-icons/fa";
 
-import { useTranslation } from "../i18n/client";
+import { getTranslation } from "../i18n/server";
 
 import styles from "./ProfileButton.module.css";
 
-export const ProfileButton = () => {
-  const { t } = useTranslation();
+export const ProfileButton = async () => {
+  const { t } = await getTranslation();
 
   return (
     <a

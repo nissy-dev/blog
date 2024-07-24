@@ -20,16 +20,19 @@ export function middleware(request: NextRequest) {
   };
   const locale = extractLocale(headers);
 
-  // Redirect if there is no locale
+  // Redirect if there is no locale and locale is not "ja"
   if (pathnameIsMissingLocale && locale !== DEFAULT_LOCALE) {
     return NextResponse.redirect(
       new URL(`/${locale}/${pathname}`, request.url),
     );
   }
 
-  if (pathname === "/" || pathname.startsWith("/tag") || pathname.startsWith("/post")) {
+  if (
+    pathname === "/" ||
+    pathname.startsWith("/tag") ||
+    pathname.startsWith("/post")
+  )
     return NextResponse.rewrite(new URL(`/${locale}${pathname}`, request.url));
-  }
 
   return NextResponse.next();
 }

@@ -2,12 +2,10 @@ import { getFrontMatters, getTags } from "@blog/libs/repositories";
 import type { Metadata } from "next";
 
 import { ArticleListItem } from "../../../../components/ArticleListItem";
-import { Pagination } from "../../../../components/Pagination";
 import { CONTENTS_DIR } from "../../../../constant";
 import { type Locale, SUPPORTED_LOCALES } from "../../../../i18n/resources";
 import { getTranslation, setStaticParamsLocale } from "../../../../i18n/server";
 import { dateFormat } from "../../_functions/dateFormat";
-import type { SearchParams } from "../../_types/searchParams";
 
 import styles from "./page.module.css";
 
@@ -31,27 +29,18 @@ type Props = {
     locale: Locale;
     slug: string;
   };
-  searchParams: SearchParams;
 };
 
-const PER_PAGES = 10;
-
-export default async function Page({ params, searchParams }: Props) {
+export default async function Page({ params }: Props) {
   const { slug, locale } = params;
   setStaticParamsLocale(locale);
   const { t } = await getTranslation();
   const frontMatters = await getFrontMatters(CONTENTS_DIR, slug);
 
-  const { page } = searchParams;
-  const currentPage = typeof page !== "string" ? 1 : Number.parseInt(page, 10);
-  const totalPages = Math.ceil(frontMatters.length / PER_PAGES);
-  const start = (currentPage - 1) * PER_PAGES;
-  const currentFrontMatters = frontMatters.slice(start, start + PER_PAGES);
-
   return (
     <main className={styles.main}>
       <h2>{`${t("tags")} : #${slug}`}</h2>
-      {currentFrontMatters.map((frontMatter) => {
+      {frontMatters.map((frontMatter) => {
         const { dateDisplayString, dateISOString } = dateFormat(
           new Date(frontMatter.date),
           params.locale,
@@ -69,11 +58,6 @@ export default async function Page({ params, searchParams }: Props) {
           />
         );
       })}
-      <Pagination
-        pathName={`/tag/${slug}`}
-        currentPage={currentPage}
-        totalPages={totalPages}
-      />
     </main>
   );
 }
