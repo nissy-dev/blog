@@ -1,7 +1,0 @@
-node_modules
-.next
-.cache
-package-lock.json
-public
-tsconfig.json
-renovate.json5

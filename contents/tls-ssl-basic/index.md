@@ -71,7 +71,7 @@ tags: ["note", "network"]
     - SSL 通信を行うための共通鍵の共有
       - クライアントランダム、サーバーランダム、プリマスターシークレットから共通鍵を作成
 
-![SSLのシーケンス図](/images/posts/ssl.svg)
+![SSLのシーケンス図](/post-assets/ssl.svg)
 
 ## メッセージ認証コード
 

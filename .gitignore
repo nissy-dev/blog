@@ -102,10 +102,3 @@ dist
 
 # TernJS port file
 .tern-port
-
-# pwa output
-public/sw*
-public/workbox*
-public/sitemap.xml
-public/feed
-public/images/ogps

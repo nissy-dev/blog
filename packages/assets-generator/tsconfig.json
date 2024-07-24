@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "lib": ["esnext"],
+    "module": "esnext",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "bundler",
+    "isolatedModules": true,
+    "incremental": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["./src"],
+  "exclude": ["node_modules"]
+}
