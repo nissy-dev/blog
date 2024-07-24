@@ -26,11 +26,16 @@ export function middleware(request: NextRequest) {
       new URL(`/${locale}/${pathname}`, request.url),
     );
   }
+
+  if (pathname === "/" || pathname.startsWith("/tags") || pathname.startsWith("/posts")) {
+    return NextResponse.rewrite(new URL(`/${locale}${pathname}`, request.url));
+  }
 }
 
 export const config = {
   matcher: [
     // Skip all internal paths (_next) and static files
+    // https://next-international.vercel.app/docs/app-setup#setup-middleware
     "/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)",
   ],
 };
