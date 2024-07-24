@@ -3,8 +3,6 @@ import "server-only";
 import { cache } from "react";
 import { RESOURCES, type i18nKey, isSupportLocale } from "./resources";
 
-export const LOCALE_HEADER = "X-Next-Locale";
-
 const getLocale = cache<() => { current: string | undefined }>(() => ({
   current: undefined,
 }));
