@@ -15,13 +15,18 @@
     "highlight.js": "11.9.0",
     "negotiator": "0.6.3",
     "next": "14.2.5",
+    "next-international": "1.2.4",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-icons": "5.2.1",
     "the-new-css-reset": "1.11.2"
   },
   "devDependencies": {
+    "@opentelemetry/api-logs": "0.52.1",
+    "@opentelemetry/instrumentation": "0.52.1",
+    "@opentelemetry/sdk-logs": "0.52.1",
     "@next/bundle-analyzer": "14.2.5",
+    "@vercel/otel": "1.9.1",
     "@types/negotiator": "0.6.3",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0"

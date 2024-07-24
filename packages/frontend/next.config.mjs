@@ -11,4 +11,7 @@ export default withBundleAnalyzer({
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    instrumentationHook: true,
+  },
 });

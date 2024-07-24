@@ -1,0 +1,10 @@
+version: '3'
+services:
+  jeager:
+    image: jaegertracing/all-in-one
+    ports:
+      - 16686:16686 # serve frontend
+      - 4317:4317 # serve gRPC
+      - 4318:4318 # serve HTTP
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
