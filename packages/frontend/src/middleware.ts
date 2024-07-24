@@ -27,9 +27,11 @@ export function middleware(request: NextRequest) {
     );
   }
 
-  if (pathname === "/" || pathname.startsWith("/tags") || pathname.startsWith("/posts")) {
+  if (pathname === "/" || pathname.startsWith("/tag") || pathname.startsWith("/post")) {
     return NextResponse.rewrite(new URL(`/${locale}${pathname}`, request.url));
   }
+
+  return NextResponse.next();
 }
 
 export const config = {
