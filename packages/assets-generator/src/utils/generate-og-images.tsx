@@ -8,8 +8,9 @@ import { OGHtml } from "../components/OGHtml";
 import { NEXT_PUBLIC_DIR } from "../constant";
 import type { FrontMatters } from "../script";
 
-
-export async function generateOgImages(frontMatters: FrontMatters): Promise<void> {
+export async function generateOgImages(
+  frontMatters: FrontMatters,
+): Promise<void> {
   // 不足しているOG画像の生成
   const browser = await chromium.launch();
   const generateImages = frontMatters.map(async ({ id, title }) =>

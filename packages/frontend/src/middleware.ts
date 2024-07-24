@@ -2,7 +2,6 @@ import Negotiator from "negotiator";
 import { type NextRequest, NextResponse } from "next/server";
 
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from "./i18n/resources";
-import { LOCALE_HEADER } from "./i18n/server";
 
 const extractLocale = (headers: Negotiator.Headers) => {
   return (
@@ -27,18 +26,11 @@ export function middleware(request: NextRequest) {
       new URL(`/${locale}/${pathname}`, request.url),
     );
   }
-
-  // Set the locale header
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set(LOCALE_HEADER, locale);
-  return NextResponse.next({
-    request: { headers: requestHeaders },
-  });
 }
 
 export const config = {
   matcher: [
     // Skip all internal paths (_next) and static files
-    "/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)"
+    "/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)",
   ],
 };

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 import { CONTENTS_DIR } from "../../../../constant";
 import { type Locale, SUPPORTED_LOCALES } from "../../../../i18n/resources";
+import { setStaticParamsLocale } from "../../../../i18n/server";
 import { dateFormat } from "../../_functions/dateFormat";
 import { MobileToc } from "./_components/MobileToc";
 import { PostHeader } from "./_components/PostHeader";
@@ -39,10 +40,12 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const { locale, id } = params;
+  setStaticParamsLocale(locale);
   const { frontMatter, tocHtml, contentHtml } = await getPostById(
     CONTENTS_DIR,
     id,
   );
+
   const { tags, title, date, timeToRead } = frontMatter;
   const { dateDisplayString, dateISOString } = dateFormat(
     new Date(date),

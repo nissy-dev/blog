@@ -5,7 +5,7 @@ import { ArticleListItem } from "../../components/ArticleListItem";
 import { Pagination } from "../../components/Pagination";
 import { CONTENTS_DIR } from "../../constant";
 import { type Locale, SUPPORTED_LOCALES } from "../../i18n/resources";
-import { getTranslation } from "../../i18n/server";
+import { getTranslation, setStaticParamsLocale } from "../../i18n/server";
 import { dateFormat } from "./_functions/dateFormat";
 import type { SearchParams } from "./_types/searchParams";
 
@@ -33,6 +33,8 @@ type Props = {
 const PER_PAGES = 10;
 
 export default async function Page({ params, searchParams }: Props) {
+  const { locale } = params;
+  setStaticParamsLocale(locale);
   const { t } = await getTranslation();
   const frontMatters = await getFrontMatters(CONTENTS_DIR);
 
@@ -48,7 +50,7 @@ export default async function Page({ params, searchParams }: Props) {
       {currentFrontMatters.map((frontMatter) => {
         const { dateDisplayString, dateISOString } = dateFormat(
           new Date(frontMatter.date),
-          params.locale,
+          locale,
         );
         return (
           <ArticleListItem

@@ -36,13 +36,12 @@ export const viewport: Viewport = {
   themeColor: "#ffffff",
 };
 
-export default async function RootLayout({
-  children,
-  params,
-}: {
+type Props = {
   children: React.ReactNode;
   params: { locale: string };
-}) {
+};
+
+export default async function Layout({ children, params }: Props) {
   const { locale } = params;
   if (!isSupportLocale(locale)) {
     throw new Error(`Unsupported locale: ${locale}`);
