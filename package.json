@@ -7,8 +7,6 @@
     "install-chrome": "pnpm dlx playwright install chromium --with-deps",
     "generate-assets": "pnpm --filter @blog/assets-generator generate",
     "analyze": "pnpm --filter @blog/frontend analyze",
-    "build": "pnpm -r @blog/frontend build",
-    "start": "pnpm --filter @blog/frontend start",
     "dev": "pnpm --filter @blog/frontend dev",
     "lint": "biome ci",
     "typecheck": "pnpm -r typecheck"
