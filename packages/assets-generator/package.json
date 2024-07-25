@@ -2,7 +2,6 @@
   "name": "@blog/assets-generator",
   "version": "0.1.0",
   "private": true,
-
   "scripts": {
     "generate": "tsx src/script.ts",
     "typecheck": "tsc"

@@ -31,8 +31,9 @@ export function middleware(request: NextRequest) {
     pathname === "/" ||
     pathname.startsWith("/tag") ||
     pathname.startsWith("/post")
-  )
+  ) {
     return NextResponse.rewrite(new URL(`/${locale}${pathname}`, request.url));
+  }
 
   return NextResponse.next();
 }

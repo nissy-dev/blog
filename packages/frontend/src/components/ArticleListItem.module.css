@@ -15,7 +15,6 @@
     & div {
       display: flex;
       flex-wrap: wrap;
-      padding-bottom: 0.75rem;
 
       & div {
         display: flex;
@@ -42,6 +41,7 @@
 
   & p {
     display: -webkit-box;
+    padding-top: 1rem;
     margin-bottom: 1rem;
     overflow: hidden;
     font-size: 0.9rem;

@@ -6,14 +6,13 @@ import { RESOURCES, type i18nKey, isSupportLocale } from "./resources";
 const getLocale = cache<() => { current: string | undefined }>(() => ({
   current: undefined,
 }));
-const getStaticParamsLocale = () => getLocale().current;
 
 export const setStaticParamsLocale = (value: string) => {
   getLocale().current = value;
 };
 
 export const getTranslation = async () => {
-  const currentLocale = getStaticParamsLocale();
+  const currentLocale = getLocale().current;
   if (!isSupportLocale(currentLocale)) {
     throw new Error(`Unsupported locale: ${currentLocale}`);
   }

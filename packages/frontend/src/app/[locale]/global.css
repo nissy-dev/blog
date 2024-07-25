@@ -44,6 +44,12 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media screen and (width <= 640px) {
+  html {
+    font-size: 15px;
+  }
+}
+
 body {
   max-width: var(--max-width);
   padding: 0 2rem;
