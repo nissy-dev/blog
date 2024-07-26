@@ -11,11 +11,11 @@ export const setStaticParamsLocale = (value: string) => {
   getLocale().current = value;
 };
 
-export const getTranslation = async () => {
+export const getTranslation = cache(async () => {
   const currentLocale = getLocale().current;
   if (!isSupportLocale(currentLocale)) {
     throw new Error(`Unsupported locale: ${currentLocale}`);
   }
   const resource = await RESOURCES[currentLocale]();
   return { t: (key: i18nKey) => resource[key] };
-};
+});

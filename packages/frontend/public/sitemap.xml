@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+  <url>
+    <loc>https://blog.nissy.dev</loc>
+  </url>
+  <url>
+    <loc>https://blog.nissy.dev/tag/note</loc>
+  </url>
+  <url>
+    <loc>https://blog.nissy.dev/tag/web</loc>
+  </url>
+  <url>
+    <loc>https://blog.nissy.dev/tag/database</loc>
+  </url>
+  <url>
+    <loc>https://blog.nissy.dev/tag/network</loc>
+  </url>
+  <url>
+    <loc>https://blog.nissy.dev/tag/docker</loc>
+  </url>
+  <url>
+    <loc>https://blog.nissy.dev/tag/blog</loc>
+  </url>
+  <url>
+    <loc>https://blog.nissy.dev/tag/gsoc</loc>
+  </url>
+  <url>
+    <loc>https://blog.nissy.dev/tag/kaggle</loc>
+  </url>
+  <url>
+    <loc>https://blog.nissy.dev/tag/react</loc>
+  </url>
+  <url>
+    <loc>https://blog.nissy.dev/tag/sql</loc>
+  </url>
+  <url>
+    <loc>https://blog.nissy.dev/tag/security</loc>
+  </url>
   <url>
     <loc>https://blog.nissy.dev/post/nwc-2023</loc>
     <lastmod>2023-12-18T02:38:51.499Z</lastmod>

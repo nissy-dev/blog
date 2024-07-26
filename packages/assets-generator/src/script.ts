@@ -1,4 +1,4 @@
-import { getFrontMatters } from "@blog/libs/repositories";
+import { getFrontMatters, getTags } from "@blog/libs/repositories";
 import { CONTENTS_DIR } from "./constant";
 import { generateFeed } from "./utils/generate-feed";
 import { generateOgImages } from "./utils/generate-og-images";
@@ -8,10 +8,11 @@ export type FrontMatters = Awaited<ReturnType<typeof getFrontMatters>>;
 
 async function main() {
   const frontMatters = await getFrontMatters(CONTENTS_DIR);
+  const tags = await getTags(CONTENTS_DIR);
   return Promise.all([
     generateOgImages(frontMatters),
     generateFeed(frontMatters),
-    generateSitemap(frontMatters),
+    generateSitemap(frontMatters, tags),
   ]);
 }
 
