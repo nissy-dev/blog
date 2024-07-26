@@ -11,12 +11,11 @@ import type { FrontMatters } from "../script";
 export async function generateOgImages(
   frontMatters: FrontMatters,
 ): Promise<void> {
-  // 不足しているOG画像の生成
   const browser = await chromium.launch();
-  const generateImages = frontMatters.map(async ({ id, title }) =>
+  const generateOgImages = frontMatters.map(async ({ id, title }) =>
     generateOgImage(browser, id, title),
   );
-  await Promise.all(generateImages);
+  await Promise.all(generateOgImages);
   await browser.close();
 }
 
