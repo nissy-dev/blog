@@ -7,7 +7,7 @@ import type { FrontMatters } from "../script";
 
 export async function generateSitemap(
   frontMatters: FrontMatters,
-  tags: string[]
+  tags: string[],
 ): Promise<void> {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
   xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;

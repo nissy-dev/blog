@@ -39,7 +39,7 @@ export default async function Page({ params }: Props) {
       {frontMatters.map((frontMatter) => {
         const { dateDisplayString, dateISOString } = dateFormat(
           new Date(frontMatter.date),
-          locale
+          locale,
         );
         return (
           <ArticleListItem
