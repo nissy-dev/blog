@@ -60,8 +60,8 @@ importers:
         specifier: 5.6.1
         version: 5.6.1
       highlight.js:
-        specifier: 11.9.0
-        version: 11.9.0
+        specifier: 11.10.0
+        version: 11.10.0
       negotiator:
         specifier: 0.6.3
         version: 0.6.3
@@ -106,8 +106,8 @@ importers:
         specifier: 7.1.0
         version: 7.1.0
       open-graph-scraper:
-        specifier: 6.5.2
-        version: 6.5.2
+        specifier: 6.7.0
+        version: 6.7.0
       rehype-autolink-headings:
         specifier: 7.1.0
         version: 7.1.0
@@ -704,6 +704,10 @@ packages:
   hastscript@9.0.0:
     resolution: {integrity: sha512-jzaLBGavEDKHrc5EfFImKN7nZKKBdSLIdGvCwDZ9TfzbF2ffXiov8CKE445L2Z1Ek2t/m4SKQ2j6Ipv7NyUolw==}
 
+  highlight.js@11.10.0:
+    resolution: {integrity: sha512-SYVnVFswQER+zu1laSya563s+F8VDGt7o35d4utbamowvUNLLMovFqwCLSocpZTz3MgaSRA1IbqRWZv97dtErQ==}
+    engines: {node: '>=12.0.0'}
+
   highlight.js@11.9.0:
     resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==}
     engines: {node: '>=12.0.0'}
@@ -952,8 +956,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  open-graph-scraper@6.5.2:
-    resolution: {integrity: sha512-eBNOrjLrbsn882aJg7IgymLstWw5eGaqn+0a+CenroTu+xKlvzuU0LFfy4lQ6ngDZINu+h0iqfWm6dYThUBonw==}
+  open-graph-scraper@6.7.0:
+    resolution: {integrity: sha512-LZAvVNhQ4J52W363ccK8/PkLMQYlrplLx+apBpipdclcdBIr2RS421tKk6SCJMxxoVPFngGwuAKJMvKb97Z7Cg==}
     engines: {node: '>=18.0.0'}
 
   opener@1.5.2:
@@ -1148,8 +1152,8 @@ packages:
   undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
-  undici@6.19.2:
-    resolution: {integrity: sha512-JfjKqIauur3Q6biAtHJ564e3bWa8VvT+7cSiOJHFbX4Erv6CLGDpg8z+Fmg/1OI/47RA+GI2QZaF48SSaLvyBA==}
+  undici@6.19.4:
+    resolution: {integrity: sha512-i3uaEUwNdkRq2qtTRRJb13moW5HWqviu7Vl7oYRYz++uPtGHJj+x7TGjcEuwS5Mt2P4nA0U9dhIX3DdB6JGY0g==}
     engines: {node: '>=18.17'}
 
   unified@11.0.5:
@@ -1179,10 +1183,6 @@ packages:
 
   url-parse@1.5.10:
     resolution: {integrity: sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==}
-
-  validator@13.12.0:
-    resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
-    engines: {node: '>= 0.10'}
 
   vfile-location@5.0.2:
     resolution: {integrity: sha512-NXPYyxyBSH7zB5U6+3uDdd6Nybz6o6/od9rk8bp9H8GR3L+cm/fC0uUTbqBmUTnMCUDslAGBOIKNfvvb+gGlDg==}
@@ -1776,6 +1776,8 @@ snapshots:
       property-information: 6.5.0
       space-separated-tokens: 2.0.2
 
+  highlight.js@11.10.0: {}
+
   highlight.js@11.9.0: {}
 
   html-encoding-sniffer@4.0.0:
@@ -2229,13 +2231,12 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  open-graph-scraper@6.5.2:
+  open-graph-scraper@6.7.0:
     dependencies:
       chardet: 2.0.0
       cheerio: 1.0.0-rc.12
       iconv-lite: 0.6.3
-      undici: 6.19.2
-      validator: 13.12.0
+      undici: 6.19.4
 
   opener@1.5.2: {}
 
@@ -2449,7 +2450,7 @@ snapshots:
 
   undici-types@5.26.5: {}
 
-  undici@6.19.2: {}
+  undici@6.19.4: {}
 
   unified@11.0.5:
     dependencies:
@@ -2495,8 +2496,6 @@ snapshots:
     dependencies:
       querystringify: 2.2.0
       requires-port: 1.0.0
-
-  validator@13.12.0: {}
 
   vfile-location@5.0.2:
     dependencies:
