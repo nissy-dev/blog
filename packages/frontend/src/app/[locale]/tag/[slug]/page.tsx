@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 
 import { ArticleListItem } from "../../../../components/ArticleListItem";
 import { CONTENTS_DIR } from "../../../../constant";
+import { dateFormat } from "../../../../functions/dateFormat";
 import { type Locale, SUPPORTED_LOCALES } from "../../../../i18n/resources";
 import { getTranslation, setStaticParamsLocale } from "../../../../i18n/server";
-import { dateFormat } from "../../_functions/dateFormat";
 
 import styles from "./page.module.css";
 

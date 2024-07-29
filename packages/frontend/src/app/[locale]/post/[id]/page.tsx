@@ -3,9 +3,9 @@ import { getPostById, getPostIds } from "@blog/libs/repositories";
 import type { Metadata } from "next";
 
 import { CONTENTS_DIR } from "../../../../constant";
+import { dateFormat } from "../../../../functions/dateFormat";
 import { type Locale, SUPPORTED_LOCALES } from "../../../../i18n/resources";
 import { setStaticParamsLocale } from "../../../../i18n/server";
-import { dateFormat } from "../../_functions/dateFormat";
 import { MobileToc } from "./_components/MobileToc";
 import { PostHeader } from "./_components/PostHeader";
 import { Toc } from "./_components/Toc";
