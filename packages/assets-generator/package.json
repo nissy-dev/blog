@@ -13,7 +13,7 @@
     "@types/react-dom": "18.3.0",
     "budoux": "0.6.2",
     "feed": "4.2.2",
-    "playwright": "1.45.2",
+    "playwright": "1.45.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-icons": "5.2.1",
