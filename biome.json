@@ -30,5 +30,8 @@
     "linter": {
       "enabled": true
     }
+  },
+  "javascript": {
+    "globals": ["D1Database"]
   }
 }
