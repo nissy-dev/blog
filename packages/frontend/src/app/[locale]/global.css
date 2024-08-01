@@ -25,6 +25,7 @@
   --code-background-color: var(--gray-200);
   --blockquote-color: var(--gray-500);
   --blockquote-border-color: var(--gray-300);
+  --search-box-background: var(--gray-200);
   --fa-sun-visibility: none;
   --fa-moon-visibility: inline;
 }
@@ -34,6 +35,7 @@
   --foreground: var(--gray-50);
   --link-color: var(--light-blue-a700);
   --code-background-color: var(--blue-gray-800);
+  --search-box-background: var(--blue-gray-800);
   --fa-sun-visibility: inline;
   --fa-moon-visibility: none;
 }
