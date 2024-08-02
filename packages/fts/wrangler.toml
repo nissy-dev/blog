@@ -1,0 +1,21 @@
+name = "fts"
+main = "src/index.ts"
+compatibility_date = "2024-07-25"
+
+[vars]
+WORKER_ENV = "production"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "blog-fts"
+database_id = "7eee88b3-1b98-4dbf-b365-08467b131476"
+
+[env.local]
+[env.local.vars]
+WORKER_ENV = "development"
+AUTH_USERNAME = "username"
+AUTH_PASSWORD = "password"
+[[env.local.d1_databases]]
+binding = "DB"
+database_name = "blog-fts"
+database_id = "7eee88b3-1b98-4dbf-b365-08467b131476"

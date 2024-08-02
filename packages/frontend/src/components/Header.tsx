@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 
 import { getTranslation } from "../i18n/server";
+import { SearchButton } from "./SearchButton";
 import { ThemeSwitchButton } from "./ThemeSwitchButton";
 
 import styles from "./Header.module.css";
@@ -25,6 +26,7 @@ export const Header = async () => {
         <FaHome />
       </a>
       <ThemeSwitchButton />
+      <SearchButton />
     </header>
   );
 };

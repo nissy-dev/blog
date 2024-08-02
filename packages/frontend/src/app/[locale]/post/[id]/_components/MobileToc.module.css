@@ -40,7 +40,7 @@
       }
     }
 
-    & ul > li {
+    & > ul > li {
       border-left: 3px solid var(--gray-300);
     }
   }
