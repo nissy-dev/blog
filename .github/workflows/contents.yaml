@@ -12,6 +12,7 @@ jobs:
   assets-generate:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - name: Install chrome
         run: pnpm dlx playwright install chromium --with-deps
@@ -29,6 +30,7 @@ jobs:
   db-update:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - name: Deploy new worker
         working-directory: packages/fts
