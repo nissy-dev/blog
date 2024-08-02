@@ -87,7 +87,9 @@ type SearchResultProps = {
 };
 
 const FTS_API_ENDPOINT =
-  process.env.NODE_ENV === "production" ? "" : "http://localhost:8787";
+  process.env.NODE_ENV === "production"
+    ? "https://fts.nissy-dev.workers.dev"
+    : "http://localhost:8787";
 
 const SearchResults = ({ searchQuery, onClickLink }: SearchResultProps) => {
   if (searchQuery === "") {

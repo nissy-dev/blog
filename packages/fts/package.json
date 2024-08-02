@@ -4,9 +4,11 @@
     "db:local:reset": "wrangler d1 execute blog-fts --local --file=./sqls/reset.sql",
     "db:local:init": "wrangler d1 execute blog-fts --local --file=./sqls/schema.sql",
     "db:local:insert": "tsx scripts/insert.ts",
-    "db:prod:init": "wrangler d1 execute blog-fts --file=./sqls/schema.sql",
+    "db:prod:reset": "wrangler d1 execute blog-fts --remote --file=./sqls/reset.sql",
+    "db:prod:init": "wrangler d1 execute blog-fts --remote --file=./sqls/schema.sql",
+    "db:prod:insert": "WORKER_ENV=production tsx scripts/insert.ts",
     "dev": "wrangler dev --env=local src/index.ts",
-    "deploy": "wrangler deploy --minify src/index.ts"
+    "deploy": "wrangler deploy --minify"
   },
   "dependencies": {
     "hono": "4.5.1"
