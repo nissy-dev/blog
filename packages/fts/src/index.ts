@@ -82,8 +82,12 @@ app.get("/api/fts/search", async (c) => {
   const db = c.env.DB;
   const { results } = await db
     .prepare(
-      `SELECT contents.post_id as id, contents.title, contents.content FROM fts
-       JOIN contents ON contents.rowid = fts.rowid WHERE fts MATCH ?1 LIMIT 5`,
+      `SELECT contents.post_id as id, contents.title, contents.content FROM contents
+       JOIN fts ON contents.rowid = fts.rowid
+       WHERE fts MATCH ?1
+       ORDER BY rank
+       LIMIT 5
+      `,
     )
     .bind(query)
     .all<Post>();
