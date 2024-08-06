@@ -32,7 +32,7 @@ export const SearchButton = () => {
         dialogRef.current?.close();
       }
     },
-    []
+    [],
   );
 
   const onClickLink = useCallback(() => {
@@ -126,7 +126,7 @@ const SearchResults = ({ searchQuery, onClickLink }: SearchResultProps) => {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
       const result = (await response.json()) as { posts: Post[] };
       setPosts(result.posts);
