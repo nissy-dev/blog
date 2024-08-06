@@ -40,6 +40,25 @@ export const SearchButton = () => {
     dialogRef.current?.close();
   }, []);
 
+  const handleKeyPress = useCallback((e: KeyboardEvent) => {
+    const isOpen = dialogRef.current?.open;
+    if (!isOpen && e.key === "k" && e.metaKey) {
+      dialogRef.current?.showModal();
+    }
+
+    if (isOpen && e.key === "Escape") {
+      setSearchQuery("");
+      dialogRef.current?.close();
+    }
+
+    return;
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [handleKeyPress]);
+
   return (
     <>
       <button
@@ -65,10 +84,12 @@ export const SearchButton = () => {
               setSearchQuery(e.target.value)
             }
           />
-          <SearchResults
-            searchQuery={deferredQuery}
-            onClickLink={onClickLink}
-          />
+          {deferredQuery !== "" && (
+            <SearchResults
+              searchQuery={deferredQuery}
+              onClickLink={onClickLink}
+            />
+          )}
         </div>
       </dialog>
     </>
@@ -92,10 +113,6 @@ const FTS_API_ENDPOINT =
     : "http://localhost:8787";
 
 const SearchResults = ({ searchQuery, onClickLink }: SearchResultProps) => {
-  if (searchQuery === "") {
-    return null;
-  }
-
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
