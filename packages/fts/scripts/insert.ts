@@ -14,8 +14,8 @@ async function main() {
   const token = btoa(process.env.AUTH_INFO ?? "username:password");
   for (const postId of postIds) {
     const post = await getPostById(CONTENTS_DIR, postId);
-    const res = await fetch(`${ENDPOINT}/api/fts/insert`, {
-      method: "POST",
+    const res = await fetch(`${ENDPOINT}/api/fts/upsert`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Basic ${token}`,

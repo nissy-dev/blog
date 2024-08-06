@@ -27,8 +27,8 @@ app.use("*", async (c, next) => {
   return await corsMiddleware(c, next);
 });
 
-app.post(
-  "/api/fts/insert",
+app.put(
+  "/api/fts/upsert",
   async (c, next) => {
     const auth = basicAuth({
       username: c.env.AUTH_USERNAME,
@@ -42,33 +42,33 @@ app.post(
     const db = c.env.DB;
 
     // contents テーブルへのデータ追加
-    const resInsertContents = await db
+    await db
       .prepare(
-        "INSERT INTO contents (post_id, title, content) VALUES (?1, ?2, ?3)",
+        `INSERT INTO contents (post_id, title, content) VALUES (?1, ?2, ?3)
+         ON CONFLICT(post_id) DO UPDATE SET title = excluded.title, content = excluded.content;`,
       )
       .bind(id, title, content)
       .run();
-    if (!resInsertContents.success) {
-      return c.json(
-        { error: "Failed to insert a row into contents table" },
-        500,
-      );
+
+    // rowid を取得する
+    const rowId = await db
+      .prepare("SELECT id FROM contents WHERE post_id = ?1")
+      .bind(id)
+      .first<string>("id");
+    if (!rowId) {
+      return c.json({ error: "Failed to get rowid" }, 500);
     }
 
     // fts テーブルへのデータ追加
-    const rowId = resInsertContents.meta.last_row_id;
     const segments = Array.from(segmenter.segment(`${title}。${content}`))
       .filter((s) => s.isWordLike)
       .map((s) => s.segment);
-    const resInsertFts = await db
-      .prepare("INSERT INTO fts (rowid, segments) VALUES (?1, ?2)")
+    await db
+      .prepare("INSERT OR REPLACE INTO fts (rowid, segments) VALUES (?1, ?2)")
       .bind(rowId, segments.join(" "))
       .run();
-    if (!resInsertFts.success) {
-      return c.json({ error: "Failed to insert a row into fts table" }, 500);
-    }
 
-    c.status(201);
+    c.status(204);
     return c.body(null);
   },
 );
@@ -86,8 +86,7 @@ app.get("/api/fts/search", async (c) => {
        JOIN fts ON contents.rowid = fts.rowid
        WHERE fts MATCH ?1
        ORDER BY rank
-       LIMIT 5
-      `,
+       LIMIT 5`,
     )
     .bind(query)
     .all<Post>();
