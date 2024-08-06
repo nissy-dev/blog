@@ -32,7 +32,7 @@ export const SearchButton = () => {
         dialogRef.current?.close();
       }
     },
-    [],
+    []
   );
 
   const onClickLink = useCallback(() => {
@@ -41,7 +41,11 @@ export const SearchButton = () => {
   }, []);
 
   const handleKeyPress = useCallback((e: KeyboardEvent) => {
-    const isOpen = dialogRef.current?.open;
+    if (dialogRef.current === null) {
+      return;
+    }
+
+    const isOpen = dialogRef.current.open;
     if (!isOpen && e.key === "k" && e.metaKey) {
       dialogRef.current?.showModal();
     }
@@ -50,8 +54,6 @@ export const SearchButton = () => {
       setSearchQuery("");
       dialogRef.current?.close();
     }
-
-    return;
   }, []);
 
   useEffect(() => {
@@ -124,7 +126,7 @@ const SearchResults = ({ searchQuery, onClickLink }: SearchResultProps) => {
           headers: {
             "Content-Type": "application/json",
           },
-        },
+        }
       );
       const result = (await response.json()) as { posts: Post[] };
       setPosts(result.posts);
