@@ -21,9 +21,9 @@
     "the-new-css-reset": "1.11.2"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "14.2.5",
+    "@next/bundle-analyzer": "14.2.8",
     "@types/negotiator": "0.6.3",
-    "@types/react": "18.3.3",
+    "@types/react": "18.3.5",
     "@types/react-dom": "18.3.0"
   }
 }
