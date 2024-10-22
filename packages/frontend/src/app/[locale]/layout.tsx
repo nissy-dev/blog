@@ -38,17 +38,17 @@ export const viewport: Viewport = {
 
 type Props = {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export default async function Layout({ children, params }: Props) {
-  const { locale } = params;
+  const { locale } = await params;
   if (!isSupportLocale(locale)) {
     throw new Error(`Unsupported locale: ${locale}`);
   }
   const resource = await RESOURCES[locale]();
   return (
-    <html lang={params.locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body>
         <ThemeInitScript />
         <ThemeProvider>
