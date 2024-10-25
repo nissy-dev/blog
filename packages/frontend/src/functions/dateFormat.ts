@@ -1,4 +1,4 @@
-import type { Locale } from "../i18n/resources";
+import type { Locale } from "../i18n";
 
 export const dateFormat = (date: Date, locale: Locale) => {
   const intlDateFormat = Intl.DateTimeFormat(locale, {

@@ -12,7 +12,7 @@ import {
 } from "react";
 import { FaSearch } from "react-icons/fa";
 
-import { useTranslation } from "../i18n/client";
+import { useTranslation } from "../i18n";
 
 import styles from "./SearchButton.module.css";
 
