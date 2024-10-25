@@ -22,13 +22,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 type Props = {
-  params: {
+  params: Promise<{
     locale: Locale;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
-  const { locale } = params;
+  const { locale } = await params;
   setStaticParamsLocale(locale);
   const { t } = await getTranslation();
   const frontMatters = await getFrontMatters(CONTENTS_DIR);

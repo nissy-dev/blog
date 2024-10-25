@@ -17,22 +17,23 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
   const { t } = await getTranslation();
   return {
-    title: `${t("tags")} : #${params.slug}`,
-    description: `${t("tags")} : #${params.slug}`,
+    title: `${t("tags")} : #${slug}`,
+    description: `${t("tags")} : #${slug}`,
   };
 }
 
 type Props = {
-  params: {
+  params: Promise<{
     locale: Locale;
     slug: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
-  const { slug, locale } = params;
+  const { slug, locale } = await params;
   setStaticParamsLocale(locale);
   const { t } = await getTranslation();
   const frontMatters = await getFrontMatters(CONTENTS_DIR, slug);
@@ -43,7 +44,7 @@ export default async function Page({ params }: Props) {
       {frontMatters.map((frontMatter) => {
         const { dateDisplayString, dateISOString } = dateFormat(
           new Date(frontMatter.date),
-          params.locale,
+          locale,
         );
         return (
           <ArticleListItem

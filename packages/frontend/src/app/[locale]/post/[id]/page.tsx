@@ -20,26 +20,27 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { frontMatter } = await getPostById(CONTENTS_DIR, params.id);
+  const { id } = await params;
+  const { frontMatter } = await getPostById(CONTENTS_DIR, id);
   const { description, excerpt, title } = frontMatter;
   return {
     title,
     description: description || excerpt,
     openGraph: {
-      images: [{ url: `${siteMetaData.siteUrl}/images/og-${params.id}.png` }],
+      images: [{ url: `${siteMetaData.siteUrl}/images/og-${id}.png` }],
     },
   };
 }
 
 type Props = {
-  params: {
+  params: Promise<{
     locale: Locale;
     id: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
-  const { locale, id } = params;
+  const { locale, id } = await params;
   setStaticParamsLocale(locale);
   const { frontMatter, tocHtml, contentHtml } = await getPostById(
     CONTENTS_DIR,
