@@ -62,9 +62,6 @@ importers:
       highlight.js:
         specifier: 11.10.0
         version: 11.10.0
-      negotiator:
-        specifier: 1.0.0
-        version: 1.0.0
       next:
         specifier: 15.0.0
         version: 15.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -84,9 +81,6 @@ importers:
       '@next/bundle-analyzer':
         specifier: 15.0.0
         version: 15.0.0
-      '@types/negotiator':
-        specifier: 0.6.3
-        version: 0.6.3
       '@types/react':
         specifier: 18.3.11
         version: 18.3.11
@@ -123,19 +117,19 @@ importers:
         version: 7.1.0
       open-graph-scraper:
         specifier: 6.8.1
-        version: 6.8.2
+        version: 6.8.1
       rehype-autolink-headings:
         specifier: 7.1.0
         version: 7.1.0
       rehype-highlight:
         specifier: 7.0.0
-        version: 7.0.1
+        version: 7.0.0
       rehype-slug:
         specifier: 6.0.0
         version: 6.0.0
       rehype-stringify:
         specifier: 10.0.0
-        version: 10.0.1
+        version: 10.0.0
       remark:
         specifier: 15.0.1
         version: 15.0.1
@@ -144,7 +138,7 @@ importers:
         version: 4.0.0
       remark-rehype:
         specifier: 11.1.0
-        version: 11.1.1
+        version: 11.1.0
       strip-markdown:
         specifier: 6.0.0
         version: 6.0.0
@@ -751,9 +745,6 @@ packages:
 
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
-
-  '@types/negotiator@0.6.3':
-    resolution: {integrity: sha512-JkXTOdKs5MF086b/pt8C3+yVp3iDUwG635L7oCH6HvJvvr6lSUU5oe/gLXnPEfYRROHjJIPgCV6cuAg8gGkntQ==}
 
   '@types/node-forge@1.3.11':
     resolution: {integrity: sha512-FQx220y22OKNTqaByeBGqHWYz4cl94tpcxeFdvBo3wjG6XPBuZ0BNgNZRV5J5TFmmcsJ4IzsLkmGRiQbnYsBEQ==}
@@ -1379,10 +1370,6 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  negotiator@1.0.0:
-    resolution: {integrity: sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==}
-    engines: {node: '>= 0.6'}
-
   next@15.0.0:
     resolution: {integrity: sha512-/ivqF6gCShXpKwY9hfrIQYh8YMge8L3W+w1oRLv/POmK4MOQnh+FscZ8a0fRFTSQWE+2z9ctNYvELD9vP2FV+A==}
     engines: {node: '>=18.18.0'}
@@ -1421,8 +1408,8 @@ packages:
   ohash@1.1.4:
     resolution: {integrity: sha512-FlDryZAahJmEF3VR3w1KogSEdWX3WhA5GPakFx4J81kEAiHyLMpdLLElS8n8dfNadMgAne/MywcvmogzscVt4g==}
 
-  open-graph-scraper@6.8.2:
-    resolution: {integrity: sha512-Ht3k+bhEfLCojwka13xN+9B6LANJBcANI9TZ28KNBMBlK/dp/ooEblDyzj25RQVzXWUAK4UDlQQHU4hFmCnClg==}
+  open-graph-scraper@6.8.1:
+    resolution: {integrity: sha512-uy9tHm80ir9AnEQclmnlpxU80SBQkwZfWFq0lzRxpNAY1Grcyn7tuOu354XhnfA7C3wNuZ0/j94LNQY5XP7ZRg==}
     engines: {node: '>=18.0.0'}
 
   opener@1.5.2:
@@ -1499,14 +1486,14 @@ packages:
   rehype-autolink-headings@7.1.0:
     resolution: {integrity: sha512-rItO/pSdvnvsP4QRB1pmPiNHUskikqtPojZKJPPPAVx9Hj8i8TwMBhofrrAYRhYOOBZH9tgmG5lPqDLuIWPWmw==}
 
-  rehype-highlight@7.0.1:
-    resolution: {integrity: sha512-dB/vVGFsbm7xPglqnYbg0ABg6rAuIWKycTvuXaOO27SgLoOFNoTlniTBtAxp3n5ZyMioW1a3KwiNqgjkb6Skjg==}
+  rehype-highlight@7.0.0:
+    resolution: {integrity: sha512-QtobgRgYoQaK6p1eSr2SD1i61f7bjF2kZHAQHxeCHAuJf7ZUDMvQ7owDq9YTkmar5m5TSUol+2D3bp3KfJf/oA==}
 
   rehype-slug@6.0.0:
     resolution: {integrity: sha512-lWyvf/jwu+oS5+hL5eClVd3hNdmwM1kAC0BUvEGD19pajQMIzcNUd/k9GsfQ+FfECvX+JE+e9/btsKH0EjJT6A==}
 
-  rehype-stringify@10.0.1:
-    resolution: {integrity: sha512-k9ecfXHmIPuFVI61B9DeLPN0qFHfawM6RsuX48hoqlaKSF61RskNjSm1lI8PhBEM0MRdLxVVm4WmTqJQccH9mA==}
+  rehype-stringify@10.0.0:
+    resolution: {integrity: sha512-1TX1i048LooI9QoecrXy7nGFFbFSufxVRAfc6Y9YMRAi56l+oB0zP51mLSV312uRuvVLPV1opSlJmslozR1XHQ==}
 
   remark-gfm@4.0.0:
     resolution: {integrity: sha512-U92vJgBPkbw4Zfu/IiW2oTZLSL3Zpv+uI7My2eq8JxKgqraFdU8YUGicEJCEgSbeaG+QDFqIcwwfMTOEelPxuA==}
@@ -1514,8 +1501,8 @@ packages:
   remark-parse@11.0.0:
     resolution: {integrity: sha512-FCxlKLNGknS5ba/1lmpYijMUzX2esxW5xQqjWxw2eHFfS2MSdaHVINFmhjo+qN1WhZhNimq0dZATN9pH0IDrpA==}
 
-  remark-rehype@11.1.1:
-    resolution: {integrity: sha512-g/osARvjkBXb6Wo0XvAeXQohVta8i84ACbenPpoSsxTOQH/Ae0/RGP4WZgnMH5pMLpsj4FG7OHmcIcXxpza8eQ==}
+  remark-rehype@11.1.0:
+    resolution: {integrity: sha512-z3tJrAs2kIs1AqIIy6pzHmAHlF1hWQ+OdY4/hv+Wxe35EhyLKcajL33iUEn3ScxtFox9nUvRufR/Zre8Q08H/g==}
 
   remark-stringify@11.0.0:
     resolution: {integrity: sha512-1OSmLd3awB/t8qdoEOMazZkNsfVTeY4fTsgzcQFdXNq8ToTN4ZGwrMnlda4K6smTFKD+GRV6O48i6Z4iKgPPpw==}
@@ -2184,8 +2171,6 @@ snapshots:
       '@types/unist': 3.0.2
 
   '@types/ms@0.7.34': {}
-
-  '@types/negotiator@0.6.3': {}
 
   '@types/node-forge@1.3.11':
     dependencies:
@@ -3079,8 +3064,6 @@ snapshots:
 
   nanoid@3.3.7: {}
 
-  negotiator@1.0.0: {}
-
   next@15.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@next/env': 15.0.0
@@ -3118,7 +3101,7 @@ snapshots:
 
   ohash@1.1.4: {}
 
-  open-graph-scraper@6.8.2:
+  open-graph-scraper@6.8.1:
     dependencies:
       chardet: 2.0.0
       cheerio: 1.0.0
@@ -3197,7 +3180,7 @@ snapshots:
       unified: 11.0.5
       unist-util-visit: 5.0.0
 
-  rehype-highlight@7.0.1:
+  rehype-highlight@7.0.0:
     dependencies:
       '@types/hast': 3.0.4
       hast-util-to-text: 4.0.2
@@ -3213,7 +3196,7 @@ snapshots:
       hast-util-to-string: 3.0.0
       unist-util-visit: 5.0.0
 
-  rehype-stringify@10.0.1:
+  rehype-stringify@10.0.0:
     dependencies:
       '@types/hast': 3.0.4
       hast-util-to-html: 9.0.3
@@ -3239,7 +3222,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  remark-rehype@11.1.1:
+  remark-rehype@11.1.0:
     dependencies:
       '@types/hast': 3.0.4
       '@types/mdast': 4.0.4

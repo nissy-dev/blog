@@ -1,6 +1,6 @@
 import { FaList } from "react-icons/fa";
 
-import { getTranslation } from "../../../../../i18n/server";
+import { getTranslation } from "../../../../i18n";
 
 import styles from "./Toc.module.css";
 

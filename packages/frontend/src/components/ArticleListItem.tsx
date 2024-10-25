@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { FaCalendarAlt, FaClock, FaTag } from "react-icons/fa";
 
-import { getTranslation } from "../i18n/server";
-
 import styles from "./ArticleListItem.module.css";
 
 type Props = {
@@ -24,7 +22,6 @@ export const ArticleListItem = async ({
   timeToRead,
   excerpt,
 }: Props) => {
-  const { t } = await getTranslation();
   return (
     <article className={styles.articleList}>
       <header>
@@ -48,13 +45,7 @@ export const ArticleListItem = async ({
               {tags.map((tag) => {
                 return (
                   <li key={`${title}-${tag}`}>
-                    <Link
-                      key={tag}
-                      href={encodeURI(`/tag/${tag}`)}
-                      title={`${t("tags")}: #${tag}`}
-                    >
-                      {`#${tag}`}
-                    </Link>
+                    <span key={tag}>{`#${tag}`}</span>
                   </li>
                 );
               })}

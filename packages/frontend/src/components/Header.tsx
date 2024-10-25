@@ -2,7 +2,7 @@ import { siteMetaData } from "@blog/libs/constant";
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 
-import { getTranslation } from "../i18n/server";
+import { getTranslation } from "../i18n";
 import { SearchButton } from "./SearchButton";
 import { ThemeSwitchButton } from "./ThemeSwitchButton";
 

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FaList } from "react-icons/fa";
 
-import { useTranslation } from "../../../../../i18n/client";
+import { useTranslation } from "../../../../i18n";
 
 import styles from "./MobileToc.module.css";
 

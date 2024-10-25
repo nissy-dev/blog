@@ -3,7 +3,7 @@
 import { use } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 
-import { useTranslation } from "../i18n/client";
+import { useTranslation } from "../i18n";
 import { ThemeContext } from "../theme/theme";
 
 import styles from "./ThemeSwitchButton.module.css";

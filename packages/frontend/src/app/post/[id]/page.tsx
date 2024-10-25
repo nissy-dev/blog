@@ -2,10 +2,8 @@ import { siteMetaData } from "@blog/libs/constant";
 import { getPostById, getPostIds } from "@blog/libs/repositories";
 import type { Metadata } from "next";
 
-import { CONTENTS_DIR } from "../../../../constant";
-import { dateFormat } from "../../../../functions/dateFormat";
-import { type Locale, SUPPORTED_LOCALES } from "../../../../i18n/resources";
-import { setStaticParamsLocale } from "../../../../i18n/server";
+import { CONTENTS_DIR } from "../../../constant";
+import { dateFormat } from "../../../functions/dateFormat";
 import { MobileToc } from "./_components/MobileToc";
 import { PostHeader } from "./_components/PostHeader";
 import { Toc } from "./_components/Toc";
@@ -14,9 +12,7 @@ import styles from "./page.module.css";
 
 export async function generateStaticParams() {
   const ids = await getPostIds(CONTENTS_DIR);
-  return ids.flatMap((id) => {
-    return SUPPORTED_LOCALES.map((locale) => ({ id, locale }));
-  });
+  return ids.map((id) => ({ id }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -34,24 +30,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 type Props = {
   params: Promise<{
-    locale: Locale;
     id: string;
   }>;
 };
 
 export default async function Page({ params }: Props) {
-  const { locale, id } = await params;
-  setStaticParamsLocale(locale);
+  const { id } = await params;
   const { frontMatter, tocHtml, contentHtml } = await getPostById(
     CONTENTS_DIR,
     id,
   );
 
   const { tags, title, date, timeToRead } = frontMatter;
-  const { dateDisplayString, dateISOString } = dateFormat(
-    new Date(date),
-    locale,
-  );
+  const { dateDisplayString, dateISOString } = dateFormat(new Date(date), "ja");
   return (
     <>
       <aside className={styles.tocWrapper}>
