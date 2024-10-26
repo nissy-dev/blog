@@ -1,17 +1,12 @@
 import { getFrontMatters } from "@blog/libs/repositories";
 import type { Metadata } from "next";
 
-import { ArticleListItem } from "../../components/ArticleListItem";
-import { CONTENTS_DIR } from "../../constant";
-import { dateFormat } from "../../functions/dateFormat";
-import { type Locale, SUPPORTED_LOCALES } from "../../i18n/resources";
-import { getTranslation, setStaticParamsLocale } from "../../i18n/server";
+import { ArticleListItem } from "../components/ArticleListItem";
+import { CONTENTS_DIR } from "../constant";
+import { dateFormat } from "../functions/dateFormat";
+import { getTranslation } from "../i18n";
 
 import styles from "./page.module.css";
-
-export async function generateStaticParams() {
-  return SUPPORTED_LOCALES.map((locale) => ({ locale }));
-}
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getTranslation();
@@ -21,15 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-type Props = {
-  params: Promise<{
-    locale: Locale;
-  }>;
-};
-
-export default async function Page({ params }: Props) {
-  const { locale } = await params;
-  setStaticParamsLocale(locale);
+export default async function Page() {
   const { t } = await getTranslation();
   const frontMatters = await getFrontMatters(CONTENTS_DIR);
 
@@ -39,7 +26,7 @@ export default async function Page({ params }: Props) {
       {frontMatters.map((frontMatter) => {
         const { dateDisplayString, dateISOString } = dateFormat(
           new Date(frontMatter.date),
-          locale,
+          "ja",
         );
         return (
           <ArticleListItem

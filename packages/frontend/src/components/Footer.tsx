@@ -1,7 +1,7 @@
 import { siteMetaData } from "@blog/libs/constant";
 import { FaEnvelope, FaGithub, FaTwitter } from "react-icons/fa";
 
-import { getTranslation } from "../i18n/server";
+import { getTranslation } from "../i18n";
 
 import styles from "./Footer.module.css";
 
