@@ -20,8 +20,8 @@
     "the-new-css-reset": "1.11.3"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "15.0.0",
-    "@types/react": "18.3.11",
+    "@next/bundle-analyzer": "15.0.1",
+    "@types/react": "18.3.12",
     "@types/react-dom": "18.3.1"
   }
 }
