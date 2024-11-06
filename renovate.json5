@@ -1,16 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
-  "repositories": ["nissy-dev/blog"],
-  "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
   "enabledManagers": ["npm", "github-actions", "docker-compose", "dockerfile"],
   // branch protection を設定しないと自動マージされないので注意
   "automerge": true,
   "rebaseWhen": "conflicted",
   "labels": ["renovate"],
-  // cron で実行するので limit は 0 にしておく
-  "prConcurrentLimit": 0,
-  "prHourlyLimit": 0,
   "minimumReleaseAge": "3 days",
   // major バージョンの更新は別 PR にする
   "separateMultipleMajor": true,
@@ -36,7 +31,7 @@
     // third party の GitHub Actions は pinDigests を有効にする
     {
       "matchManagers": ["github-actions"],
-      "excludePackagePrefixes": ["actions/"],
+      "matchPackageNames": ["!actions/{/,}**"],
       "pinDigests": true
     },
     // devdeps と deps を一緒にあげるものは個別で grouping を指定する
