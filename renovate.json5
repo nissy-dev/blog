@@ -8,7 +8,7 @@
   "labels": ["renovate"],
   "minimumReleaseAge": "3 days",
   // 月初に更新する
-  "schedule": ["0 0 1 * *"],
+  "schedule": ["on the first day of the month"],
   // major バージョンの更新は別 PR にする
   "separateMultipleMajor": true,
   "packageRules": [
