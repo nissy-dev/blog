@@ -9,7 +9,7 @@ tags: ["blog", "career"]
 
 フルスタックのソフトウェアエンジニアと聞くと、一般的にはチームトポロジーの Stream Aligned Team に所属していると思われそうである。ただ、それは自分の今までの経歴から少し違うなと感じていて、自分は一体何エンジニアなのだろうかと思うようになった。
 
-色々調べていると、「Platform Engineering」が自分の今までやってきたことに近そうだった。「Platform Engineering」の定義は、ガートナーによると次のようになっている。
+色々調べていると、「Platform Engineering」が自分の今までやってきたことに近そうだった。[「Platform Engineering」の定義は、ガートナーによると次のようになっている。](https://www.gartner.co.jp/ja/articles/what-is-platform-engineering)
 
 > プラットフォーム・エンジニアリングとは、ソフトウェアの開発とデリバリを目的とした、セルフサービス型の開発者プラットフォームの構築と運用に関する専門分野です。
 
@@ -56,7 +56,7 @@ https://paper2.hatenablog.com/entry/2022/12/03/151552
 - 自分は DevOps に近いところに興味や熱量がありそう
 - Platform Engineering や Platform Team での活動をしていけると良さそうだが、そういうポジションは少なそう
   - メルカリや楽天、外資などのかなり大きな組織でないとなさそう
-  - 社内の Neco チームは Platform Team な気がするけど、似たようなポジションは社外にやはり少なそう
+  - 社内の Neco チームは Platform Team な気がするけど、似たようなポジションは社外に少なそう
 - 比較的需要のある enabling / SRE の役割をこなせると活躍できる場所は広がりそう
   - enabling をまずはできるのが良いのではないかと思い始めた
     - その中で Platform Engineering っぽいこともできていけると良い、基盤整備とか
