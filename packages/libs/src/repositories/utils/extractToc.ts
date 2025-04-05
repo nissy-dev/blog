@@ -9,6 +9,7 @@ const remarkToc = () => {
   return (tree: Root) => {
     const result = toc(tree, { maxDepth: 3 });
     if (!result.map) {
+      tree.children = [];
       return;
     }
     tree.children = [result.map];
