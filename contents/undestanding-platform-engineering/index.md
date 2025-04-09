@@ -55,11 +55,10 @@ https://paper2.hatenablog.com/entry/2022/12/03/151552
 で、結局自分は今それから今後何エンジニアになりたいの？という話だけど、こんな感じの感触になった。
 
 - 自分は DevOps (開発者体験・生産性の向上) に近いところに熱量がありそう
-  - なので Platform Engineering や Platform Team での活動をしていけると良さそうだが、そういうポジションは少なそう
-  - メルカリや楽天、外資などのかなり大きな組織でないと Platform Engineering 専任チームはなさそう
+  - Platform Engineering や Platform Team での活動をしていけると良さそうだが、そういうポジションは一般的に少なそう
   - 社内の Neco チームや SDK 開発チームは Platform Team な気がするけど、似たようなポジションは社外に少なそう
+  - DevOps 周りは AI ツールの発展で求められるスキルや活動も大きく変化しそう
 - 比較的需要のある enabling / SRE の役割をこなせると活躍できる場所は広がりそう
-  - enabling をまずはできるのが良いのではないかと思い始めた
-    - その中で Platform Engineering っぽいこともできていけると良い、基盤整備とか
+  - enabling の中で、基盤整備とかの Platform Engineering っぽいこともできていけると良さそう
   - SLO / SLI の運用やインシデント対応の経験はしていけると良さそう
   - GCP or AWS を使った経験が少ないので、そこらへんのスキルもつけれると良さそう
