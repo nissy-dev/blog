@@ -1,11 +1,11 @@
 name: contents update workflow
 on:
-  # push:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - 'contents/**'
-  #     - '.github/workflows/contents.yaml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'contents/**'
+      - '.github/workflows/contents.yaml'
   workflow_dispatch:
 
 jobs:

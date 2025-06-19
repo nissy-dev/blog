@@ -8,8 +8,8 @@ import remark2Rehype from "remark-rehype";
 
 import {
   rehypeConvertLinkToCard,
-  rehypeInsertLazyLoad,
   rehypeInsertTargetBlank,
+  rehypeShowImageAlt,
 } from "./customRehypePlugin";
 
 export const mdToHtml = async (content: string): Promise<string> => {
@@ -20,8 +20,8 @@ export const mdToHtml = async (content: string): Promise<string> => {
     .use(rehypeAutolinkHeadings)
     .use(rehypeHighlight)
     .use(rehypeConvertLinkToCard)
+    .use(rehypeShowImageAlt)
     .use(rehypeInsertTargetBlank)
-    .use(rehypeInsertLazyLoad)
     .use(rehypeStringify);
   const contentHtml = await mdProcessor.process(content);
   return contentHtml.toString();

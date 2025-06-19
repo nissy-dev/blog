@@ -26,14 +26,21 @@ export const rehypeInsertTargetBlank = () => {
   };
 };
 
-export const rehypeInsertLazyLoad = () => {
-  const insertTargetBlank = (node: Element) => {
+export const rehypeShowImageAlt = () => {
+  const insertImageAlt = (
+    node: Element,
+    _: unknown,
+    parent: Element | HastRoot | undefined,
+  ) => {
     if (is(node, { tagName: "img" }) && hasProperties(node)) {
       node.properties.loading = "lazy";
+      if (node.properties.alt) {
+        parent?.children?.push(h("em", node.properties.alt as string));
+      }
     }
   };
   return (tree: HastRoot) => {
-    visit(tree, "element", insertTargetBlank);
+    visit(tree, "element", insertImageAlt);
   };
 };
 
@@ -106,7 +113,6 @@ const buildCardContent = (linkData: LinkData) => {
       h("img", {
         src: linkData.image,
         class: "thumbnail-img",
-        alt: "thumbnail",
       }),
     ]);
     return h(

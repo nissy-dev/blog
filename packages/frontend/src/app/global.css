@@ -119,6 +119,12 @@ a:hover {
     margin-left: auto;
   }
 
+  & img + em {
+    display: block;
+    text-align: center;
+    font-style: italic;
+  }
+
   & .card-link {
     display: flex;
     flex-direction: row;
