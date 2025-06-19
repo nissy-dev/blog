@@ -17,6 +17,9 @@ jobs:
       - name: Deploy new worker
         working-directory: packages/fts
         run: pnpm run deploy
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
       - name: Update database
         working-directory: packages/fts
         run: |
