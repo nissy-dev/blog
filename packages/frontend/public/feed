@@ -4,11 +4,18 @@
         <title>nissy.dev</title>
         <link>undefined</link>
         <description>A blog for Nissy</description>
-        <lastBuildDate>Sat, 05 Apr 2025 13:48:14 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 19 Jun 2025 15:52:37 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ja</language>
         <copyright>Copyright (C) 2025 Daiki Nishikawa</copyright>
+        <item>
+            <title><![CDATA[クロアチア旅行]]></title>
+            <link>https://blog.nissy.dev/croatia</link>
+            <guid>https://blog.nissy.dev/croatia</guid>
+            <pubDate>Wed, 11 Jun 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[クロアチア旅行]]></description>
+        </item>
         <item>
             <title><![CDATA[Platform Engineering とそれをとり巻く用語を理解する]]></title>
             <link>https://blog.nissy.dev/undestanding-platform-engineering</link>
