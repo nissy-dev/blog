@@ -9,24 +9,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  assets-generate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup
-      - name: Install chrome
-        run: pnpm dlx playwright install chromium --with-deps
-      - name: Generate assets
-        working-directory: packages/assets-generator
-        run: pnpm run generate
-      - name: Commit and push assets
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add --all
-          git commit -m "[skip ci] update assets"
-          git push
-
   db-update:
     runs-on: ubuntu-latest
     steps:
@@ -42,6 +24,6 @@ jobs:
           pnpm run db:prod:init -- --yes
           pnpm run db:prod:insert
         env:
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           AUTH_INFO: ${{ secrets.AUTH_INFO }}
