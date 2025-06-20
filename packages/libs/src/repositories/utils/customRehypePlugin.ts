@@ -79,8 +79,16 @@ type LinkData = {
 
 const extractLinkData = async (url: string): Promise<LinkData | undefined> => {
   try {
-    const ogsData = await ogs({ url });
+    const userAgent =
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36";
+    const ogsData = await ogs({
+      url,
+      timeout: 15,
+      fetchOptions: { headers: { "User-Agent": userAgent } },
+      onlyGetOpenGraphInfo: true,
+    });
     const { result } = ogsData;
+    console.debug("Open Graph Scraper Result:", result);
     if (!result.ogTitle || !result.ogDescription) {
       throw new Error("Invalid result type.");
     }
