@@ -88,9 +88,9 @@ const extractLinkData = async (url: string): Promise<LinkData | undefined> => {
       onlyGetOpenGraphInfo: true,
     });
     const { result } = ogsData;
-    console.debug("Open Graph Scraper Result:", result);
+    console.dir(ogsData, { depth: null });
     if (!result.ogTitle || !result.ogDescription) {
-      throw new Error("Invalid result type.");
+      return undefined;
     }
 
     const hostname = new URL(url).hostname;
