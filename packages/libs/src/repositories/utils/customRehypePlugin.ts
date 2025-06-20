@@ -95,6 +95,7 @@ const extractLinkData = async (url: string): Promise<LinkData | undefined> => {
       url,
     };
   } catch (_) {
+    console.error("Error extracting link data:", _);
     return undefined;
   }
 };
