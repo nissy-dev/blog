@@ -89,7 +89,6 @@ const extractLinkData = async (url: string): Promise<LinkData | undefined> => {
     });
     const { result } = ogsData;
     if (!result.ogTitle || !result.ogDescription) {
-      console.dir(ogsData.response, { depth: 2 });
       throw new Error("Missing Open Graph data");
     }
 
