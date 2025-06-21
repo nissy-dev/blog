@@ -10,7 +10,8 @@
     "resolveJsonModule": true,
     "moduleResolution": "bundler",
     "isolatedModules": true,
-    "incremental": true
+    "incremental": true,
+    "skipLibCheck": true,
   },
   "include": ["./src"],
   "exclude": ["node_modules"]
