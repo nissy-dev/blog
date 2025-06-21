@@ -11,7 +11,7 @@
     "moduleResolution": "bundler",
     "isolatedModules": true,
     "incremental": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "include": ["./src"],
   "exclude": ["node_modules"]
