@@ -1,9 +1,8 @@
+import type { Root } from "mdast";
 import { toc } from "mdast-util-toc";
 import rehypeStringify from "rehype-stringify";
 import { remark } from "remark";
 import remark2Rehype from "remark-rehype";
-
-import type { Root } from "mdast";
 
 const remarkToc = () => {
   return (tree: Root) => {

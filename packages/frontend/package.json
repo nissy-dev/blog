@@ -11,17 +11,17 @@
   },
   "dependencies": {
     "@blog/libs": "workspace:*",
-    "github-markdown-css": "5.7.0",
-    "highlight.js": "11.10.0",
-    "next": "15.0.0",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "react-icons": "5.3.0",
+    "github-markdown-css": "5.8.1",
+    "highlight.js": "11.11.1",
+    "next": "15.3.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-icons": "5.5.0",
     "the-new-css-reset": "1.11.3"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "15.0.0",
-    "@types/react": "19.0.7",
-    "@types/react-dom": "19.0.3"
+    "@next/bundle-analyzer": "15.3.4",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6"
   }
 }

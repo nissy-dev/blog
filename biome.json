@@ -1,11 +1,9 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.0.4/schema.json",
   "files": {
-    "ignore": [".next/**", ".wrangler/**"]
+    "includes": ["**", "!**/.next/**", "!**/.wrangler/**"]
   },
-  "organizeImports": {
-    "enabled": true
-  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
     "rules": {
@@ -15,7 +13,11 @@
         "noUnusedVariables": "error"
       },
       "style": {
-        "noUnusedTemplateLiteral": "off"
+        "noUnusedTemplateLiteral": "off",
+        "noDescendingSpecificity": "off"
+      },
+      "nursery": {
+        "useUniqueElementIds": "off"
       }
     }
   },
