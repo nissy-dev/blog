@@ -3,10 +3,9 @@ import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 
 import { getTranslation } from "../i18n";
+import styles from "./Header.module.css";
 import { SearchButton } from "./SearchButton";
 import { ThemeSwitchButton } from "./ThemeSwitchButton";
-
-import styles from "./Header.module.css";
 
 export const Header = async () => {
   const { t } = await getTranslation();
