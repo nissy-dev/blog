@@ -2,7 +2,7 @@
   "name": "blog",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.12.3",
+  "packageManager": "pnpm@10.12.4",
   "scripts": {
     "install-chrome": "pnpm dlx playwright install chromium --with-deps",
     "generate-assets": "pnpm --filter @blog/assets-generator generate",
