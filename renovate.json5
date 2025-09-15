@@ -1,5 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "enabled": false,
   "extends": ["config:recommended"],
   "enabledManagers": ["npm", "github-actions", "docker-compose", "dockerfile"],
   // branch protection を設定しないと自動マージされないので注意
