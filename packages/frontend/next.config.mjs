@@ -5,11 +5,6 @@ const withBundleAnalyzer = NextBundleAnalyzer({
 });
 
 export default withBundleAnalyzer({
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  agentRules: false,
   staticPageGenerationTimeout: 300,
 });

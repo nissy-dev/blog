@@ -17,7 +17,7 @@ export const rehypeInsertTargetBlank = () => {
       const href = (node.properties.href as string) ?? "";
       if (/^(http|https)/.test(href)) {
         node.properties.target = "_blank";
-        node.properties.rel = "noopener noreferrer";
+        node.properties.rel = ["noopener", "noreferrer"];
       }
     }
   };
@@ -101,8 +101,7 @@ const extractLinkData = async (url: string): Promise<LinkData | undefined> => {
       favicon: `https://www.google.com/s2/favicons?domain=${hostname}`,
       url,
     };
-  } catch (_) {
-    console.error("Error extracting link data:", _);
+  } catch {
     return undefined;
   }
 };

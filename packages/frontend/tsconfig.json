@@ -12,7 +12,7 @@
     "moduleResolution": "bundler",
     "isolatedModules": true,
     "allowJs": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -20,6 +20,11 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "./src", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "./src",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

@@ -3,13 +3,8 @@ name: Setup
 runs:
   using: composite
   steps:
-    - name: Install pnpm
-      uses: pnpm/action-setup@v4
-    - name: Use Node.js
-      uses: actions/setup-node@v5
-      with:
-        node-version-file: '.tool-versions'
-        cache: 'pnpm'
+    - name: Install tools
+      uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3.6.3
     - name: Install dependencies
       shell: bash
       run: pnpm install

@@ -11,11 +11,11 @@
     "deploy": "wrangler deploy --minify"
   },
   "dependencies": {
-    "hono": "4.8.2"
+    "hono": "4.13.1"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20250620.0",
-    "tsx": "4.20.3",
-    "wrangler": "4.20.5"
+    "@cloudflare/workers-types": "5.20260808.1",
+    "tsx": "4.23.11",
+    "wrangler": "4.120.0"
   }
 }

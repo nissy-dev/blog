@@ -2,7 +2,7 @@
   "name": "blog",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.15.1",
+  "packageManager": "pnpm@11.19.0",
   "scripts": {
     "install-chrome": "pnpm dlx playwright install chromium --with-deps",
     "generate-assets": "pnpm --filter @blog/assets-generator generate",
@@ -12,7 +12,7 @@
     "typecheck": "pnpm -r typecheck"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.0.4",
-    "typescript": "5.8.3"
+    "@biomejs/biome": "2.5.7",
+    "typescript": "7.0.2"
   }
 }

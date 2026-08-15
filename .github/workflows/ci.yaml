@@ -6,8 +6,12 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - uses: ./.github/actions/setup
+      - name: Check action pins
+        run: pinact run --check --verify-comment .github/workflows/*.yaml .github/actions/setup/action.yaml
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Run lint
         run: pnpm run lint
       - name: Run typecheck
