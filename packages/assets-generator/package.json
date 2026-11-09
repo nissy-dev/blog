@@ -11,7 +11,7 @@
     "@types/node": "26.6.5",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "budoux": "0.9.3",
+    "budoux": "0.10.0",
     "feed": "6.0.0",
     "playwright": "1.64.1",
     "react": "19.3.1",
