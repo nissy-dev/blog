@@ -24,7 +24,7 @@
     "remark-rehype": "11.1.2",
     "strip-markdown": "6.0.0",
     "unist-util-is": "6.0.1",
-    "unist-util-visit": "5.1.0"
+    "unist-util-visit": "5.2.0"
   },
   "devDependencies": {
     "@types/hast": "3.0.5",
