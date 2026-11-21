@@ -4,8 +4,8 @@ on:
     branches:
       - main
     paths:
-      - 'contents/**'
-      - '.github/workflows/contents.yaml'
+      - "contents/**"
+      - ".github/workflows/contents.yaml"
   workflow_dispatch:
 
 permissions:

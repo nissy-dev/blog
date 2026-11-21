@@ -1,4 +1,5 @@
 ---
+
 title: "URL遷移やsession historyに関する挙動の整理"
 date: "2021-07-17"
 description: "URLの遷移の挙動に地味にハマった時のメモ"
