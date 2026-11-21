@@ -1,4 +1,5 @@
 ---
+
 title: "Platform Engineering とそれをとり巻く用語を理解する"
 date: "2025-04-05"
 description: "Platform Engineering とそれをとり巻く用語を理解する"

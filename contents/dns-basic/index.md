@@ -1,4 +1,5 @@
 ---
+
 title: "DNSの基礎"
 date: "2021-06-11"
 description: "新卒研修で扱った DNS のメモ"

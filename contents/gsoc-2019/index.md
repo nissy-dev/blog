@@ -1,4 +1,5 @@
 ---
+
 title: "Google Summer of Code(GSoC) 2019に応募して、お祈りされました"
 date: "2019-05-13"
 description: "Google Summer of Code(GSoC) 2019 に応募して、お祈りされました"
